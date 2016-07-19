@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @text_area.name %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @text_area.user %>
+</p>
+
+<%= link_to 'Edit', edit_text_area_path(@text_area) %> |
+<%= link_to 'Back', text_areas_path %>

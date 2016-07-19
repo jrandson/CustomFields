@@ -1,0 +1,22 @@
+<%= form_for(text_area) do |f| %>
+  <% if text_area.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(text_area.errors.count, "error") %> prohibited this text_area from being saved:</h2>
+
+      <ul>
+      <% text_area.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name , 'Text area name' %>
+    <%= f.text_field :name, class: 'form-control' %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit 'Create', class: 'btn btn-default' %>
+  </div>
+<% end %>

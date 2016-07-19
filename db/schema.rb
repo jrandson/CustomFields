@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160719050650) do
+ActiveRecord::Schema.define(version: 20160719203139) do
 
   create_table "contacts", force: :cascade do |t|
     t.string   "name"
@@ -19,6 +19,24 @@ ActiveRecord::Schema.define(version: 20160719050650) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_contacts_on_user_id"
+  end
+
+  create_table "text_area_values", force: :cascade do |t|
+    t.string   "name"
+    t.text     "value"
+    t.integer  "contact_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.integer  "text_area_id"
+    t.index ["contact_id"], name: "index_text_area_values_on_contact_id"
+  end
+
+  create_table "text_areas", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_text_areas_on_user_id"
   end
 
   create_table "text_field_values", force: :cascade do |t|

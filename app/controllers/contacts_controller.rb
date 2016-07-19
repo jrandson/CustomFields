@@ -11,7 +11,9 @@ class ContactsController < ApplicationController
   # GET /contacts/1.json
   def show
     @contact = Contact.find(params[:id])    
-    @fields = @contact.text_field_values.all
+    @text_fields = @contact.text_field_values.all
+    @text_areas = @contact.text_area_values.all
+    
   end
 
   # GET /contacts/new
@@ -28,25 +30,34 @@ class ContactsController < ApplicationController
   def create
     
     @contact = Contact.new(contact_params(params[:contact]))
-    @contact.user_id = current_user.id
+    @contact.user_id = current_user.id   
 
-    if @contact.save
-      params[:text_field_values].each do |param|
-        text_field_value = TextFieldValue.new(text_field_values_parms(param))
-        text_field_value.contact_id = @contact.id
-        text_field_value.save
-      end
-    end    
+      Contact.transaction do
+        respond_to do |format|
+          if @contact.save
+            
+            params[:text_field_values].each do |param|
+              @text_field_value = TextFieldValue.new(text_field_values_parms(param))
+              @text_field_value.contact_id = @contact.id
+              @text_field_value.save              
+            end
 
-    respond_to do |format|
-      if @contact.save
-        format.html { redirect_to @contact, notice: 'Contact was successfully created.' }
-        format.json { render :show, status: :created, location: @contact }
-      else
-        format.html { render :new }
-        format.json { render json: @contact.errors, status: :unprocessable_entity }
-      end
-    end
+            params[:text_area_values].each do |param|
+              @text_area_value = TextAreaValue.new(text_area_values_params(param))
+              @text_area_value.contact_id = @contact.id  
+              @text_area_value.save            
+            end
+
+              format.html { redirect_to contact_path(@contact), notice: 'Contact was successfully created.' }
+              format.json { render :show, status: :created, location: @contact }                              
+            
+            else   
+              raise ActiveRecord::Rollback
+              format.html { render :new }
+              format.json { render json: @contact.errors, status: :unprocessable_entity }
+          end
+        end
+      end         
   end
 
   # PATCH/PUT /contacts/1
@@ -86,5 +97,9 @@ class ContactsController < ApplicationController
 
     def text_field_values_parms(text_field_value)
       text_field_value.permit(:value, :text_field_id, :name)
+    end
+
+    def text_area_values_params(text_area_value)
+      text_area_value.permit(:value,:text_area_id, :name)
     end
 end

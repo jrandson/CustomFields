@@ -36,10 +36,23 @@
             </div>
           <% end %>
     <% end %>
-    <!-- -->
+    <!-- end text fields-->
+
+    <!-- Text areas -->
+    <%= @text_areas.each do |text_area| %>    
+          <%= fields_for 'text_area_values[][]', text_area[:value] do |value| %>
+            <div class="field">
+              <label><%= text_area[:text_area].name %></label>
+              <%= value.text_area :value, class: 'form-control'%>
+              <%= value.hidden_field :name, value:text_area[:text_area].name %> 
+              <%= value.hidden_field :text_area_id, value: text_area[:text_area].id %> 
+            </div>
+          <% end %>
+    <% end %>
+    <!-- end text areas -->
 
     <div class="actions">
-      <%= f.submit "Submit", class: 'btn btn-default"' %>
+      <%= f.submit "Submit", class: 'btn btn-default' %>
     </div>
   <% end %>
 

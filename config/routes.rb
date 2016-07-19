@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   
 
     
+  	resources :text_areas
     resources :contacts
 
 	#==============Static pages ===================

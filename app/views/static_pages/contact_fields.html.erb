@@ -38,7 +38,27 @@
 
     <h3>Text Areas</h3>
 
-    <%= link_to 'New Text Area', '#', class: 'btn btn-link' %>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Field Name</th>
+          <th>Created at</th>
+          <th colspan="3"></th>
+        </tr>
+      </thead>
+    <tbody>
+        <% @text_areas.each do |text_area| %>
+          <tr>
+            <td><%= text_area.name %></td>
+            <td><%= text_area.updated_at.strftime("%b, %m %Y - %H:%M") %></td>
+            <td><%= link_to 'Edit', edit_text_area_path(text_area) %></td>
+            <td><%= link_to 'Destroy', text_area, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+
+    <%= link_to 'New Text Area', new_text_area_path, class: 'btn btn-link' %>
 
     <h3>Text Dropdown lists</h3>
 

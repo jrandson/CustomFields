@@ -20,7 +20,14 @@
 	    	<td><strong><%= @contact.name %></strong></td>
 		    <td><strong><%= @contact.email %></strong></td>
 	    </tr>
-	    <%= @fields.each do |field| %>
+	    <%= @text_fields.each do |field| %>
+	    	<tr>
+	    		<td><%= field.name %></td>
+	    		<td><%= field.value %></td>
+	    	</tr>				
+		<% end %>
+
+		<%= @text_areas.each do |field| %>
 	    	<tr>
 	    		<td><%= field.name %></td>
 	    		<td><%= field.value %></td>
