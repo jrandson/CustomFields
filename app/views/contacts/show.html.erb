@@ -1,0 +1,38 @@
+
+
+	<p id="notice"><%= notice %></p>
+	 <h1>Contact datails</h1>
+
+	<table class="table">
+	  <thead>
+	    <tr>
+	      <th>Field</th>
+	      <th>Value</th>
+	    </tr>
+	  </thead>
+
+	  <tbody>
+	  	<tr>
+		  	<td><strong>Name</strong></td>
+		    <td><strong>Email</strong></td>
+	    </tr>
+	    <tr>
+	    	<td><strong><%= @contact.name %></strong></td>
+		    <td><strong><%= @contact.email %></strong></td>
+	    </tr>
+	    <%= @fields.each do |field| %>
+	    	<tr>
+	    		<td><%= field.name %></td>
+	    		<td><%= field.value %></td>
+	    	</tr>				
+		<% end %>
+
+	  </tbody>
+	</table>		
+
+	<h4>
+		<%= link_to 'Back', contacts_path, class: 'btn-link' %> 
+	</h4>
+
+
+

@@ -10,7 +10,35 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160718121611) do
+ActiveRecord::Schema.define(version: 20160719050650) do
+
+  create_table "contacts", force: :cascade do |t|
+    t.string   "name"
+    t.string   "email"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_contacts_on_user_id"
+  end
+
+  create_table "text_field_values", force: :cascade do |t|
+    t.string   "name"
+    t.string   "value"
+    t.integer  "text_field_id"
+    t.integer  "contact_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.index ["contact_id"], name: "index_text_field_values_on_contact_id"
+    t.index ["text_field_id"], name: "index_text_field_values_on_text_field_id"
+  end
+
+  create_table "text_fields", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_text_fields_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "name"

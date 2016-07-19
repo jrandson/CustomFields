@@ -1,14 +1,19 @@
 <div class="center jumbotron">
-  <h1>Welcome to the Sample App</h1>
+  <h3>Contact form</h3>
 
   <h2>
-    This is the home page for the
-    <a href="http://www.railstutorial.org/">Ruby on Rails Tutorial</a>
-    sample application.
+    Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit
+
   </h2>
 
   <%= link_to "Sign up now!", signup_path, class: "btn btn-lg btn-primary" %>
 </div>
 
-<%= link_to image_tag("rails.png", alt: "Rails logo"),
-            'http://rubyonrails.org/' %>
+
+<%= render 'contact_form', 
+			contact: @contact, 
+			text_fields: @text_fields, 
+			text_field_values: @text_field_values %>
+
+
+
