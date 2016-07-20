@@ -13735,3 +13735,267 @@ Processing by ContactsController#index as HTML
 Completed 200 OK in 107ms (Views: 102.7ms | ActiveRecord: 0.5ms)
 
 
+Started GET "/" for ::1 at 2016-07-20 01:25:57 -0300
+Processing by StaticPagesController#home as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTextField Load (0.4ms)[0m  [1m[34mSELECT "text_fields".* FROM "text_fields" WHERE "text_fields"."user_id" = ?[0m  [["user_id", 1]]
+  [1m[36mTextArea Load (0.4ms)[0m  [1m[34mSELECT "text_areas".* FROM "text_areas" WHERE "text_areas"."user_id" = ?[0m  [["user_id", 1]]
+  [1m[36mDropdown Load (0.4ms)[0m  [1m[34mSELECT "dropdowns".* FROM "dropdowns" WHERE "dropdowns"."user_id" = ?[0m  [["user_id", 1]]
+  Rendering static_pages/home.html.erb within layouts/application
+  Rendered static_pages/_contact_form.html.erb (20.2ms)
+  Rendered static_pages/home.html.erb within layouts/application (23.2ms)
+  Rendered layouts/_header.html.erb (1.8ms)
+  Rendered layouts/_footer.html.erb (0.8ms)
+Completed 200 OK in 128ms (Views: 113.1ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/" for ::1 at 2016-07-20 01:26:26 -0300
+Processing by StaticPagesController#home as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTextField Load (0.4ms)[0m  [1m[34mSELECT "text_fields".* FROM "text_fields" WHERE "text_fields"."user_id" = ?[0m  [["user_id", 1]]
+  [1m[36mTextArea Load (0.3ms)[0m  [1m[34mSELECT "text_areas".* FROM "text_areas" WHERE "text_areas"."user_id" = ?[0m  [["user_id", 1]]
+  [1m[36mDropdown Load (0.3ms)[0m  [1m[34mSELECT "dropdowns".* FROM "dropdowns" WHERE "dropdowns"."user_id" = ?[0m  [["user_id", 1]]
+  Rendering static_pages/home.html.erb within layouts/application
+  Rendered static_pages/_contact_form.html.erb (13.8ms)
+  Rendered static_pages/home.html.erb within layouts/application (16.0ms)
+  Rendered layouts/_header.html.erb (2.6ms)
+  Rendered layouts/_footer.html.erb (0.8ms)
+Completed 200 OK in 122ms (Views: 107.0ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/about" for ::1 at 2016-07-20 01:26:44 -0300
+Processing by StaticPagesController#about as HTML
+  Rendering static_pages/about.html.erb within layouts/application
+  Rendered static_pages/about.html.erb within layouts/application (1.1ms)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered layouts/_header.html.erb (2.8ms)
+  Rendered layouts/_footer.html.erb (0.8ms)
+Completed 200 OK in 115ms (Views: 101.6ms | ActiveRecord: 0.1ms)
+
+
+Started DELETE "/logout" for ::1 at 2016-07-20 01:31:01 -0300
+Processing by SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"l+uljGC/zuPzH1g65qVGh81G1DE7ENrGz4wxWw4FH9bHVrhD0xXWTtZG7NzKpcuZt6soze40E4694Tj8X6JQ/g=="}
+Redirected to http://localhost:3000/
+Completed 302 Found in 2ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2016-07-20 01:31:01 -0300
+Processing by StaticPagesController#home as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+Completed 500 Internal Server Error in 4ms (ActiveRecord: 0.5ms)
+
+
+  
+NoMethodError (undefined method `text_fields' for nil:NilClass):
+  
+app/controllers/static_pages_controller.rb:9:in `home'
+  Rendering /home/randson/.rvm/gems/ruby-2.2.4/gems/actionpack-5.0.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /home/randson/.rvm/gems/ruby-2.2.4/gems/actionpack-5.0.0/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /home/randson/.rvm/gems/ruby-2.2.4/gems/actionpack-5.0.0/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (10.4ms)
+  Rendering /home/randson/.rvm/gems/ruby-2.2.4/gems/actionpack-5.0.0/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /home/randson/.rvm/gems/ruby-2.2.4/gems/actionpack-5.0.0/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (4.4ms)
+  Rendering /home/randson/.rvm/gems/ruby-2.2.4/gems/actionpack-5.0.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /home/randson/.rvm/gems/ruby-2.2.4/gems/actionpack-5.0.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.4ms)
+  Rendered /home/randson/.rvm/gems/ruby-2.2.4/gems/actionpack-5.0.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (45.4ms)
+Started GET "/" for ::1 at 2016-07-20 01:32:44 -0300
+Processing by StaticPagesController#home as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+Completed 500 Internal Server Error in 38ms (ActiveRecord: 2.7ms)
+
+
+  
+NoMethodError (undefined method `text_fields' for nil:NilClass):
+  
+app/controllers/static_pages_controller.rb:9:in `home'
+  Rendering /home/randson/.rvm/gems/ruby-2.2.4/gems/actionpack-5.0.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /home/randson/.rvm/gems/ruby-2.2.4/gems/actionpack-5.0.0/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /home/randson/.rvm/gems/ruby-2.2.4/gems/actionpack-5.0.0/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (10.0ms)
+  Rendering /home/randson/.rvm/gems/ruby-2.2.4/gems/actionpack-5.0.0/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /home/randson/.rvm/gems/ruby-2.2.4/gems/actionpack-5.0.0/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (4.3ms)
+  Rendering /home/randson/.rvm/gems/ruby-2.2.4/gems/actionpack-5.0.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /home/randson/.rvm/gems/ruby-2.2.4/gems/actionpack-5.0.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.6ms)
+  Rendered /home/randson/.rvm/gems/ruby-2.2.4/gems/actionpack-5.0.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (46.2ms)
+Started GET "/about" for ::1 at 2016-07-20 01:32:50 -0300
+Processing by StaticPagesController#about as HTML
+  Rendering static_pages/about.html.erb within layouts/application
+  Rendered static_pages/about.html.erb within layouts/application (1.0ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  Rendered layouts/_header.html.erb (3.0ms)
+  Rendered layouts/_footer.html.erb (1.2ms)
+Completed 200 OK in 103ms (Views: 98.5ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/about" for ::1 at 2016-07-20 01:32:51 -0300
+Processing by StaticPagesController#about as HTML
+  Rendering static_pages/about.html.erb within layouts/application
+  Rendered static_pages/about.html.erb within layouts/application (0.7ms)
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  Rendered layouts/_header.html.erb (3.4ms)
+  Rendered layouts/_footer.html.erb (0.8ms)
+Completed 200 OK in 108ms (Views: 105.5ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/login" for ::1 at 2016-07-20 01:32:53 -0300
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (20.0ms)
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  Rendered layouts/_header.html.erb (3.5ms)
+  Rendered layouts/_footer.html.erb (0.9ms)
+Completed 200 OK in 144ms (Views: 104.0ms | ActiveRecord: 0.8ms)
+
+
+Started POST "/login" for ::1 at 2016-07-20 01:32:57 -0300
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"DdBDRkoQrv73rCxDo9Swq+Qed+g//hliLtNgKT52MCxdbV6J+bq2U9L1mKWP1D21nvOLFOra0CpcvmmOb9F/BA==", "session"=>{"email"=>"admin@email.com", "password"=>"[FILTERED]"}, "commit"=>"Log in"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "admin@email.com"], ["LIMIT", 1]]
+Redirected to http://localhost:3000/users/1
+Completed 302 Found in 28ms (ActiveRecord: 1.4ms)
+
+
+Started GET "/users/1" for ::1 at 2016-07-20 01:32:57 -0300
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (1.5ms)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered layouts/_header.html.erb (3.4ms)
+  Rendered layouts/_footer.html.erb (1.6ms)
+Completed 200 OK in 103ms (Views: 90.6ms | ActiveRecord: 0.5ms)
+
+
+Started DELETE "/logout" for ::1 at 2016-07-20 01:33:01 -0300
+Processing by SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"1MdV3U1p1hnrtuCb9+caMaXXw7glpK5Xo1UbkmmtZFKEekgS/sPOtM7vVH3b55cv3zo/RPCAZx/ROBI1OAoreg=="}
+Redirected to http://localhost:3000/login
+Completed 302 Found in 2ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/login" for ::1 at 2016-07-20 01:33:01 -0300
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (3.0ms)
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  Rendered layouts/_header.html.erb (3.6ms)
+  Rendered layouts/_footer.html.erb (0.9ms)
+Completed 200 OK in 102ms (Views: 99.9ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/signup" for ::1 at 2016-07-20 01:33:14 -0300
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered shared/_error_messages.html.erb (1.2ms)
+  Rendered users/new.html.erb within layouts/application (23.7ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  Rendered layouts/_header.html.erb (2.7ms)
+  Rendered layouts/_footer.html.erb (0.9ms)
+Completed 200 OK in 142ms (Views: 139.7ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/signup" for ::1 at 2016-07-20 01:34:07 -0300
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"tcIrjIlojQ3ldAUUsCfxS3hQuAiMccoHuIyyRf1t8BjlfzZDOsKVoMAtsfKcJ3xVAr1E9FlVA0/K4bvirMq/MA==", "user"=>{"name"=>"Jacob Durthcertz", "email"=>"jaco_d@email.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Start creat my personalized form now"}
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (19.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) LIMIT ?[0m  [["email", "jaco_d@email.com"], ["LIMIT", 1]]
+  [1m[35mSQL (1.3ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "password", "password_confirmation") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "Jacob Durthcertz"], ["email", "jaco_d@email.com"], ["created_at", 2016-07-20 04:34:08 UTC], ["updated_at", 2016-07-20 04:34:08 UTC], ["password", "abc@123"], ["password_confirmation", "abc@123"]]
+  [1m[35m (178.7ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/users/2
+Completed 302 Found in 479ms (ActiveRecord: 199.4ms)
+
+
+Started GET "/users/2" for ::1 at 2016-07-20 01:34:08 -0300
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (2.6ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  Rendered layouts/_header.html.erb (3.8ms)
+  Rendered layouts/_footer.html.erb (1.3ms)
+Completed 200 OK in 103ms (Views: 99.8ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/login" for ::1 at 2016-07-20 01:34:18 -0300
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (5.2ms)
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  Rendered layouts/_header.html.erb (3.3ms)
+  Rendered layouts/_footer.html.erb (0.9ms)
+Completed 200 OK in 98ms (Views: 95.1ms | ActiveRecord: 0.7ms)
+
+
+Started POST "/login" for ::1 at 2016-07-20 01:34:32 -0300
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"hcdyjAfQ+/HDBpXip6z6APJUt7ZXlxtqS/iTuTm2ZxLVem9DtHrjXOZfIQSLrHceiLlLSoKz0iI5lZoeaBEoOg==", "session"=>{"email"=>"jaco_d@email.com", "password"=>"[FILTERED]"}, "commit"=>"Log in"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "jaco_d@email.com"], ["LIMIT", 1]]
+Redirected to http://localhost:3000/users/2
+Completed 302 Found in 5ms (ActiveRecord: 0.5ms)
+
+
+Started GET "/users/2" for ::1 at 2016-07-20 01:34:32 -0300
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (2.3ms)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  Rendered layouts/_header.html.erb (3.3ms)
+  Rendered layouts/_footer.html.erb (1.5ms)
+Completed 200 OK in 120ms (Views: 116.8ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/" for ::1 at 2016-07-20 01:34:38 -0300
+Processing by StaticPagesController#home as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mTextField Load (0.4ms)[0m  [1m[34mSELECT "text_fields".* FROM "text_fields" WHERE "text_fields"."user_id" = ?[0m  [["user_id", 2]]
+  [1m[36mTextArea Load (0.2ms)[0m  [1m[34mSELECT "text_areas".* FROM "text_areas" WHERE "text_areas"."user_id" = ?[0m  [["user_id", 2]]
+  [1m[36mDropdown Load (0.5ms)[0m  [1m[34mSELECT "dropdowns".* FROM "dropdowns" WHERE "dropdowns"."user_id" = ?[0m  [["user_id", 2]]
+  Rendering static_pages/home.html.erb within layouts/application
+  Rendered static_pages/_contact_form.html.erb (5.9ms)
+  Rendered static_pages/home.html.erb within layouts/application (8.1ms)
+  Rendered layouts/_header.html.erb (1.9ms)
+  Rendered layouts/_footer.html.erb (0.8ms)
+Completed 200 OK in 132ms (Views: 87.3ms | ActiveRecord: 3.0ms)
+
+
+Started GET "/contacts" for ::1 at 2016-07-20 01:34:56 -0300
+Processing by ContactsController#index as HTML
+  Rendering contacts/index.html.erb within layouts/application
+  [1m[36mContact Load (0.6ms)[0m  [1m[34mSELECT "contacts".* FROM "contacts"[0m
+  Rendered contacts/index.html.erb within layouts/application (6.7ms)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  Rendered layouts/_header.html.erb (2.9ms)
+  Rendered layouts/_footer.html.erb (0.9ms)
+Completed 200 OK in 93ms (Views: 90.3ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/contacts/26" for ::1 at 2016-07-20 01:35:12 -0300
+Processing by ContactsController#show as HTML
+  Parameters: {"id"=>"26"}
+  [1m[36mContact Load (0.5ms)[0m  [1m[34mSELECT  "contacts".* FROM "contacts" WHERE "contacts"."id" = ? LIMIT ?[0m  [["id", 26], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "contacts".* FROM "contacts" WHERE "contacts"."id" = ? LIMIT ?[0m  [["id", 26], ["LIMIT", 1]]
+  Rendering contacts/show.html.erb within layouts/application
+  [1m[36mTextFieldValue Load (0.3ms)[0m  [1m[34mSELECT "text_field_values".* FROM "text_field_values" WHERE "text_field_values"."contact_id" = ?[0m  [["contact_id", 26]]
+  [1m[36mTextAreaValue Load (0.3ms)[0m  [1m[34mSELECT "text_area_values".* FROM "text_area_values" WHERE "text_area_values"."contact_id" = ?[0m  [["contact_id", 26]]
+  [1m[36mDropdownValue Load (0.3ms)[0m  [1m[34mSELECT "dropdown_values".* FROM "dropdown_values" WHERE "dropdown_values"."contact_id" = ?[0m  [["contact_id", 26]]
+  Rendered contacts/show.html.erb within layouts/application (28.2ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  Rendered layouts/_header.html.erb (3.0ms)
+  Rendered layouts/_footer.html.erb (0.8ms)
+Completed 200 OK in 158ms (Views: 116.8ms | ActiveRecord: 4.3ms)
+
+
+Started GET "/contacts" for ::1 at 2016-07-20 01:35:54 -0300
+Processing by ContactsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering contacts/index.html.erb within layouts/application
+  [1m[36mContact Load (0.3ms)[0m  [1m[34mSELECT "contacts".* FROM "contacts" WHERE "contacts"."user_id" = ?[0m  [["user_id", 2]]
+  Rendered contacts/index.html.erb within layouts/application (2.6ms)
+  Rendered layouts/_header.html.erb (2.3ms)
+  Rendered layouts/_footer.html.erb (0.8ms)
+Completed 200 OK in 175ms (Views: 129.8ms | ActiveRecord: 2.6ms)
+
+
