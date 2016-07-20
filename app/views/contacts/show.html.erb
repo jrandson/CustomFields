@@ -13,23 +13,30 @@
 
 	  <tbody>
 	  	<tr>
-		  	<td><strong>Name</strong></td>
-		    <td><strong>Email</strong></td>
+		  	<td>Name</td>
+		    <td>Email</td>
 	    </tr>
 	    <tr>
-	    	<td><strong><%= @contact.name %></strong></td>
-		    <td><strong><%= @contact.email %></strong></td>
+	    	<td><%= @contact.name %></td>
+		    <td><%= @contact.email %></td>
 	    </tr>
-	    <%= @text_fields.each do |field| %>
+	    <%= @text_field_values.each do |field| %>
 	    	<tr>
 	    		<td><%= field.name %></td>
 	    		<td><%= field.value %></td>
 	    	</tr>				
 		<% end %>
 
-		<%= @text_areas.each do |field| %>
+		<%= @text_area_values.each do |field| %>
 	    	<tr>
 	    		<td><%= field.name %></td>
+	    		<td><%= field.value %></td>
+	    	</tr>				
+		<% end %>
+
+		<%= @dropdown_values.each do |field| %>
+	    	<tr>
+	    		<td><%= field.content %></td>
 	    		<td><%= field.value %></td>
 	    	</tr>				
 		<% end %>

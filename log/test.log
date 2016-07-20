@@ -1,0 +1,615 @@
+  [1m[35m (194.7ms)[0m  [1m[35mCREATE TABLE "contacts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "email" varchar, "user_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mselect sqlite_version(*)[0m
+  [1m[35m (153.5ms)[0m  [1m[35mCREATE  INDEX "index_contacts_on_user_id" ON "contacts" ("user_id")[0m
+  [1m[35m (165.1ms)[0m  [1m[35mCREATE TABLE "dropdowns" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "options" text, "user_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (143.7ms)[0m  [1m[35mCREATE  INDEX "index_dropdowns_on_user_id" ON "dropdowns" ("user_id")[0m
+  [1m[35m (142.7ms)[0m  [1m[35mCREATE TABLE "text_area_values" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "value" text, "contact_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "text_area_id" integer)[0m
+  [1m[35m (165.3ms)[0m  [1m[35mCREATE  INDEX "index_text_area_values_on_contact_id" ON "text_area_values" ("contact_id")[0m
+  [1m[35m (132.9ms)[0m  [1m[35mCREATE TABLE "text_areas" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "user_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (154.4ms)[0m  [1m[35mCREATE  INDEX "index_text_areas_on_user_id" ON "text_areas" ("user_id")[0m
+  [1m[35m (164.5ms)[0m  [1m[35mCREATE TABLE "text_field_values" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "value" varchar, "text_field_id" integer, "contact_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (142.9ms)[0m  [1m[35mCREATE  INDEX "index_text_field_values_on_contact_id" ON "text_field_values" ("contact_id")[0m
+  [1m[35m (1.3ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_text_field_values_on_contact_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_text_field_values_on_contact_id' AND type='index'
+[0m
+  [1m[35m (141.4ms)[0m  [1m[35mCREATE  INDEX "index_text_field_values_on_text_field_id" ON "text_field_values" ("text_field_id")[0m
+  [1m[35m (187.3ms)[0m  [1m[35mCREATE TABLE "text_fields" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "user_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (144.3ms)[0m  [1m[35mCREATE  INDEX "index_text_fields_on_user_id" ON "text_fields" ("user_id")[0m
+  [1m[35m (141.5ms)[0m  [1m[35mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "email" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "password" varchar, "password_confirmation" varchar)[0m
+  [1m[35m (132.2ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[35m (131.2ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT version FROM "schema_migrations"[0m
+  [1m[35m (143.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES ('20160719223015')[0m
+  [1m[35m (145.1ms)[0m  [1m[32mINSERT INTO schema_migrations (version) VALUES ('20160719050459'), ('20160719050650'), ('20160719192437'), ('20160719041520'), ('20160717224806'), ('20160718012352'), ('20160718121611'), ('20160719203139'), ('20160719200036');
+
+[0m
+  [1m[35m (160.7ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", :environment], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "test"], ["created_at", 2016-07-19 22:45:34 UTC], ["updated_at", 2016-07-19 22:45:34 UTC]]
+  [1m[35m (142.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", :environment], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (0.4ms)[0m  [1m[31mDELETE FROM "dropdowns"[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "dropdowns" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:34.618982', '2016-07-19 22:45:34.618982', 980190962, 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "dropdowns" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:34.618982', '2016-07-19 22:45:34.618982', 298486374, 298486374)[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "text_areas"[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "text_areas" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:34.627310', '2016-07-19 22:45:34.627310', 980190962, 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "text_areas" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:34.627310', '2016-07-19 22:45:34.627310', 298486374, 298486374)[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "text_area_values"[0m
+  [1m[35m (0.3ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (0.3ms)[0m  [1m[31mDELETE FROM "dropdowns"[0m
+  [1m[36mFixture Insert (0.2ms)[0m  [1m[32mINSERT INTO "dropdowns" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:34.645796', '2016-07-19 22:45:34.645796', 980190962, 980190962)[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "dropdowns" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:34.645796', '2016-07-19 22:45:34.645796', 298486374, 298486374)[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "text_areas"[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "text_areas" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:34.648595', '2016-07-19 22:45:34.648595', 980190962, 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "text_areas" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:34.648595', '2016-07-19 22:45:34.648595', 298486374, 298486374)[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "text_area_values"[0m
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (0.2ms)[0m  [1m[31mDELETE FROM "dropdowns"[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "dropdowns" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:34.661555', '2016-07-19 22:45:34.661555', 980190962, 980190962)[0m
+  [1m[36mFixture Insert (0.2ms)[0m  [1m[32mINSERT INTO "dropdowns" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:34.661555', '2016-07-19 22:45:34.661555', 298486374, 298486374)[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "text_areas"[0m
+  [1m[36mFixture Insert (0.2ms)[0m  [1m[32mINSERT INTO "text_areas" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:34.664308', '2016-07-19 22:45:34.664308', 980190962, 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "text_areas" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:34.664308', '2016-07-19 22:45:34.664308', 298486374, 298486374)[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "text_area_values"[0m
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (0.3ms)[0m  [1m[31mDELETE FROM "dropdowns"[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "dropdowns" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:34.679085', '2016-07-19 22:45:34.679085', 980190962, 980190962)[0m
+  [1m[36mFixture Insert (0.2ms)[0m  [1m[32mINSERT INTO "dropdowns" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:34.679085', '2016-07-19 22:45:34.679085', 298486374, 298486374)[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "text_areas"[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "text_areas" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:34.681915', '2016-07-19 22:45:34.681915', 980190962, 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "text_areas" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:34.681915', '2016-07-19 22:45:34.681915', 298486374, 298486374)[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "text_area_values"[0m
+  [1m[35m (0.3ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (0.3ms)[0m  [1m[31mDELETE FROM "dropdowns"[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "dropdowns" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:34.694941', '2016-07-19 22:45:34.694941', 980190962, 980190962)[0m
+  [1m[36mFixture Insert (0.2ms)[0m  [1m[32mINSERT INTO "dropdowns" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:34.694941', '2016-07-19 22:45:34.694941', 298486374, 298486374)[0m
+  [1m[36mFixture Delete (0.2ms)[0m  [1m[31mDELETE FROM "text_areas"[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "text_areas" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:34.698119', '2016-07-19 22:45:34.698119', 980190962, 980190962)[0m
+  [1m[36mFixture Insert (0.2ms)[0m  [1m[32mINSERT INTO "text_areas" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:34.698119', '2016-07-19 22:45:34.698119', 298486374, 298486374)[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "text_area_values"[0m
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (0.2ms)[0m  [1m[31mDELETE FROM "dropdowns"[0m
+  [1m[36mFixture Insert (0.2ms)[0m  [1m[32mINSERT INTO "dropdowns" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:34.780401', '2016-07-19 22:45:34.780401', 980190962, 980190962)[0m
+  [1m[36mFixture Insert (0.2ms)[0m  [1m[32mINSERT INTO "dropdowns" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:34.780401', '2016-07-19 22:45:34.780401', 298486374, 298486374)[0m
+  [1m[36mFixture Delete (0.2ms)[0m  [1m[31mDELETE FROM "text_areas"[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "text_areas" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:34.783263', '2016-07-19 22:45:34.783263', 980190962, 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "text_areas" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:34.783263', '2016-07-19 22:45:34.783263', 298486374, 298486374)[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "text_area_values"[0m
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (0.2ms)[0m  [1m[31mDELETE FROM "dropdowns"[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "dropdowns" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:35.485104', '2016-07-19 22:45:35.485104', 980190962, 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "dropdowns" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:35.485104', '2016-07-19 22:45:35.485104', 298486374, 298486374)[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "text_areas"[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "text_areas" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:35.487951', '2016-07-19 22:45:35.487951', 980190962, 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "text_areas" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:35.487951', '2016-07-19 22:45:35.487951', 298486374, 298486374)[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "text_area_values"[0m
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (0.3ms)[0m  [1m[31mDELETE FROM "dropdowns"[0m
+  [1m[36mFixture Insert (0.4ms)[0m  [1m[32mINSERT INTO "dropdowns" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:35.504178', '2016-07-19 22:45:35.504178', 980190962, 980190962)[0m
+  [1m[36mFixture Insert (0.2ms)[0m  [1m[32mINSERT INTO "dropdowns" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:35.504178', '2016-07-19 22:45:35.504178', 298486374, 298486374)[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "text_areas"[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "text_areas" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:35.508116', '2016-07-19 22:45:35.508116', 980190962, 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "text_areas" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:35.508116', '2016-07-19 22:45:35.508116', 298486374, 298486374)[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "text_area_values"[0m
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (0.2ms)[0m  [1m[31mDELETE FROM "dropdowns"[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "dropdowns" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:35.522576', '2016-07-19 22:45:35.522576', 980190962, 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "dropdowns" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:35.522576', '2016-07-19 22:45:35.522576', 298486374, 298486374)[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "text_areas"[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "text_areas" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:35.525361', '2016-07-19 22:45:35.525361', 980190962, 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "text_areas" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:35.525361', '2016-07-19 22:45:35.525361', 298486374, 298486374)[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "text_area_values"[0m
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (0.3ms)[0m  [1m[31mDELETE FROM "dropdowns"[0m
+  [1m[36mFixture Insert (0.4ms)[0m  [1m[32mINSERT INTO "dropdowns" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:35.538265', '2016-07-19 22:45:35.538265', 980190962, 980190962)[0m
+  [1m[36mFixture Insert (0.2ms)[0m  [1m[32mINSERT INTO "dropdowns" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:35.538265', '2016-07-19 22:45:35.538265', 298486374, 298486374)[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "text_areas"[0m
+  [1m[36mFixture Insert (0.2ms)[0m  [1m[32mINSERT INTO "text_areas" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:35.541437', '2016-07-19 22:45:35.541437', 980190962, 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "text_areas" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:35.541437', '2016-07-19 22:45:35.541437', 298486374, 298486374)[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "text_area_values"[0m
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (0.2ms)[0m  [1m[31mDELETE FROM "dropdowns"[0m
+  [1m[36mFixture Insert (0.2ms)[0m  [1m[32mINSERT INTO "dropdowns" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:35.554447', '2016-07-19 22:45:35.554447', 980190962, 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "dropdowns" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:35.554447', '2016-07-19 22:45:35.554447', 298486374, 298486374)[0m
+  [1m[36mFixture Delete (0.2ms)[0m  [1m[31mDELETE FROM "text_areas"[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "text_areas" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:35.557262', '2016-07-19 22:45:35.557262', 980190962, 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "text_areas" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:35.557262', '2016-07-19 22:45:35.557262', 298486374, 298486374)[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "text_area_values"[0m
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (0.2ms)[0m  [1m[31mDELETE FROM "dropdowns"[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "dropdowns" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:35.569804', '2016-07-19 22:45:35.569804', 980190962, 980190962)[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "dropdowns" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:35.569804', '2016-07-19 22:45:35.569804', 298486374, 298486374)[0m
+  [1m[36mFixture Delete (0.2ms)[0m  [1m[31mDELETE FROM "text_areas"[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "text_areas" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:35.573271', '2016-07-19 22:45:35.573271', 980190962, 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "text_areas" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:35.573271', '2016-07-19 22:45:35.573271', 298486374, 298486374)[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "text_area_values"[0m
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (0.3ms)[0m  [1m[31mDELETE FROM "dropdowns"[0m
+  [1m[36mFixture Insert (0.2ms)[0m  [1m[32mINSERT INTO "dropdowns" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:35.586675', '2016-07-19 22:45:35.586675', 980190962, 980190962)[0m
+  [1m[36mFixture Insert (0.2ms)[0m  [1m[32mINSERT INTO "dropdowns" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:35.586675', '2016-07-19 22:45:35.586675', 298486374, 298486374)[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "text_areas"[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "text_areas" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:35.590080', '2016-07-19 22:45:35.590080', 980190962, 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "text_areas" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:35.590080', '2016-07-19 22:45:35.590080', 298486374, 298486374)[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "text_area_values"[0m
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (0.5ms)[0m  [1m[31mDELETE FROM "dropdowns"[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "dropdowns" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:35.603817', '2016-07-19 22:45:35.603817', 980190962, 980190962)[0m
+  [1m[36mFixture Insert (0.2ms)[0m  [1m[32mINSERT INTO "dropdowns" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:35.603817', '2016-07-19 22:45:35.603817', 298486374, 298486374)[0m
+  [1m[36mFixture Delete (0.2ms)[0m  [1m[31mDELETE FROM "text_areas"[0m
+  [1m[36mFixture Insert (0.2ms)[0m  [1m[32mINSERT INTO "text_areas" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:35.608111', '2016-07-19 22:45:35.608111', 980190962, 980190962)[0m
+  [1m[36mFixture Insert (0.2ms)[0m  [1m[32mINSERT INTO "text_areas" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:35.608111', '2016-07-19 22:45:35.608111', 298486374, 298486374)[0m
+  [1m[36mFixture Delete (0.2ms)[0m  [1m[31mDELETE FROM "text_area_values"[0m
+  [1m[35m (0.3ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (0.3ms)[0m  [1m[31mDELETE FROM "dropdowns"[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "dropdowns" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:35.627856', '2016-07-19 22:45:35.627856', 980190962, 980190962)[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "dropdowns" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:35.627856', '2016-07-19 22:45:35.627856', 298486374, 298486374)[0m
+  [1m[36mFixture Delete (0.2ms)[0m  [1m[31mDELETE FROM "text_areas"[0m
+  [1m[36mFixture Insert (0.2ms)[0m  [1m[32mINSERT INTO "text_areas" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:35.631818', '2016-07-19 22:45:35.631818', 980190962, 980190962)[0m
+  [1m[36mFixture Insert (0.2ms)[0m  [1m[32mINSERT INTO "text_areas" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:35.631818', '2016-07-19 22:45:35.631818', 298486374, 298486374)[0m
+  [1m[36mFixture Delete (0.2ms)[0m  [1m[31mDELETE FROM "text_area_values"[0m
+  [1m[35m (0.3ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (0.3ms)[0m  [1m[31mDELETE FROM "dropdowns"[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "dropdowns" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:35.651894', '2016-07-19 22:45:35.651894', 980190962, 980190962)[0m
+  [1m[36mFixture Insert (0.2ms)[0m  [1m[32mINSERT INTO "dropdowns" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:35.651894', '2016-07-19 22:45:35.651894', 298486374, 298486374)[0m
+  [1m[36mFixture Delete (0.2ms)[0m  [1m[31mDELETE FROM "text_areas"[0m
+  [1m[36mFixture Insert (0.2ms)[0m  [1m[32mINSERT INTO "text_areas" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:35.656046', '2016-07-19 22:45:35.656046', 980190962, 980190962)[0m
+  [1m[36mFixture Insert (0.2ms)[0m  [1m[32mINSERT INTO "text_areas" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:35.656046', '2016-07-19 22:45:35.656046', 298486374, 298486374)[0m
+  [1m[36mFixture Delete (0.2ms)[0m  [1m[31mDELETE FROM "text_area_values"[0m
+  [1m[35m (0.4ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (0.3ms)[0m  [1m[31mDELETE FROM "dropdowns"[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "dropdowns" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:35.679273', '2016-07-19 22:45:35.679273', 980190962, 980190962)[0m
+  [1m[36mFixture Insert (0.2ms)[0m  [1m[32mINSERT INTO "dropdowns" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:35.679273', '2016-07-19 22:45:35.679273', 298486374, 298486374)[0m
+  [1m[36mFixture Delete (0.2ms)[0m  [1m[31mDELETE FROM "text_areas"[0m
+  [1m[36mFixture Insert (0.2ms)[0m  [1m[32mINSERT INTO "text_areas" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:35.682994', '2016-07-19 22:45:35.682994', 980190962, 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "text_areas" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:35.682994', '2016-07-19 22:45:35.682994', 298486374, 298486374)[0m
+  [1m[36mFixture Delete (0.2ms)[0m  [1m[31mDELETE FROM "text_area_values"[0m
+  [1m[35m (0.3ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (0.5ms)[0m  [1m[31mDELETE FROM "dropdowns"[0m
+  [1m[36mFixture Insert (0.4ms)[0m  [1m[32mINSERT INTO "dropdowns" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:35.701342', '2016-07-19 22:45:35.701342', 980190962, 980190962)[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "dropdowns" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:35.701342', '2016-07-19 22:45:35.701342', 298486374, 298486374)[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "text_areas"[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "text_areas" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:35.705770', '2016-07-19 22:45:35.705770', 980190962, 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "text_areas" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:35.705770', '2016-07-19 22:45:35.705770', 298486374, 298486374)[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "text_area_values"[0m
+  [1m[35m (0.3ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (0.3ms)[0m  [1m[31mDELETE FROM "dropdowns"[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "dropdowns" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:35.720824', '2016-07-19 22:45:35.720824', 980190962, 980190962)[0m
+  [1m[36mFixture Insert (0.2ms)[0m  [1m[32mINSERT INTO "dropdowns" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:35.720824', '2016-07-19 22:45:35.720824', 298486374, 298486374)[0m
+  [1m[36mFixture Delete (0.2ms)[0m  [1m[31mDELETE FROM "text_areas"[0m
+  [1m[36mFixture Insert (0.2ms)[0m  [1m[32mINSERT INTO "text_areas" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:35.724359', '2016-07-19 22:45:35.724359', 980190962, 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "text_areas" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:35.724359', '2016-07-19 22:45:35.724359', 298486374, 298486374)[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "text_area_values"[0m
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (0.3ms)[0m  [1m[31mDELETE FROM "dropdowns"[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "dropdowns" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:35.738585', '2016-07-19 22:45:35.738585', 980190962, 980190962)[0m
+  [1m[36mFixture Insert (0.2ms)[0m  [1m[32mINSERT INTO "dropdowns" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:35.738585', '2016-07-19 22:45:35.738585', 298486374, 298486374)[0m
+  [1m[36mFixture Delete (0.2ms)[0m  [1m[31mDELETE FROM "text_areas"[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "text_areas" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:35.741952', '2016-07-19 22:45:35.741952', 980190962, 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "text_areas" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:35.741952', '2016-07-19 22:45:35.741952', 298486374, 298486374)[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "text_area_values"[0m
+  [1m[35m (0.3ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (0.2ms)[0m  [1m[31mDELETE FROM "dropdowns"[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "dropdowns" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:35.754640', '2016-07-19 22:45:35.754640', 980190962, 980190962)[0m
+  [1m[36mFixture Insert (0.2ms)[0m  [1m[32mINSERT INTO "dropdowns" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:35.754640', '2016-07-19 22:45:35.754640', 298486374, 298486374)[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "text_areas"[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "text_areas" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:35.757736', '2016-07-19 22:45:35.757736', 980190962, 980190962)[0m
+  [1m[36mFixture Insert (0.2ms)[0m  [1m[32mINSERT INTO "text_areas" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:35.757736', '2016-07-19 22:45:35.757736', 298486374, 298486374)[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "text_area_values"[0m
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (0.2ms)[0m  [1m[31mDELETE FROM "dropdowns"[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "dropdowns" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:35.770538', '2016-07-19 22:45:35.770538', 980190962, 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "dropdowns" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:35.770538', '2016-07-19 22:45:35.770538', 298486374, 298486374)[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "text_areas"[0m
+  [1m[36mFixture Insert (0.2ms)[0m  [1m[32mINSERT INTO "text_areas" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:35.773332', '2016-07-19 22:45:35.773332', 980190962, 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "text_areas" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:35.773332', '2016-07-19 22:45:35.773332', 298486374, 298486374)[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "text_area_values"[0m
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (0.2ms)[0m  [1m[31mDELETE FROM "dropdowns"[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "dropdowns" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:35.786000', '2016-07-19 22:45:35.786000', 980190962, 980190962)[0m
+  [1m[36mFixture Insert (0.2ms)[0m  [1m[32mINSERT INTO "dropdowns" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:35.786000', '2016-07-19 22:45:35.786000', 298486374, 298486374)[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "text_areas"[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "text_areas" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:35.789150', '2016-07-19 22:45:35.789150', 980190962, 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "text_areas" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:35.789150', '2016-07-19 22:45:35.789150', 298486374, 298486374)[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "text_area_values"[0m
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (0.4ms)[0m  [1m[31mDELETE FROM "dropdowns"[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "dropdowns" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:35.803924', '2016-07-19 22:45:35.803924', 980190962, 980190962)[0m
+  [1m[36mFixture Insert (0.2ms)[0m  [1m[32mINSERT INTO "dropdowns" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:35.803924', '2016-07-19 22:45:35.803924', 298486374, 298486374)[0m
+  [1m[36mFixture Delete (0.2ms)[0m  [1m[31mDELETE FROM "text_areas"[0m
+  [1m[36mFixture Insert (0.2ms)[0m  [1m[32mINSERT INTO "text_areas" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:35.808293', '2016-07-19 22:45:35.808293', 980190962, 980190962)[0m
+  [1m[36mFixture Insert (0.2ms)[0m  [1m[32mINSERT INTO "text_areas" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:35.808293', '2016-07-19 22:45:35.808293', 298486374, 298486374)[0m
+  [1m[36mFixture Delete (0.2ms)[0m  [1m[31mDELETE FROM "text_area_values"[0m
+  [1m[35m (0.3ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (0.3ms)[0m  [1m[31mDELETE FROM "dropdowns"[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "dropdowns" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:35.827706', '2016-07-19 22:45:35.827706', 980190962, 980190962)[0m
+  [1m[36mFixture Insert (0.2ms)[0m  [1m[32mINSERT INTO "dropdowns" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:35.827706', '2016-07-19 22:45:35.827706', 298486374, 298486374)[0m
+  [1m[36mFixture Delete (0.2ms)[0m  [1m[31mDELETE FROM "text_areas"[0m
+  [1m[36mFixture Insert (0.2ms)[0m  [1m[32mINSERT INTO "text_areas" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:35.831435', '2016-07-19 22:45:35.831435', 980190962, 980190962)[0m
+  [1m[36mFixture Insert (0.2ms)[0m  [1m[32mINSERT INTO "text_areas" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:35.831435', '2016-07-19 22:45:35.831435', 298486374, 298486374)[0m
+  [1m[36mFixture Delete (0.2ms)[0m  [1m[31mDELETE FROM "text_area_values"[0m
+  [1m[35m (0.4ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (0.5ms)[0m  [1m[31mDELETE FROM "dropdowns"[0m
+  [1m[36mFixture Insert (0.2ms)[0m  [1m[32mINSERT INTO "dropdowns" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:35.851429', '2016-07-19 22:45:35.851429', 980190962, 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "dropdowns" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:35.851429', '2016-07-19 22:45:35.851429', 298486374, 298486374)[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "text_areas"[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "text_areas" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:35.854748', '2016-07-19 22:45:35.854748', 980190962, 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "text_areas" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:35.854748', '2016-07-19 22:45:35.854748', 298486374, 298486374)[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "text_area_values"[0m
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (0.2ms)[0m  [1m[31mDELETE FROM "dropdowns"[0m
+  [1m[36mFixture Insert (0.2ms)[0m  [1m[32mINSERT INTO "dropdowns" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:35.878155', '2016-07-19 22:45:35.878155', 980190962, 980190962)[0m
+  [1m[36mFixture Insert (0.4ms)[0m  [1m[32mINSERT INTO "dropdowns" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:35.878155', '2016-07-19 22:45:35.878155', 298486374, 298486374)[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "text_areas"[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "text_areas" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:35.881792', '2016-07-19 22:45:35.881792', 980190962, 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "text_areas" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:35.881792', '2016-07-19 22:45:35.881792', 298486374, 298486374)[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "text_area_values"[0m
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (0.2ms)[0m  [1m[31mDELETE FROM "dropdowns"[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "dropdowns" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:35.895168', '2016-07-19 22:45:35.895168', 980190962, 980190962)[0m
+  [1m[36mFixture Insert (0.2ms)[0m  [1m[32mINSERT INTO "dropdowns" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:35.895168', '2016-07-19 22:45:35.895168', 298486374, 298486374)[0m
+  [1m[36mFixture Delete (0.2ms)[0m  [1m[31mDELETE FROM "text_areas"[0m
+  [1m[36mFixture Insert (0.2ms)[0m  [1m[32mINSERT INTO "text_areas" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:35.898269', '2016-07-19 22:45:35.898269', 980190962, 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "text_areas" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:35.898269', '2016-07-19 22:45:35.898269', 298486374, 298486374)[0m
+  [1m[36mFixture Delete (0.3ms)[0m  [1m[31mDELETE FROM "text_area_values"[0m
+  [1m[35m (0.3ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (0.2ms)[0m  [1m[31mDELETE FROM "dropdowns"[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "dropdowns" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:35.915919', '2016-07-19 22:45:35.915919', 980190962, 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "dropdowns" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:35.915919', '2016-07-19 22:45:35.915919', 298486374, 298486374)[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "text_areas"[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "text_areas" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:35.918829', '2016-07-19 22:45:35.918829', 980190962, 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "text_areas" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:35.918829', '2016-07-19 22:45:35.918829', 298486374, 298486374)[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "text_area_values"[0m
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (0.3ms)[0m  [1m[31mDELETE FROM "dropdowns"[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "dropdowns" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:35.931287', '2016-07-19 22:45:35.931287', 980190962, 980190962)[0m
+  [1m[36mFixture Insert (0.2ms)[0m  [1m[32mINSERT INTO "dropdowns" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:35.931287', '2016-07-19 22:45:35.931287', 298486374, 298486374)[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "text_areas"[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "text_areas" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:35.934753', '2016-07-19 22:45:35.934753', 980190962, 980190962)[0m
+  [1m[36mFixture Insert (0.2ms)[0m  [1m[32mINSERT INTO "text_areas" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:35.934753', '2016-07-19 22:45:35.934753', 298486374, 298486374)[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "text_area_values"[0m
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (0.4ms)[0m  [1m[31mDELETE FROM "dropdowns"[0m
+  [1m[36mFixture Insert (0.4ms)[0m  [1m[32mINSERT INTO "dropdowns" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:35.948597', '2016-07-19 22:45:35.948597', 980190962, 980190962)[0m
+  [1m[36mFixture Insert (0.2ms)[0m  [1m[32mINSERT INTO "dropdowns" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:35.948597', '2016-07-19 22:45:35.948597', 298486374, 298486374)[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "text_areas"[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "text_areas" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:35.952498', '2016-07-19 22:45:35.952498', 980190962, 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "text_areas" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:35.952498', '2016-07-19 22:45:35.952498', 298486374, 298486374)[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "text_area_values"[0m
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (0.3ms)[0m  [1m[31mDELETE FROM "dropdowns"[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "dropdowns" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:35.965266', '2016-07-19 22:45:35.965266', 980190962, 980190962)[0m
+  [1m[36mFixture Insert (0.2ms)[0m  [1m[32mINSERT INTO "dropdowns" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:35.965266', '2016-07-19 22:45:35.965266', 298486374, 298486374)[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "text_areas"[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "text_areas" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:35.968505', '2016-07-19 22:45:35.968505', 980190962, 980190962)[0m
+  [1m[36mFixture Insert (0.2ms)[0m  [1m[32mINSERT INTO "text_areas" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:35.968505', '2016-07-19 22:45:35.968505', 298486374, 298486374)[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "text_area_values"[0m
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (0.3ms)[0m  [1m[31mDELETE FROM "dropdowns"[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "dropdowns" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:35.982316', '2016-07-19 22:45:35.982316', 980190962, 980190962)[0m
+  [1m[36mFixture Insert (0.2ms)[0m  [1m[32mINSERT INTO "dropdowns" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:35.982316', '2016-07-19 22:45:35.982316', 298486374, 298486374)[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "text_areas"[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "text_areas" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:35.985959', '2016-07-19 22:45:35.985959', 980190962, 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "text_areas" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:35.985959', '2016-07-19 22:45:35.985959', 298486374, 298486374)[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "text_area_values"[0m
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (0.2ms)[0m  [1m[31mDELETE FROM "dropdowns"[0m
+  [1m[36mFixture Insert (0.2ms)[0m  [1m[32mINSERT INTO "dropdowns" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:35.999498', '2016-07-19 22:45:35.999498', 980190962, 980190962)[0m
+  [1m[36mFixture Insert (0.2ms)[0m  [1m[32mINSERT INTO "dropdowns" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:35.999498', '2016-07-19 22:45:35.999498', 298486374, 298486374)[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "text_areas"[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "text_areas" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:36.002744', '2016-07-19 22:45:36.002744', 980190962, 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "text_areas" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:36.002744', '2016-07-19 22:45:36.002744', 298486374, 298486374)[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "text_area_values"[0m
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (0.4ms)[0m  [1m[31mDELETE FROM "dropdowns"[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "dropdowns" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:36.017096', '2016-07-19 22:45:36.017096', 980190962, 980190962)[0m
+  [1m[36mFixture Insert (0.2ms)[0m  [1m[32mINSERT INTO "dropdowns" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:36.017096', '2016-07-19 22:45:36.017096', 298486374, 298486374)[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "text_areas"[0m
+  [1m[36mFixture Insert (0.2ms)[0m  [1m[32mINSERT INTO "text_areas" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:36.020852', '2016-07-19 22:45:36.020852', 980190962, 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "text_areas" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:36.020852', '2016-07-19 22:45:36.020852', 298486374, 298486374)[0m
+  [1m[36mFixture Delete (0.2ms)[0m  [1m[31mDELETE FROM "text_area_values"[0m
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (0.2ms)[0m  [1m[31mDELETE FROM "dropdowns"[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "dropdowns" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:36.035605', '2016-07-19 22:45:36.035605', 980190962, 980190962)[0m
+  [1m[36mFixture Insert (0.2ms)[0m  [1m[32mINSERT INTO "dropdowns" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:36.035605', '2016-07-19 22:45:36.035605', 298486374, 298486374)[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "text_areas"[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "text_areas" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:36.038873', '2016-07-19 22:45:36.038873', 980190962, 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "text_areas" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:36.038873', '2016-07-19 22:45:36.038873', 298486374, 298486374)[0m
+  [1m[36mFixture Delete (0.2ms)[0m  [1m[31mDELETE FROM "text_area_values"[0m
+  [1m[35m (0.3ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (0.2ms)[0m  [1m[31mDELETE FROM "dropdowns"[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "dropdowns" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:36.053885', '2016-07-19 22:45:36.053885', 980190962, 980190962)[0m
+  [1m[36mFixture Insert (0.2ms)[0m  [1m[32mINSERT INTO "dropdowns" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:36.053885', '2016-07-19 22:45:36.053885', 298486374, 298486374)[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "text_areas"[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "text_areas" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:36.057053', '2016-07-19 22:45:36.057053', 980190962, 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "text_areas" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:36.057053', '2016-07-19 22:45:36.057053', 298486374, 298486374)[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "text_area_values"[0m
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (0.3ms)[0m  [1m[31mDELETE FROM "dropdowns"[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "dropdowns" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:36.071049', '2016-07-19 22:45:36.071049', 980190962, 980190962)[0m
+  [1m[36mFixture Insert (0.2ms)[0m  [1m[32mINSERT INTO "dropdowns" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:36.071049', '2016-07-19 22:45:36.071049', 298486374, 298486374)[0m
+  [1m[36mFixture Delete (0.3ms)[0m  [1m[31mDELETE FROM "text_areas"[0m
+  [1m[36mFixture Insert (0.2ms)[0m  [1m[32mINSERT INTO "text_areas" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:36.074639', '2016-07-19 22:45:36.074639', 980190962, 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "text_areas" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:36.074639', '2016-07-19 22:45:36.074639', 298486374, 298486374)[0m
+  [1m[36mFixture Delete (0.2ms)[0m  [1m[31mDELETE FROM "text_area_values"[0m
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (0.3ms)[0m  [1m[31mDELETE FROM "dropdowns"[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "dropdowns" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:36.091796', '2016-07-19 22:45:36.091796', 980190962, 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "dropdowns" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:36.091796', '2016-07-19 22:45:36.091796', 298486374, 298486374)[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "text_areas"[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "text_areas" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:36.094872', '2016-07-19 22:45:36.094872', 980190962, 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "text_areas" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:36.094872', '2016-07-19 22:45:36.094872', 298486374, 298486374)[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "text_area_values"[0m
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (0.3ms)[0m  [1m[31mDELETE FROM "dropdowns"[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "dropdowns" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:36.116493', '2016-07-19 22:45:36.116493', 980190962, 980190962)[0m
+  [1m[36mFixture Insert (0.2ms)[0m  [1m[32mINSERT INTO "dropdowns" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:36.116493', '2016-07-19 22:45:36.116493', 298486374, 298486374)[0m
+  [1m[36mFixture Delete (0.2ms)[0m  [1m[31mDELETE FROM "text_areas"[0m
+  [1m[36mFixture Insert (0.2ms)[0m  [1m[32mINSERT INTO "text_areas" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:36.120832', '2016-07-19 22:45:36.120832', 980190962, 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "text_areas" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:36.120832', '2016-07-19 22:45:36.120832', 298486374, 298486374)[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "text_area_values"[0m
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (0.3ms)[0m  [1m[31mDELETE FROM "dropdowns"[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "dropdowns" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:36.141343', '2016-07-19 22:45:36.141343', 980190962, 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "dropdowns" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:36.141343', '2016-07-19 22:45:36.141343', 298486374, 298486374)[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "text_areas"[0m
+  [1m[36mFixture Insert (0.2ms)[0m  [1m[32mINSERT INTO "text_areas" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:36.145382', '2016-07-19 22:45:36.145382', 980190962, 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "text_areas" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:36.145382', '2016-07-19 22:45:36.145382', 298486374, 298486374)[0m
+  [1m[36mFixture Delete (0.2ms)[0m  [1m[31mDELETE FROM "text_area_values"[0m
+  [1m[35m (0.3ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (0.2ms)[0m  [1m[31mDELETE FROM "dropdowns"[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "dropdowns" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:36.163581', '2016-07-19 22:45:36.163581', 980190962, 980190962)[0m
+  [1m[36mFixture Insert (0.2ms)[0m  [1m[32mINSERT INTO "dropdowns" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:36.163581', '2016-07-19 22:45:36.163581', 298486374, 298486374)[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "text_areas"[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "text_areas" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:36.167063', '2016-07-19 22:45:36.167063', 980190962, 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "text_areas" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:36.167063', '2016-07-19 22:45:36.167063', 298486374, 298486374)[0m
+  [1m[36mFixture Delete (0.2ms)[0m  [1m[31mDELETE FROM "text_area_values"[0m
+  [1m[35m (0.3ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (0.2ms)[0m  [1m[31mDELETE FROM "dropdowns"[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "dropdowns" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:36.184339', '2016-07-19 22:45:36.184339', 980190962, 980190962)[0m
+  [1m[36mFixture Insert (0.2ms)[0m  [1m[32mINSERT INTO "dropdowns" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:36.184339', '2016-07-19 22:45:36.184339', 298486374, 298486374)[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "text_areas"[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "text_areas" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:36.187690', '2016-07-19 22:45:36.187690', 980190962, 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "text_areas" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:36.187690', '2016-07-19 22:45:36.187690', 298486374, 298486374)[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "text_area_values"[0m
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (0.2ms)[0m  [1m[31mDELETE FROM "dropdowns"[0m
+  [1m[36mFixture Insert (0.2ms)[0m  [1m[32mINSERT INTO "dropdowns" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:36.205797', '2016-07-19 22:45:36.205797', 980190962, 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "dropdowns" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:36.205797', '2016-07-19 22:45:36.205797', 298486374, 298486374)[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "text_areas"[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "text_areas" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:36.208881', '2016-07-19 22:45:36.208881', 980190962, 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "text_areas" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:36.208881', '2016-07-19 22:45:36.208881', 298486374, 298486374)[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "text_area_values"[0m
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (0.3ms)[0m  [1m[31mDELETE FROM "dropdowns"[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "dropdowns" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:36.226393', '2016-07-19 22:45:36.226393', 980190962, 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "dropdowns" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:36.226393', '2016-07-19 22:45:36.226393', 298486374, 298486374)[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "text_areas"[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "text_areas" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:36.230511', '2016-07-19 22:45:36.230511', 980190962, 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "text_areas" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:36.230511', '2016-07-19 22:45:36.230511', 298486374, 298486374)[0m
+  [1m[36mFixture Delete (0.2ms)[0m  [1m[31mDELETE FROM "text_area_values"[0m
+  [1m[35m (0.3ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (0.3ms)[0m  [1m[31mDELETE FROM "dropdowns"[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "dropdowns" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:36.248580', '2016-07-19 22:45:36.248580', 980190962, 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "dropdowns" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:36.248580', '2016-07-19 22:45:36.248580', 298486374, 298486374)[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "text_areas"[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "text_areas" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:36.252932', '2016-07-19 22:45:36.252932', 980190962, 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "text_areas" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:36.252932', '2016-07-19 22:45:36.252932', 298486374, 298486374)[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "text_area_values"[0m
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (0.2ms)[0m  [1m[31mDELETE FROM "dropdowns"[0m
+  [1m[36mFixture Insert (0.2ms)[0m  [1m[32mINSERT INTO "dropdowns" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:36.269045', '2016-07-19 22:45:36.269045', 980190962, 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "dropdowns" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:36.269045', '2016-07-19 22:45:36.269045', 298486374, 298486374)[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "text_areas"[0m
+  [1m[36mFixture Insert (0.8ms)[0m  [1m[32mINSERT INTO "text_areas" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:36.272496', '2016-07-19 22:45:36.272496', 980190962, 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "text_areas" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:36.272496', '2016-07-19 22:45:36.272496', 298486374, 298486374)[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "text_area_values"[0m
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (0.2ms)[0m  [1m[31mDELETE FROM "dropdowns"[0m
+  [1m[36mFixture Insert (0.2ms)[0m  [1m[32mINSERT INTO "dropdowns" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:36.288663', '2016-07-19 22:45:36.288663', 980190962, 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "dropdowns" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:36.288663', '2016-07-19 22:45:36.288663', 298486374, 298486374)[0m
+  [1m[36mFixture Delete (0.2ms)[0m  [1m[31mDELETE FROM "text_areas"[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "text_areas" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:36.291915', '2016-07-19 22:45:36.291915', 980190962, 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "text_areas" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:36.291915', '2016-07-19 22:45:36.291915', 298486374, 298486374)[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "text_area_values"[0m
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (0.2ms)[0m  [1m[31mDELETE FROM "dropdowns"[0m
+  [1m[36mFixture Insert (0.2ms)[0m  [1m[32mINSERT INTO "dropdowns" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:36.308802', '2016-07-19 22:45:36.308802', 980190962, 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "dropdowns" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:36.308802', '2016-07-19 22:45:36.308802', 298486374, 298486374)[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "text_areas"[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "text_areas" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:36.311980', '2016-07-19 22:45:36.311980', 980190962, 980190962)[0m
+  [1m[36mFixture Insert (0.2ms)[0m  [1m[32mINSERT INTO "text_areas" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:36.311980', '2016-07-19 22:45:36.311980', 298486374, 298486374)[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "text_area_values"[0m
+  [1m[35m (0.5ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (0.2ms)[0m  [1m[31mDELETE FROM "dropdowns"[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "dropdowns" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:36.342570', '2016-07-19 22:45:36.342570', 980190962, 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "dropdowns" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:36.342570', '2016-07-19 22:45:36.342570', 298486374, 298486374)[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "text_areas"[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "text_areas" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:36.345664', '2016-07-19 22:45:36.345664', 980190962, 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "text_areas" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:36.345664', '2016-07-19 22:45:36.345664', 298486374, 298486374)[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "text_area_values"[0m
+  [1m[35m (0.3ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (0.2ms)[0m  [1m[31mDELETE FROM "dropdowns"[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "dropdowns" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:36.360436', '2016-07-19 22:45:36.360436', 980190962, 980190962)[0m
+  [1m[36mFixture Insert (0.2ms)[0m  [1m[32mINSERT INTO "dropdowns" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:36.360436', '2016-07-19 22:45:36.360436', 298486374, 298486374)[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "text_areas"[0m
+  [1m[36mFixture Insert (0.2ms)[0m  [1m[32mINSERT INTO "text_areas" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:36.363301', '2016-07-19 22:45:36.363301', 980190962, 980190962)[0m
+  [1m[36mFixture Insert (0.2ms)[0m  [1m[32mINSERT INTO "text_areas" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:36.363301', '2016-07-19 22:45:36.363301', 298486374, 298486374)[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "text_area_values"[0m
+  [1m[35m (0.3ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (0.2ms)[0m  [1m[31mDELETE FROM "dropdowns"[0m
+  [1m[36mFixture Insert (0.2ms)[0m  [1m[32mINSERT INTO "dropdowns" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:36.376570', '2016-07-19 22:45:36.376570', 980190962, 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "dropdowns" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:36.376570', '2016-07-19 22:45:36.376570', 298486374, 298486374)[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "text_areas"[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "text_areas" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:36.379330', '2016-07-19 22:45:36.379330', 980190962, 980190962)[0m
+  [1m[36mFixture Insert (0.2ms)[0m  [1m[32mINSERT INTO "text_areas" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:36.379330', '2016-07-19 22:45:36.379330', 298486374, 298486374)[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "text_area_values"[0m
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (0.3ms)[0m  [1m[31mDELETE FROM "dropdowns"[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "dropdowns" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:36.392805', '2016-07-19 22:45:36.392805', 980190962, 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "dropdowns" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:36.392805', '2016-07-19 22:45:36.392805', 298486374, 298486374)[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "text_areas"[0m
+  [1m[36mFixture Insert (0.2ms)[0m  [1m[32mINSERT INTO "text_areas" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:36.395716', '2016-07-19 22:45:36.395716', 980190962, 980190962)[0m
+  [1m[36mFixture Insert (0.2ms)[0m  [1m[32mINSERT INTO "text_areas" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:36.395716', '2016-07-19 22:45:36.395716', 298486374, 298486374)[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "text_area_values"[0m
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (0.2ms)[0m  [1m[31mDELETE FROM "dropdowns"[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "dropdowns" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:36.410092', '2016-07-19 22:45:36.410092', 980190962, 980190962)[0m
+  [1m[36mFixture Insert (0.2ms)[0m  [1m[32mINSERT INTO "dropdowns" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:36.410092', '2016-07-19 22:45:36.410092', 298486374, 298486374)[0m
+  [1m[36mFixture Delete (0.2ms)[0m  [1m[31mDELETE FROM "text_areas"[0m
+  [1m[36mFixture Insert (0.2ms)[0m  [1m[32mINSERT INTO "text_areas" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:36.413279', '2016-07-19 22:45:36.413279', 980190962, 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "text_areas" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:36.413279', '2016-07-19 22:45:36.413279', 298486374, 298486374)[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "text_area_values"[0m
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (0.2ms)[0m  [1m[31mDELETE FROM "dropdowns"[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "dropdowns" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:36.427297', '2016-07-19 22:45:36.427297', 980190962, 980190962)[0m
+  [1m[36mFixture Insert (0.2ms)[0m  [1m[32mINSERT INTO "dropdowns" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:36.427297', '2016-07-19 22:45:36.427297', 298486374, 298486374)[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "text_areas"[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "text_areas" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:36.430694', '2016-07-19 22:45:36.430694', 980190962, 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "text_areas" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:36.430694', '2016-07-19 22:45:36.430694', 298486374, 298486374)[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "text_area_values"[0m
+  [1m[35m (0.3ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (0.2ms)[0m  [1m[31mDELETE FROM "dropdowns"[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "dropdowns" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:36.444926', '2016-07-19 22:45:36.444926', 980190962, 980190962)[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "dropdowns" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:36.444926', '2016-07-19 22:45:36.444926', 298486374, 298486374)[0m
+  [1m[36mFixture Delete (0.2ms)[0m  [1m[31mDELETE FROM "text_areas"[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "text_areas" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:36.448437', '2016-07-19 22:45:36.448437', 980190962, 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "text_areas" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:36.448437', '2016-07-19 22:45:36.448437', 298486374, 298486374)[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "text_area_values"[0m
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (0.3ms)[0m  [1m[31mDELETE FROM "dropdowns"[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "dropdowns" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:36.462294', '2016-07-19 22:45:36.462294', 980190962, 980190962)[0m
+  [1m[36mFixture Insert (0.2ms)[0m  [1m[32mINSERT INTO "dropdowns" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:36.462294', '2016-07-19 22:45:36.462294', 298486374, 298486374)[0m
+  [1m[36mFixture Delete (0.2ms)[0m  [1m[31mDELETE FROM "text_areas"[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "text_areas" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:36.465582', '2016-07-19 22:45:36.465582', 980190962, 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "text_areas" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:36.465582', '2016-07-19 22:45:36.465582', 298486374, 298486374)[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "text_area_values"[0m
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (0.3ms)[0m  [1m[31mDELETE FROM "dropdowns"[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "dropdowns" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:36.478644', '2016-07-19 22:45:36.478644', 980190962, 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "dropdowns" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:36.478644', '2016-07-19 22:45:36.478644', 298486374, 298486374)[0m
+  [1m[36mFixture Delete (0.2ms)[0m  [1m[31mDELETE FROM "text_areas"[0m
+  [1m[36mFixture Insert (0.2ms)[0m  [1m[32mINSERT INTO "text_areas" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:36.481628', '2016-07-19 22:45:36.481628', 980190962, 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "text_areas" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:36.481628', '2016-07-19 22:45:36.481628', 298486374, 298486374)[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "text_area_values"[0m
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (0.3ms)[0m  [1m[31mDELETE FROM "dropdowns"[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "dropdowns" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:36.495241', '2016-07-19 22:45:36.495241', 980190962, 980190962)[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "dropdowns" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:36.495241', '2016-07-19 22:45:36.495241', 298486374, 298486374)[0m
+  [1m[36mFixture Delete (0.2ms)[0m  [1m[31mDELETE FROM "text_areas"[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "text_areas" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:36.499451', '2016-07-19 22:45:36.499451', 980190962, 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "text_areas" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:36.499451', '2016-07-19 22:45:36.499451', 298486374, 298486374)[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "text_area_values"[0m
+  [1m[35m (0.3ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (0.3ms)[0m  [1m[31mDELETE FROM "dropdowns"[0m
+  [1m[36mFixture Insert (0.2ms)[0m  [1m[32mINSERT INTO "dropdowns" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:36.513571', '2016-07-19 22:45:36.513571', 980190962, 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "dropdowns" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:36.513571', '2016-07-19 22:45:36.513571', 298486374, 298486374)[0m
+  [1m[36mFixture Delete (0.2ms)[0m  [1m[31mDELETE FROM "text_areas"[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "text_areas" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:36.516197', '2016-07-19 22:45:36.516197', 980190962, 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "text_areas" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:36.516197', '2016-07-19 22:45:36.516197', 298486374, 298486374)[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "text_area_values"[0m
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (0.5ms)[0m  [1m[31mDELETE FROM "dropdowns"[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "dropdowns" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:36.529846', '2016-07-19 22:45:36.529846', 980190962, 980190962)[0m
+  [1m[36mFixture Insert (0.2ms)[0m  [1m[32mINSERT INTO "dropdowns" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:36.529846', '2016-07-19 22:45:36.529846', 298486374, 298486374)[0m
+  [1m[36mFixture Delete (0.2ms)[0m  [1m[31mDELETE FROM "text_areas"[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "text_areas" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:36.533737', '2016-07-19 22:45:36.533737', 980190962, 980190962)[0m
+  [1m[36mFixture Insert (0.2ms)[0m  [1m[32mINSERT INTO "text_areas" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:36.533737', '2016-07-19 22:45:36.533737', 298486374, 298486374)[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "text_area_values"[0m
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (0.3ms)[0m  [1m[31mDELETE FROM "dropdowns"[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "dropdowns" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:36.546563', '2016-07-19 22:45:36.546563', 980190962, 980190962)[0m
+  [1m[36mFixture Insert (0.2ms)[0m  [1m[32mINSERT INTO "dropdowns" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:36.546563', '2016-07-19 22:45:36.546563', 298486374, 298486374)[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "text_areas"[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "text_areas" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:36.549693', '2016-07-19 22:45:36.549693', 980190962, 980190962)[0m
+  [1m[36mFixture Insert (0.2ms)[0m  [1m[32mINSERT INTO "text_areas" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:36.549693', '2016-07-19 22:45:36.549693', 298486374, 298486374)[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "text_area_values"[0m
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (0.2ms)[0m  [1m[31mDELETE FROM "dropdowns"[0m
+  [1m[36mFixture Insert (0.5ms)[0m  [1m[32mINSERT INTO "dropdowns" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:36.562884', '2016-07-19 22:45:36.562884', 980190962, 980190962)[0m
+  [1m[36mFixture Insert (0.2ms)[0m  [1m[32mINSERT INTO "dropdowns" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:36.562884', '2016-07-19 22:45:36.562884', 298486374, 298486374)[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "text_areas"[0m
+  [1m[36mFixture Insert (0.2ms)[0m  [1m[32mINSERT INTO "text_areas" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:36.566562', '2016-07-19 22:45:36.566562', 980190962, 980190962)[0m
+  [1m[36mFixture Insert (0.2ms)[0m  [1m[32mINSERT INTO "text_areas" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:36.566562', '2016-07-19 22:45:36.566562', 298486374, 298486374)[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "text_area_values"[0m
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (0.2ms)[0m  [1m[31mDELETE FROM "dropdowns"[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "dropdowns" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:36.581075', '2016-07-19 22:45:36.581075', 980190962, 980190962)[0m
+  [1m[36mFixture Insert (0.2ms)[0m  [1m[32mINSERT INTO "dropdowns" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:36.581075', '2016-07-19 22:45:36.581075', 298486374, 298486374)[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "text_areas"[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "text_areas" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:36.584250', '2016-07-19 22:45:36.584250', 980190962, 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "text_areas" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-19 22:45:36.584250', '2016-07-19 22:45:36.584250', 298486374, 298486374)[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "text_area_values"[0m
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m

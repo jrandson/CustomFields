@@ -11,9 +11,9 @@ class ContactsController < ApplicationController
   # GET /contacts/1.json
   def show
     @contact = Contact.find(params[:id])    
-    @text_fields = @contact.text_field_values.all
-    @text_areas = @contact.text_area_values.all
-    
+    @text_field_values  = @contact.text_field_values.all
+    @text_area_values   = @contact.text_area_values.all
+    @dropdown_values    = @contact.dropdown_values.all    
   end
 
   # GET /contacts/new
@@ -47,6 +47,14 @@ class ContactsController < ApplicationController
               @text_area_value.contact_id = @contact.id  
               @text_area_value.save            
             end
+
+            params[:dropdown_values].each do |param|
+              @dropdown_value = DropdownValue.new(dropdowns_params(param))
+              @dropdown_value.contact_id = @contact.id
+              @dropdown_value.save
+            end
+
+            debugger
 
               format.html { redirect_to contact_path(@contact), notice: 'Contact was successfully created.' }
               format.json { render :show, status: :created, location: @contact }                              
@@ -101,5 +109,9 @@ class ContactsController < ApplicationController
 
     def text_area_values_params(text_area_value)
       text_area_value.permit(:value,:text_area_id, :name)
+    end
+
+    def dropdowns_params(dropdown_value)
+      dropdown_value.permit(:value, :content, :dropdown_id)
     end
 end

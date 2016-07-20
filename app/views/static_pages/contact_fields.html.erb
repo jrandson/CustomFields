@@ -3,10 +3,6 @@
     <% provide(:title, 'Contact') %>
     <h1>My contact form</h1>
 
-    
-    <p>
-      <%= link_to 'Add text field', new_text_field_path, class: "btn btn-primary" %>
-    </p> 
 
     <p id="notice"><%= notice %></p>
 
@@ -34,7 +30,10 @@
       </tbody>
     </table>
 
-    <%= link_to 'New Text Field', new_text_field_path, class: 'btn btn-link' %>
+    <div class="actions">
+      <%= link_to 'Add text field', new_text_field_path, class: "btn btn-primary btn-sm" %>
+    </div>
+    
 
     <h3>Text Areas</h3>
 
@@ -58,9 +57,36 @@
       </tbody>
     </table>
 
-    <%= link_to 'New Text Area', new_text_area_path, class: 'btn btn-link' %>
+    <%= link_to 'New Text Area', new_text_area_path, class: 'btn btn-primary btn-sm' %>
 
     <h3>Text Dropdown lists</h3>
 
-    <%= link_to 'New Text Dropdown list', '#', class: 'btn btn-link' %>
->
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Field Name</th>
+          <th>Options</th>
+          <th>Created at</th>          
+          <th colspan="3"></th>
+        </tr>
+      </thead>
+    <tbody>
+        <% @dropdowns.each do |dropdown| %>
+          <tr>
+            <td><%= dropdown.name %></td>
+            <td>
+              <ul>
+                <%= get_dropdown_options(dropdown.options).each do |option| %>
+                  <li> <%= option %> </li>
+                <% end %>
+              </ul>
+            </td>
+            <td><%= dropdown.updated_at.strftime("%b, %m %Y - %H:%M") %></td>
+            <td><%= link_to 'Edit', edit_dropdown_path(dropdown) %></td>
+            <td><%= link_to 'Destroy', dropdown, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+
+    <%= link_to 'New Text Dropdown list', new_dropdown_path, class: 'btn btn-primary btn-sm' %>

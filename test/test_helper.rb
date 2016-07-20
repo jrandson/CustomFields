@@ -7,4 +7,10 @@ class ActiveSupport::TestCase
   fixtures :all
 
   # Add more helper methods to be used by all tests here...
+
+  test "teste helper" do 
+  	a = 1
+  	b = 2
+  	assert_equal a, b
+  end
 end

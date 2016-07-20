@@ -44,15 +44,26 @@
             <div class="field">
               <label><%= text_area[:text_area].name %></label>
               <%= value.text_area :value, class: 'form-control'%>
-              <%= value.hidden_field :name, value:text_area[:text_area].name %> 
+              <%= value.hidden_field :name, value: text_area[:text_area].name %> 
               <%= value.hidden_field :text_area_id, value: text_area[:text_area].id %> 
             </div>
           <% end %>
     <% end %>
     <!-- end text areas -->
 
+    <!-- dropdowns -->
+    <% @dropdowns.each do |dropdown| %>
+      <%= fields_for 'dropdown_values[][]', dropdown[:value] do |value| %>
+        <label><%= dropdown[:dropdown].name %></label>
+        <%= value.select :value, get_dropdown_options(dropdown[:dropdown].options), class: 'dropdown-menu' %>
+        <%= value.hidden_field :content, value: dropdown[:dropdown].name %> 
+        <%= value.hidden_field :dropdown_id, value: dropdown[:dropdown].id %> 
+      <% end %>
+        
+    <% end %>
+    <!-- end dropdowns -->
     <div class="actions">
-      <%= f.submit "Submit", class: 'btn btn-default' %>
+      <%= f.submit "Submit", class: 'btn btn-primary' %>
     </div>
   <% end %>
 

@@ -2,6 +2,7 @@ class User < ApplicationRecord
 	has_many :text_fields,  dependent: :destroy
 	has_many :text_areas, dependent: :destroy
 	has_many :contacts,  dependent: :destroy
+	has_many :dropdowns, dependent: :destroy
 	
 
 	before_save {email.downcase!}

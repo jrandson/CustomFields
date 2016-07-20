@@ -1,4 +1,5 @@
 class StaticPagesController < ApplicationController
+  
   def home
   	@contact = Contact.new
   	@user = current_user
@@ -12,14 +13,20 @@ class StaticPagesController < ApplicationController
     @text_areas = []
     @user.text_areas.all.each do |ta|
       @text_areas << {'text_area': ta, 'value': TextAreaValue.new}
-    end  	
+    end 
+
+    @dropdowns = []
+    @user.dropdowns.all.each do |dd|
+      @dropdowns << {'dropdown': dd, 'value': DropdownValue.new}
+    end 	
   	
   end
 
   def contact_fields
   	@user = current_user
-  	@text_fields = @user.text_fields.all#order(:created_at)  
+  	@text_fields = @user.text_fields.all 
     @text_areas = @user.text_areas.all	
+    @dropdowns = @user.dropdowns.all
   end
 
   private

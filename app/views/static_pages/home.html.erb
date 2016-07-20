@@ -1,19 +1,20 @@
 <div class="center jumbotron">
-  <h3>Contact form</h3>
+  <h1>Custom fields App</h1>
 
-  <h2>
-    Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit
+  <h3>
+    Signup <%= link_to "here", signup_path, class: "btn-link" %> to create your own contact form.
+  </h3>
 
-  </h2>
-
-  <%= link_to "Sign up now!", signup_path, class: "btn btn-lg btn-primary" %>
+  
 </div>
 
 
 <%= render 'contact_form', 
 			contact: @contact, 
 			text_fields: @text_fields,
-			text_areas: @text_areas %>
+			text_areas: @text_areas,
+			dropdowns: @dropdowns %>
+
 
 
 

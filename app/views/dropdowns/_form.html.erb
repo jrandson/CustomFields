@@ -1,0 +1,30 @@
+<%= form_for(dropdown) do |f| %>
+  <% if dropdown.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(dropdown.errors.count, "error") %> prohibited this dropdown from being saved:</h2>
+
+      <ul>
+      <% dropdown.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %>
+    <%= f.text_field :name, class: 'form-control'%>
+  </div>
+
+  <div class="field">    
+    <%= f.label :options %>
+    <p>
+      Separe as opções por * <br>      
+    </p>
+    <%= f.text_area :options, class: 'form-control' %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit 'Create', class: 'btn btn-default' %>
+  </div>
+<% end %>
