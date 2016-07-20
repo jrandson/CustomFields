@@ -1,6 +1,8 @@
 class TextAreasController < ApplicationController
   before_action :set_text_area, only: [:show, :edit, :update, :destroy]
-
+  before_action :require_login 
+  
+  
   # GET /text_areas
   # GET /text_areas.json
   def index

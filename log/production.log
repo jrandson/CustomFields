@@ -1,0 +1,141 @@
+D, [2016-07-20T16:58:34.704797 #24943] DEBUG -- :   [1m[35m (187.6ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+D, [2016-07-20T16:58:34.893924 #24943] DEBUG -- :   [1m[35m (181.8ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+D, [2016-07-20T16:58:34.913719 #24943] DEBUG -- :   [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+I, [2016-07-20T16:58:34.919190 #24943]  INFO -- : Migrating to CreateUsers (20160717224806)
+D, [2016-07-20T16:58:34.959267 #24943] DEBUG -- :   [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+D, [2016-07-20T16:58:34.963760 #24943] DEBUG -- :   [1m[35m (2.0ms)[0m  [1m[35mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "email" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+D, [2016-07-20T16:58:34.973110 #24943] DEBUG -- :   [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20160717224806"]]
+D, [2016-07-20T16:58:35.149546 #24943] DEBUG -- :   [1m[35m (175.7ms)[0m  [1m[36mcommit transaction[0m
+I, [2016-07-20T16:58:35.149893 #24943]  INFO -- : Migrating to AddIndexToUserEmail (20160718012352)
+D, [2016-07-20T16:58:35.151346 #24943] DEBUG -- :   [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+D, [2016-07-20T16:58:35.152219 #24943] DEBUG -- :   [1m[35m (0.2ms)[0m  [1m[34mselect sqlite_version(*)[0m
+D, [2016-07-20T16:58:35.154123 #24943] DEBUG -- :   [1m[35m (0.7ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+D, [2016-07-20T16:58:35.156278 #24943] DEBUG -- :   [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20160718012352"]]
+D, [2016-07-20T16:58:35.305387 #24943] DEBUG -- :   [1m[35m (148.6ms)[0m  [1m[36mcommit transaction[0m
+I, [2016-07-20T16:58:35.305773 #24943]  INFO -- : Migrating to AddPasswordToUser (20160718121611)
+D, [2016-07-20T16:58:35.307908 #24943] DEBUG -- :   [1m[35m (0.3ms)[0m  [1m[36mbegin transaction[0m
+D, [2016-07-20T16:58:35.309961 #24943] DEBUG -- :   [1m[35m (0.9ms)[0m  [1m[35mALTER TABLE "users" ADD "password" varchar[0m
+D, [2016-07-20T16:58:35.311400 #24943] DEBUG -- :   [1m[35m (0.6ms)[0m  [1m[35mALTER TABLE "users" ADD "password_confirmation" varchar[0m
+D, [2016-07-20T16:58:35.313448 #24943] DEBUG -- :   [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20160718121611"]]
+D, [2016-07-20T16:58:35.450099 #24943] DEBUG -- :   [1m[35m (136.1ms)[0m  [1m[36mcommit transaction[0m
+I, [2016-07-20T16:58:35.450353 #24943]  INFO -- : Migrating to CreateTextFields (20160719041520)
+D, [2016-07-20T16:58:35.471074 #24943] DEBUG -- :   [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+D, [2016-07-20T16:58:35.473626 #24943] DEBUG -- :   [1m[35m (0.8ms)[0m  [1m[35mCREATE TABLE "text_fields" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "user_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+D, [2016-07-20T16:58:35.475267 #24943] DEBUG -- :   [1m[35m (0.4ms)[0m  [1m[35mCREATE  INDEX "index_text_fields_on_user_id" ON "text_fields" ("user_id")[0m
+D, [2016-07-20T16:58:35.477197 #24943] DEBUG -- :   [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20160719041520"]]
+D, [2016-07-20T16:58:35.606105 #24943] DEBUG -- :   [1m[35m (128.4ms)[0m  [1m[36mcommit transaction[0m
+I, [2016-07-20T16:58:35.606452 #24943]  INFO -- : Migrating to CreateContacts (20160719050459)
+D, [2016-07-20T16:58:35.619495 #24943] DEBUG -- :   [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+D, [2016-07-20T16:58:35.621905 #24943] DEBUG -- :   [1m[35m (0.8ms)[0m  [1m[35mCREATE TABLE "contacts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "email" varchar, "user_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+D, [2016-07-20T16:58:35.623689 #24943] DEBUG -- :   [1m[35m (0.4ms)[0m  [1m[35mCREATE  INDEX "index_contacts_on_user_id" ON "contacts" ("user_id")[0m
+D, [2016-07-20T16:58:35.626510 #24943] DEBUG -- :   [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20160719050459"]]
+D, [2016-07-20T16:58:35.785628 #24943] DEBUG -- :   [1m[35m (158.5ms)[0m  [1m[36mcommit transaction[0m
+I, [2016-07-20T16:58:35.785888 #24943]  INFO -- : Migrating to CreateTextFieldValues (20160719050650)
+D, [2016-07-20T16:58:35.801477 #24943] DEBUG -- :   [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+D, [2016-07-20T16:58:35.804967 #24943] DEBUG -- :   [1m[35m (0.9ms)[0m  [1m[35mCREATE TABLE "text_field_values" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "value" varchar, "text_field_id" integer, "contact_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+D, [2016-07-20T16:58:35.806748 #24943] DEBUG -- :   [1m[35m (0.4ms)[0m  [1m[35mCREATE  INDEX "index_text_field_values_on_text_field_id" ON "text_field_values" ("text_field_id")[0m
+D, [2016-07-20T16:58:35.808361 #24943] DEBUG -- :   [1m[35m (0.3ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_text_field_values_on_text_field_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_text_field_values_on_text_field_id' AND type='index'
+[0m
+D, [2016-07-20T16:58:35.809545 #24943] DEBUG -- :   [1m[35m (0.4ms)[0m  [1m[35mCREATE  INDEX "index_text_field_values_on_contact_id" ON "text_field_values" ("contact_id")[0m
+D, [2016-07-20T16:58:35.811797 #24943] DEBUG -- :   [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20160719050650"]]
+D, [2016-07-20T16:58:35.952673 #24943] DEBUG -- :   [1m[35m (140.2ms)[0m  [1m[36mcommit transaction[0m
+I, [2016-07-20T16:58:35.953013 #24943]  INFO -- : Migrating to CreateTextAreas (20160719192437)
+D, [2016-07-20T16:58:35.955027 #24943] DEBUG -- :   [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+D, [2016-07-20T16:58:35.957571 #24943] DEBUG -- :   [1m[35m (0.8ms)[0m  [1m[35mCREATE TABLE "text_areas" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "user_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+D, [2016-07-20T16:58:35.959334 #24943] DEBUG -- :   [1m[35m (0.5ms)[0m  [1m[35mCREATE  INDEX "index_text_areas_on_user_id" ON "text_areas" ("user_id")[0m
+D, [2016-07-20T16:58:35.961236 #24943] DEBUG -- :   [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20160719192437"]]
+D, [2016-07-20T16:58:36.131028 #24943] DEBUG -- :   [1m[35m (169.2ms)[0m  [1m[36mcommit transaction[0m
+I, [2016-07-20T16:58:36.131402 #24943]  INFO -- : Migrating to CreateTextAreaValues (20160719200036)
+D, [2016-07-20T16:58:36.133181 #24943] DEBUG -- :   [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+D, [2016-07-20T16:58:36.137406 #24943] DEBUG -- :   [1m[35m (1.2ms)[0m  [1m[35mCREATE TABLE "text_area_values" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "value" text, "contact_id" integer, "user_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+D, [2016-07-20T16:58:36.139513 #24943] DEBUG -- :   [1m[35m (0.6ms)[0m  [1m[35mCREATE  INDEX "index_text_area_values_on_contact_id" ON "text_area_values" ("contact_id")[0m
+D, [2016-07-20T16:58:36.141015 #24943] DEBUG -- :   [1m[35m (0.3ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_text_area_values_on_contact_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_text_area_values_on_contact_id' AND type='index'
+[0m
+D, [2016-07-20T16:58:36.142171 #24943] DEBUG -- :   [1m[35m (0.4ms)[0m  [1m[35mCREATE  INDEX "index_text_area_values_on_user_id" ON "text_area_values" ("user_id")[0m
+D, [2016-07-20T16:58:36.144868 #24943] DEBUG -- :   [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20160719200036"]]
+D, [2016-07-20T16:58:36.309235 #24943] DEBUG -- :   [1m[35m (163.7ms)[0m  [1m[36mcommit transaction[0m
+I, [2016-07-20T16:58:36.309560 #24943]  INFO -- : Migrating to RemoveUserIdAdd (20160719203139)
+D, [2016-07-20T16:58:36.311710 #24943] DEBUG -- :   [1m[35m (0.3ms)[0m  [1m[36mbegin transaction[0m
+D, [2016-07-20T16:58:36.313951 #24943] DEBUG -- :   [1m[35m (1.1ms)[0m  [1m[35mALTER TABLE "text_area_values" ADD "text_area_id" integer[0m
+D, [2016-07-20T16:58:36.319913 #24943] DEBUG -- :   [1m[35m (1.0ms)[0m  [1m[35mCREATE TEMPORARY TABLE "atext_area_values" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "value" text, "contact_id" integer, "user_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "text_area_id" integer)[0m
+D, [2016-07-20T16:58:36.320908 #24943] DEBUG -- :   [1m[35m (0.2ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_text_area_values_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_text_area_values_on_user_id' AND type='index'
+[0m
+D, [2016-07-20T16:58:36.321763 #24943] DEBUG -- :   [1m[35m (0.2ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_text_area_values_on_contact_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_text_area_values_on_contact_id' AND type='index'
+[0m
+D, [2016-07-20T16:58:36.325138 #24943] DEBUG -- :   [1m[35m (0.5ms)[0m  [1m[35mCREATE  INDEX "tindex_atext_area_values_on_user_id" ON "atext_area_values" ("user_id")[0m
+D, [2016-07-20T16:58:36.327544 #24943] DEBUG -- :   [1m[35m (0.3ms)[0m  [1m[35mCREATE  INDEX "tindex_atext_area_values_on_contact_id" ON "atext_area_values" ("contact_id")[0m
+D, [2016-07-20T16:58:36.329333 #24943] DEBUG -- :   [1m[35m (0.4ms)[0m  [1m[32mINSERT INTO "atext_area_values" ("id","name","value","contact_id","user_id","created_at","updated_at","text_area_id")
+                     SELECT "id","name","value","contact_id","user_id","created_at","updated_at","text_area_id" FROM "text_area_values"[0m
+D, [2016-07-20T16:58:36.343776 #24943] DEBUG -- :   [1m[35m (14.0ms)[0m  [1m[35mDROP TABLE "text_area_values"[0m
+D, [2016-07-20T16:58:36.347877 #24943] DEBUG -- :   [1m[35m (0.5ms)[0m  [1m[35mCREATE TABLE "text_area_values" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "value" text, "contact_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "text_area_id" integer)[0m
+D, [2016-07-20T16:58:36.348979 #24943] DEBUG -- :   [1m[35m (0.3ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='tindex_atext_area_values_on_contact_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='tindex_atext_area_values_on_contact_id' AND type='index'
+[0m
+D, [2016-07-20T16:58:36.349965 #24943] DEBUG -- :   [1m[35m (0.3ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='tindex_atext_area_values_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='tindex_atext_area_values_on_user_id' AND type='index'
+[0m
+D, [2016-07-20T16:58:36.352996 #24943] DEBUG -- :   [1m[35m (0.5ms)[0m  [1m[35mCREATE  INDEX "index_text_area_values_on_contact_id" ON "text_area_values" ("contact_id")[0m
+D, [2016-07-20T16:58:36.356089 #24943] DEBUG -- :   [1m[35m (0.3ms)[0m  [1m[32mINSERT INTO "text_area_values" ("id","name","value","contact_id","created_at","updated_at","text_area_id")
+                     SELECT "id","name","value","contact_id","created_at","updated_at","text_area_id" FROM "atext_area_values"[0m
+D, [2016-07-20T16:58:36.356877 #24943] DEBUG -- :   [1m[35m (0.5ms)[0m  [1m[35mDROP TABLE "atext_area_values"[0m
+D, [2016-07-20T16:58:36.358859 #24943] DEBUG -- :   [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20160719203139"]]
+D, [2016-07-20T16:58:36.521148 #24943] DEBUG -- :   [1m[35m (161.8ms)[0m  [1m[36mcommit transaction[0m
+I, [2016-07-20T16:58:36.521512 #24943]  INFO -- : Migrating to CreateDropdowns (20160719223015)
+D, [2016-07-20T16:58:36.540677 #24943] DEBUG -- :   [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+D, [2016-07-20T16:58:36.543273 #24943] DEBUG -- :   [1m[35m (0.9ms)[0m  [1m[35mCREATE TABLE "dropdowns" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "options" text, "user_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+D, [2016-07-20T16:58:36.544856 #24943] DEBUG -- :   [1m[35m (0.3ms)[0m  [1m[35mCREATE  INDEX "index_dropdowns_on_user_id" ON "dropdowns" ("user_id")[0m
+D, [2016-07-20T16:58:36.546537 #24943] DEBUG -- :   [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20160719223015"]]
+D, [2016-07-20T16:58:36.732477 #24943] DEBUG -- :   [1m[35m (185.5ms)[0m  [1m[36mcommit transaction[0m
+I, [2016-07-20T16:58:36.732748 #24943]  INFO -- : Migrating to CreateDropdownValues (20160720024051)
+D, [2016-07-20T16:58:36.751975 #24943] DEBUG -- :   [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+D, [2016-07-20T16:58:36.754549 #24943] DEBUG -- :   [1m[35m (0.8ms)[0m  [1m[35mCREATE TABLE "dropdown_values" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "content" varchar, "value" varchar, "dropdown_id" integer, "contact_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+D, [2016-07-20T16:58:36.756112 #24943] DEBUG -- :   [1m[35m (0.5ms)[0m  [1m[35mCREATE  INDEX "index_dropdown_values_on_dropdown_id" ON "dropdown_values" ("dropdown_id")[0m
+D, [2016-07-20T16:58:36.757267 #24943] DEBUG -- :   [1m[35m (0.2ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_dropdown_values_on_dropdown_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_dropdown_values_on_dropdown_id' AND type='index'
+[0m
+D, [2016-07-20T16:58:36.758040 #24943] DEBUG -- :   [1m[35m (0.3ms)[0m  [1m[35mCREATE  INDEX "index_dropdown_values_on_contact_id" ON "dropdown_values" ("contact_id")[0m
+D, [2016-07-20T16:58:36.759584 #24943] DEBUG -- :   [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20160720024051"]]
+D, [2016-07-20T16:58:36.932737 #24943] DEBUG -- :   [1m[35m (172.7ms)[0m  [1m[36mcommit transaction[0m
+D, [2016-07-20T16:58:36.939240 #24943] DEBUG -- :   [1m[36mActiveRecord::InternalMetadata Load (0.5ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", :environment], ["LIMIT", 1]]
+D, [2016-07-20T16:58:36.949148 #24943] DEBUG -- :   [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+D, [2016-07-20T16:58:36.951854 #24943] DEBUG -- :   [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "production"], ["created_at", 2016-07-20 19:58:36 UTC], ["updated_at", 2016-07-20 19:58:36 UTC]]
+D, [2016-07-20T16:58:37.188271 #24943] DEBUG -- :   [1m[35m (235.8ms)[0m  [1m[36mcommit transaction[0m

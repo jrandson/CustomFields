@@ -1,5 +1,7 @@
 class StaticPagesController < ApplicationController
   
+  before_action :require_login 
+
   def home
   	@contact = Contact.new
   	@user = current_user
@@ -18,8 +20,7 @@ class StaticPagesController < ApplicationController
     @dropdowns = []
     @user.dropdowns.all.each do |dd|
       @dropdowns << {'dropdown': dd, 'value': DropdownValue.new}
-    end 	
-  	
+    end 	  	
   end
 
   def contact_fields
@@ -30,5 +31,6 @@ class StaticPagesController < ApplicationController
   end
 
   private
+    
   	
 end

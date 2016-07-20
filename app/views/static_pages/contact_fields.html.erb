@@ -23,15 +23,15 @@
           <tr>
             <td><%= text_field.name %></td>
             <td><%= text_field.updated_at.strftime("%b, %m %Y - %H:%M") %></td>
-            <td><%= link_to 'Edit', edit_text_field_path(text_field) %></td>
-            <td><%= link_to 'Destroy', text_field, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            <td><%= link_to 'Edit', edit_text_field_path(text_field), class: 'btn-link' %></td>
+            <td><%= link_to 'Destroy', text_field, class: 'btn-link', method: :delete, data: { confirm: 'Are you sure?' } %></td>
           </tr>
         <% end %>
       </tbody>
     </table>
 
     <div class="actions">
-      <%= link_to 'Add text field', new_text_field_path, class: "btn btn-primary btn-sm" %>
+      <%= link_to 'Add text field', new_text_field_path, class: "btn btn-link" %>
     </div>
     
 
@@ -45,19 +45,19 @@
           <th colspan="3"></th>
         </tr>
       </thead>
-    <tbody>
+      <tbody>
         <% @text_areas.each do |text_area| %>
           <tr>
             <td><%= text_area.name %></td>
             <td><%= text_area.updated_at.strftime("%b, %m %Y - %H:%M") %></td>
-            <td><%= link_to 'Edit', edit_text_area_path(text_area) %></td>
-            <td><%= link_to 'Destroy', text_area, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            <td><%= link_to 'Edit', edit_text_area_path(text_area), class: 'btn-link' %></td>
+            <td><%= link_to 'Destroy', text_area, class: 'btn-link', method: :delete, data: { confirm: 'Are you sure?' } %></td>
           </tr>
         <% end %>
       </tbody>
     </table>
 
-    <%= link_to 'New Text Area', new_text_area_path, class: 'btn btn-primary btn-sm' %>
+    <%= link_to 'New Text Area', new_text_area_path, class: 'btn btn-link' %>
 
     <h3>Text Dropdown lists</h3>
 
@@ -70,23 +70,23 @@
           <th colspan="3"></th>
         </tr>
       </thead>
-    <tbody>
+      <tbody>
         <% @dropdowns.each do |dropdown| %>
           <tr>
             <td><%= dropdown.name %></td>
             <td>
               <ul>
-                <%= get_dropdown_options(dropdown.options).each do |option| %>
+                <%= dropdown.get_options.each do |option| %>
                   <li> <%= option %> </li>
                 <% end %>
               </ul>
             </td>
             <td><%= dropdown.updated_at.strftime("%b, %m %Y - %H:%M") %></td>
-            <td><%= link_to 'Edit', edit_dropdown_path(dropdown) %></td>
-            <td><%= link_to 'Destroy', dropdown, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            <td><%= link_to 'Edit', edit_dropdown_path(dropdown), class: 'btn-link' %></td>
+            <td><%= link_to 'Destroy', dropdown, class: 'btn-link', method: :delete, data: { confirm: 'Are you sure?' } %></td>
           </tr>
         <% end %>
       </tbody>
     </table>
 
-    <%= link_to 'New Text Dropdown list', new_dropdown_path, class: 'btn btn-primary btn-sm' %>
+    <%= link_to 'New Text Dropdown list', new_dropdown_path, class: 'btn btn-link' %>

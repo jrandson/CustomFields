@@ -1,34 +1,29 @@
 class DropdownsController < ApplicationController
   before_action :set_dropdown, only: [:show, :edit, :update, :destroy]
+  before_action :require_login 
+  before_action :call_validate_dropdown_options, only: [:update]
 
-  # GET /dropdowns
-  # GET /dropdowns.json
   def index
-    @dropdowns = Dropdown.all
+    @dropdowns = current_user.dropdowns.all
   end
 
-  # GET /dropdowns/1
-  # GET /dropdowns/1.json
   def show
   end
 
-  # GET /dropdowns/new
   def new
     @dropdown = Dropdown.new
   end
 
-  # GET /dropdowns/1/edit
   def edit
   end
 
-  # POST /dropdowns
-  # POST /dropdowns.json
   def create
     @user = current_user
     @dropdown = Dropdown.new(dropdown_params)
     @dropdown.user_id = @user.id
-    respond_to do |format|
-      
+    @dropdown.options = validate_dropdown_options(dropdown_params[:options])
+    
+    respond_to do |format|      
       if @dropdown.save
         format.html { redirect_to @dropdown, notice: 'Dropdown was successfully created.' }
         format.json { render :show, status: :created, location: @dropdown }
@@ -39,12 +34,12 @@ class DropdownsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /dropdowns/1
-  # PATCH/PUT /dropdowns/1.json
   def update
-    respond_to do |format|
+    respond_to do |format|           
+    
       if @dropdown.update(dropdown_params)
-        format.html { redirect_to @dropdown, notice: 'Dropdown was successfully updated.' }
+        
+        format.html { redirect_to contact_fields_path, notice: 'Dropdown was successfully updated.' }
         format.json { render :show, status: :ok, location: @dropdown }
       else
         format.html { render :edit }
@@ -53,8 +48,6 @@ class DropdownsController < ApplicationController
     end
   end
 
-  # DELETE /dropdowns/1
-  # DELETE /dropdowns/1.json
   def destroy
     @dropdown.destroy
     respond_to do |format|
@@ -64,13 +57,16 @@ class DropdownsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
+
     def set_dropdown
       @dropdown = Dropdown.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
     def dropdown_params
-      params.require(:dropdown).permit(:name, :options)
+      params.require(:dropdown).permit(:name, :options)      
+    end
+
+    def call_validate_dropdown_options
+      params[:dropdown][:options] = validate_dropdown_options(params[:dropdown][:options])
     end
 end

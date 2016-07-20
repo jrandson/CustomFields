@@ -1,32 +1,24 @@
 class ContactsController < ApplicationController
   before_action :set_contact, only: [:show, :edit, :update, :destroy]
+  before_action :require_login
 
-  # GET /contacts
-  # GET /contacts.json
   def index
     @contacts = current_user.contacts.all
   end
 
-  # GET /contacts/1
-  # GET /contacts/1.json
   def show
     @contact = Contact.find(params[:id])    
+    
+    '''@text_field_values = []
+    @contact.text_fields.all.each do |text_field|
+       @text_field_values << text_field.text_field_values
+    end'''
+    
     @text_field_values  = @contact.text_field_values.all
     @text_area_values   = @contact.text_area_values.all
     @dropdown_values    = @contact.dropdown_values.all    
   end
 
-  # GET /contacts/new
-  def new
-    @contact = Contact.new
-  end
-
-  # GET /contacts/1/edit
-  def edit
-  end
-
-  # POST /contacts
-  # POST /contacts.json
   def create
     
     @contact = Contact.new(contact_params(params[:contact]))
@@ -36,25 +28,29 @@ class ContactsController < ApplicationController
         respond_to do |format|
           if @contact.save
             
-            params[:text_field_values].each do |param|
-              @text_field_value = TextFieldValue.new(text_field_values_parms(param))
-              @text_field_value.contact_id = @contact.id
-              @text_field_value.save              
+            if params.has_key?('text_field_values')
+              params[:text_field_values].each do |param|
+                @text_field_value = TextFieldValue.new(text_field_values_parms(param))
+                @text_field_value.contact_id = @contact.id
+                @text_field_value.save              
+              end
             end
 
-            params[:text_area_values].each do |param|
-              @text_area_value = TextAreaValue.new(text_area_values_params(param))
-              @text_area_value.contact_id = @contact.id  
-              @text_area_value.save            
+            if params.has_key?('text_area_values')
+              params[:text_area_values].each do |param|
+                @text_area_value = TextAreaValue.new(text_area_values_params(param))
+                @text_area_value.contact_id = @contact.id  
+                @text_area_value.save            
+              end
             end
 
-            params[:dropdown_values].each do |param|
-              @dropdown_value = DropdownValue.new(dropdowns_params(param))
-              @dropdown_value.contact_id = @contact.id
-              @dropdown_value.save
+            if params.has_key?('dropdown_values')
+              params[:dropdown_values].each do |param|
+                @dropdown_value = DropdownValue.new(dropdowns_params(param))
+                @dropdown_value.contact_id = @contact.id
+                @dropdown_value.save
+              end
             end
-
-            debugger
 
               format.html { redirect_to contact_path(@contact), notice: 'Contact was successfully created.' }
               format.json { render :show, status: :created, location: @contact }                              
@@ -68,8 +64,6 @@ class ContactsController < ApplicationController
       end         
   end
 
-  # PATCH/PUT /contacts/1
-  # PATCH/PUT /contacts/1.json
   def update
     respond_to do |format|
       if @contact.update(contact_params)
@@ -82,8 +76,6 @@ class ContactsController < ApplicationController
     end
   end
 
-  # DELETE /contacts/1
-  # DELETE /contacts/1.json
   def destroy
     @contact.destroy
     respond_to do |format|
@@ -93,12 +85,11 @@ class ContactsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
+
     def set_contact
       @contact = Contact.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
     def contact_params(contact)
       contact.permit(:name, :email)
     end

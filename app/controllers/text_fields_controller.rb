@@ -1,5 +1,6 @@
 class TextFieldsController < ApplicationController
   before_action :set_text_field, only: [:show, :edit, :update, :destroy]
+  before_action :require_login 
 
   # GET /text_fields
   # GET /text_fields.json

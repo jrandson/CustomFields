@@ -4,10 +4,9 @@ one:
   name: MyString
   value: MyText
   contact: one
-  user: one
 
 two:
   name: MyString
   value: MyText
   contact: two
-  user: two
+
