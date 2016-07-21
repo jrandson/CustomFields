@@ -7,7 +7,7 @@ gem 'rails', '~> 5.0.0'
 #uising boostrap
 gem 'bootstrap-sass', '~> 3.3.6'
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3', '~> 1.3.9'
+gem 'sqlite3', '~> 1.3.11'
 
 # Use postegrees as the database for Active Record
 #gem 'pg'
