@@ -12,13 +12,16 @@
 
 ActiveRecord::Schema.define(version: 20160720024051) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "contacts", force: :cascade do |t|
     t.string   "name"
     t.string   "email"
     t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_contacts_on_user_id"
+    t.index ["user_id"], name: "index_contacts_on_user_id", using: :btree
   end
 
   create_table "dropdown_values", force: :cascade do |t|
@@ -29,8 +32,8 @@ ActiveRecord::Schema.define(version: 20160720024051) do
     t.integer  "contact_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
-    t.index ["contact_id"], name: "index_dropdown_values_on_contact_id"
-    t.index ["dropdown_id"], name: "index_dropdown_values_on_dropdown_id"
+    t.index ["contact_id"], name: "index_dropdown_values_on_contact_id", using: :btree
+    t.index ["dropdown_id"], name: "index_dropdown_values_on_dropdown_id", using: :btree
   end
 
   create_table "dropdowns", force: :cascade do |t|
@@ -39,7 +42,7 @@ ActiveRecord::Schema.define(version: 20160720024051) do
     t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_dropdowns_on_user_id"
+    t.index ["user_id"], name: "index_dropdowns_on_user_id", using: :btree
   end
 
   create_table "text_area_values", force: :cascade do |t|
@@ -49,7 +52,7 @@ ActiveRecord::Schema.define(version: 20160720024051) do
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
     t.integer  "text_area_id"
-    t.index ["contact_id"], name: "index_text_area_values_on_contact_id"
+    t.index ["contact_id"], name: "index_text_area_values_on_contact_id", using: :btree
   end
 
   create_table "text_areas", force: :cascade do |t|
@@ -57,7 +60,7 @@ ActiveRecord::Schema.define(version: 20160720024051) do
     t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_text_areas_on_user_id"
+    t.index ["user_id"], name: "index_text_areas_on_user_id", using: :btree
   end
 
   create_table "text_field_values", force: :cascade do |t|
@@ -67,8 +70,8 @@ ActiveRecord::Schema.define(version: 20160720024051) do
     t.integer  "contact_id"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
-    t.index ["contact_id"], name: "index_text_field_values_on_contact_id"
-    t.index ["text_field_id"], name: "index_text_field_values_on_text_field_id"
+    t.index ["contact_id"], name: "index_text_field_values_on_contact_id", using: :btree
+    t.index ["text_field_id"], name: "index_text_field_values_on_text_field_id", using: :btree
   end
 
   create_table "text_fields", force: :cascade do |t|
@@ -76,7 +79,7 @@ ActiveRecord::Schema.define(version: 20160720024051) do
     t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_text_fields_on_user_id"
+    t.index ["user_id"], name: "index_text_fields_on_user_id", using: :btree
   end
 
   create_table "users", force: :cascade do |t|
@@ -86,7 +89,16 @@ ActiveRecord::Schema.define(version: 20160720024051) do
     t.datetime "updated_at",            null: false
     t.string   "password"
     t.string   "password_confirmation"
-    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
   end
 
+  add_foreign_key "contacts", "users"
+  add_foreign_key "dropdown_values", "contacts"
+  add_foreign_key "dropdown_values", "dropdowns"
+  add_foreign_key "dropdowns", "users"
+  add_foreign_key "text_area_values", "contacts"
+  add_foreign_key "text_areas", "users"
+  add_foreign_key "text_field_values", "contacts"
+  add_foreign_key "text_field_values", "text_fields"
+  add_foreign_key "text_fields", "users"
 end

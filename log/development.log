@@ -24613,3 +24613,695 @@ Processing by ContactsController#index as HTML
 Completed 200 OK in 109ms (Views: 104.3ms | ActiveRecord: 0.5ms)
 
 
+  [1m[35m (104.0ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying PRIMARY KEY)[0m
+  [1m[35m (91.2ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying PRIMARY KEY, "value" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT pg_try_advisory_lock(1756689135649442925);[0m
+  [1m[36mActiveRecord::SchemaMigration Load (1.1ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateUsers (20160717224806)
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (95.1ms)[0m  [1m[35mCREATE TABLE "users" ("id" serial primary key, "name" character varying, "email" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35mSQL (1.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20160717224806"]]
+  [1m[35m (18.8ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddIndexToUserEmail (20160718012352)
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (39.6ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_users_on_email" ON "users"  ("email")[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20160718012352"]]
+  [1m[35m (17.8ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddPasswordToUser (20160718121611)
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.6ms)[0m  [1m[35mALTER TABLE "users" ADD "password" character varying[0m
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "users" ADD "password_confirmation" character varying[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20160718121611"]]
+  [1m[35m (7.3ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateTextFields (20160719041520)
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (97.2ms)[0m  [1m[35mCREATE TABLE "text_fields" ("id" serial primary key, "name" character varying, "user_id" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, CONSTRAINT "fk_rails_4404b93142"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+)[0m
+  [1m[35m (37.3ms)[0m  [1m[35mCREATE  INDEX  "index_text_fields_on_user_id" ON "text_fields"  ("user_id")[0m
+  [1m[35mSQL (0.9ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20160719041520"]]
+  [1m[35m (16.9ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateContacts (20160719050459)
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (80.7ms)[0m  [1m[35mCREATE TABLE "contacts" ("id" serial primary key, "name" character varying, "email" character varying, "user_id" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, CONSTRAINT "fk_rails_8d2134e55e"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+)[0m
+  [1m[35m (39.7ms)[0m  [1m[35mCREATE  INDEX  "index_contacts_on_user_id" ON "contacts"  ("user_id")[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20160719050459"]]
+  [1m[35m (16.3ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateTextFieldValues (20160719050650)
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (115.1ms)[0m  [1m[35mCREATE TABLE "text_field_values" ("id" serial primary key, "name" character varying, "value" character varying, "text_field_id" integer, "contact_id" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, CONSTRAINT "fk_rails_e0b2e7c185"
+FOREIGN KEY ("text_field_id")
+  REFERENCES "text_fields" ("id")
+, CONSTRAINT "fk_rails_7bbb736006"
+FOREIGN KEY ("contact_id")
+  REFERENCES "contacts" ("id")
+)[0m
+  [1m[35m (36.3ms)[0m  [1m[35mCREATE  INDEX  "index_text_field_values_on_text_field_id" ON "text_field_values"  ("text_field_id")[0m
+  [1m[35m (28.8ms)[0m  [1m[35mCREATE  INDEX  "index_text_field_values_on_contact_id" ON "text_field_values"  ("contact_id")[0m
+  [1m[35mSQL (0.9ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20160719050650"]]
+  [1m[35m (14.2ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateTextAreas (20160719192437)
+  [1m[35m (0.7ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (100.3ms)[0m  [1m[35mCREATE TABLE "text_areas" ("id" serial primary key, "name" character varying, "user_id" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, CONSTRAINT "fk_rails_f15ccbf5b5"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+)[0m
+  [1m[35m (38.1ms)[0m  [1m[35mCREATE  INDEX  "index_text_areas_on_user_id" ON "text_areas"  ("user_id")[0m
+  [1m[35mSQL (0.8ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20160719192437"]]
+  [1m[35m (12.9ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateTextAreaValues (20160719200036)
+  [1m[35m (0.6ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (70.1ms)[0m  [1m[35mCREATE TABLE "text_area_values" ("id" serial primary key, "name" character varying, "value" text, "contact_id" integer, "user_id" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, CONSTRAINT "fk_rails_9b4d4d74e0"
+FOREIGN KEY ("contact_id")
+  REFERENCES "contacts" ("id")
+, CONSTRAINT "fk_rails_5cce1fbabd"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+)[0m
+  [1m[35m (53.9ms)[0m  [1m[35mCREATE  INDEX  "index_text_area_values_on_contact_id" ON "text_area_values"  ("contact_id")[0m
+  [1m[35m (35.5ms)[0m  [1m[35mCREATE  INDEX  "index_text_area_values_on_user_id" ON "text_area_values"  ("user_id")[0m
+  [1m[35mSQL (0.8ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20160719200036"]]
+  [1m[35m (11.2ms)[0m  [1m[35mCOMMIT[0m
+Migrating to RemoveUserIdAdd (20160719203139)
+  [1m[35m (0.6ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.9ms)[0m  [1m[35mALTER TABLE "text_area_values" ADD "text_area_id" integer[0m
+  [1m[35m (19.3ms)[0m  [1m[35mALTER TABLE "text_area_values" DROP "user_id"[0m
+  [1m[35mSQL (0.8ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20160719203139"]]
+  [1m[35m (17.7ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateDropdowns (20160719223015)
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (99.6ms)[0m  [1m[35mCREATE TABLE "dropdowns" ("id" serial primary key, "name" character varying, "options" text, "user_id" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, CONSTRAINT "fk_rails_7a8b37c5a1"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+)[0m
+  [1m[35m (66.4ms)[0m  [1m[35mCREATE  INDEX  "index_dropdowns_on_user_id" ON "dropdowns"  ("user_id")[0m
+  [1m[35mSQL (0.9ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20160719223015"]]
+  [1m[35m (13.6ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateDropdownValues (20160720024051)
+  [1m[35m (0.7ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (99.5ms)[0m  [1m[35mCREATE TABLE "dropdown_values" ("id" serial primary key, "name" character varying, "content" character varying, "value" character varying, "dropdown_id" integer, "contact_id" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, CONSTRAINT "fk_rails_b9751e2028"
+FOREIGN KEY ("dropdown_id")
+  REFERENCES "dropdowns" ("id")
+, CONSTRAINT "fk_rails_7e2a387af6"
+FOREIGN KEY ("contact_id")
+  REFERENCES "contacts" ("id")
+)[0m
+  [1m[35m (48.7ms)[0m  [1m[35mCREATE  INDEX  "index_dropdown_values_on_dropdown_id" ON "dropdown_values"  ("dropdown_id")[0m
+  [1m[35m (40.6ms)[0m  [1m[35mCREATE  INDEX  "index_dropdown_values_on_contact_id" ON "dropdown_values"  ("contact_id")[0m
+  [1m[35mSQL (0.9ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20160720024051"]]
+  [1m[35m (17.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.9ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", :environment], ["LIMIT", 1]]
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (1.1ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", 2016-07-21 17:14:23 UTC], ["updated_at", 2016-07-21 17:14:23 UTC]]
+  [1m[35m (6.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT pg_advisory_unlock(1756689135649442925)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (4.3ms)[0m  [1m[34mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'contacts'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+  [1m[35m (3.8ms)[0m  [1m[34mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'dropdown_values'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+  [1m[35m (4.1ms)[0m  [1m[34mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'dropdowns'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+  [1m[35m (4.1ms)[0m  [1m[34mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'text_area_values'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+  [1m[35m (7.1ms)[0m  [1m[34mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'text_areas'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+  [1m[35m (7.4ms)[0m  [1m[34mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'text_field_values'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+  [1m[35m (5.5ms)[0m  [1m[34mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'text_fields'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+  [1m[35m (4.9ms)[0m  [1m[34mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'users'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+Started GET "/" for ::1 at 2016-07-21 14:15:26 -0300
+  
+Gem::LoadError (Specified 'postgresql' for database adapter, but the gem is not loaded. Add `gem 'pg'` to your Gemfile (and ensure its version is at the minimum required by ActiveRecord).):
+  
+activerecord (5.0.0) lib/active_record/connection_adapters/connection_specification.rb:176:in `rescue in spec'
+activerecord (5.0.0) lib/active_record/connection_adapters/connection_specification.rb:173:in `spec'
+activerecord (5.0.0) lib/active_record/connection_handling.rb:53:in `establish_connection'
+activerecord (5.0.0) lib/active_record/railtie.rb:125:in `block (2 levels) in <class:Railtie>'
+activesupport (5.0.0) lib/active_support/lazy_load_hooks.rb:38:in `instance_eval'
+activesupport (5.0.0) lib/active_support/lazy_load_hooks.rb:38:in `execute_hook'
+activesupport (5.0.0) lib/active_support/lazy_load_hooks.rb:45:in `block in run_load_hooks'
+activesupport (5.0.0) lib/active_support/lazy_load_hooks.rb:44:in `each'
+activesupport (5.0.0) lib/active_support/lazy_load_hooks.rb:44:in `run_load_hooks'
+activerecord (5.0.0) lib/active_record/base.rb:324:in `<module:ActiveRecord>'
+activerecord (5.0.0) lib/active_record/base.rb:24:in `<top (required)>'
+activerecord (5.0.0) lib/active_record/migration.rb:558:in `connection'
+activerecord (5.0.0) lib/active_record/migration.rb:545:in `call'
+actionpack (5.0.0) lib/action_dispatch/middleware/callbacks.rb:38:in `block in call'
+activesupport (5.0.0) lib/active_support/callbacks.rb:97:in `__run_callbacks__'
+activesupport (5.0.0) lib/active_support/callbacks.rb:750:in `_run_call_callbacks'
+activesupport (5.0.0) lib/active_support/callbacks.rb:90:in `run_callbacks'
+actionpack (5.0.0) lib/action_dispatch/middleware/callbacks.rb:36:in `call'
+actionpack (5.0.0) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.0.0) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.0.0) lib/action_dispatch/middleware/debug_exceptions.rb:49:in `call'
+web-console (3.3.1) lib/web_console/middleware.rb:131:in `call_app'
+web-console (3.3.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.3.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.3.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.0.0) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.0.0) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.0.0) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.0.0) lib/active_support/tagged_logging.rb:70:in `block in tagged'
+activesupport (5.0.0) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.0.0) lib/active_support/tagged_logging.rb:70:in `tagged'
+railties (5.0.0) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.1.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.0.0) lib/action_dispatch/middleware/request_id.rb:24:in `call'
+rack (2.0.1) lib/rack/method_override.rb:22:in `call'
+rack (2.0.1) lib/rack/runtime.rb:22:in `call'
+activesupport (5.0.0) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+actionpack (5.0.0) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.0.0) lib/action_dispatch/middleware/static.rb:136:in `call'
+rack (2.0.1) lib/rack/sendfile.rb:111:in `call'
+railties (5.0.0) lib/rails/engine.rb:522:in `call'
+puma (3.4.0) lib/puma/configuration.rb:224:in `call'
+puma (3.4.0) lib/puma/server.rb:569:in `handle_request'
+puma (3.4.0) lib/puma/server.rb:406:in `process_client'
+puma (3.4.0) lib/puma/server.rb:271:in `block in run'
+puma (3.4.0) lib/puma/thread_pool.rb:114:in `call'
+puma (3.4.0) lib/puma/thread_pool.rb:114:in `block in spawn_thread'
+  Rendering /home/randson/.rvm/gems/ruby-2.2.4/gems/actionpack-5.0.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /home/randson/.rvm/gems/ruby-2.2.4/gems/actionpack-5.0.0/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /home/randson/.rvm/gems/ruby-2.2.4/gems/actionpack-5.0.0/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (6.5ms)
+  Rendering /home/randson/.rvm/gems/ruby-2.2.4/gems/actionpack-5.0.0/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /home/randson/.rvm/gems/ruby-2.2.4/gems/actionpack-5.0.0/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.8ms)
+  Rendering /home/randson/.rvm/gems/ruby-2.2.4/gems/actionpack-5.0.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /home/randson/.rvm/gems/ruby-2.2.4/gems/actionpack-5.0.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.5ms)
+  Rendered /home/randson/.rvm/gems/ruby-2.2.4/gems/actionpack-5.0.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (48.4ms)
+Started GET "/" for ::1 at 2016-07-21 14:18:00 -0300
+  
+Gem::LoadError (Specified 'postgresql' for database adapter, but the gem is not loaded. Add `gem 'pg'` to your Gemfile (and ensure its version is at the minimum required by ActiveRecord).):
+  
+activerecord (5.0.0) lib/active_record/connection_adapters/connection_specification.rb:176:in `rescue in spec'
+activerecord (5.0.0) lib/active_record/connection_adapters/connection_specification.rb:173:in `spec'
+activerecord (5.0.0) lib/active_record/connection_handling.rb:53:in `establish_connection'
+activerecord (5.0.0) lib/active_record/railtie.rb:125:in `block (2 levels) in <class:Railtie>'
+activesupport (5.0.0) lib/active_support/lazy_load_hooks.rb:38:in `instance_eval'
+activesupport (5.0.0) lib/active_support/lazy_load_hooks.rb:38:in `execute_hook'
+activesupport (5.0.0) lib/active_support/lazy_load_hooks.rb:45:in `block in run_load_hooks'
+activesupport (5.0.0) lib/active_support/lazy_load_hooks.rb:44:in `each'
+activesupport (5.0.0) lib/active_support/lazy_load_hooks.rb:44:in `run_load_hooks'
+activerecord (5.0.0) lib/active_record/base.rb:324:in `<module:ActiveRecord>'
+activerecord (5.0.0) lib/active_record/base.rb:24:in `<top (required)>'
+activerecord (5.0.0) lib/active_record/migration.rb:558:in `connection'
+activerecord (5.0.0) lib/active_record/migration.rb:545:in `call'
+actionpack (5.0.0) lib/action_dispatch/middleware/callbacks.rb:38:in `block in call'
+activesupport (5.0.0) lib/active_support/callbacks.rb:97:in `__run_callbacks__'
+activesupport (5.0.0) lib/active_support/callbacks.rb:750:in `_run_call_callbacks'
+activesupport (5.0.0) lib/active_support/callbacks.rb:90:in `run_callbacks'
+actionpack (5.0.0) lib/action_dispatch/middleware/callbacks.rb:36:in `call'
+actionpack (5.0.0) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.0.0) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.0.0) lib/action_dispatch/middleware/debug_exceptions.rb:49:in `call'
+web-console (3.3.1) lib/web_console/middleware.rb:131:in `call_app'
+web-console (3.3.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.3.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.3.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.0.0) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.0.0) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.0.0) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.0.0) lib/active_support/tagged_logging.rb:70:in `block in tagged'
+activesupport (5.0.0) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.0.0) lib/active_support/tagged_logging.rb:70:in `tagged'
+railties (5.0.0) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.1.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.0.0) lib/action_dispatch/middleware/request_id.rb:24:in `call'
+rack (2.0.1) lib/rack/method_override.rb:22:in `call'
+rack (2.0.1) lib/rack/runtime.rb:22:in `call'
+activesupport (5.0.0) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+actionpack (5.0.0) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.0.0) lib/action_dispatch/middleware/static.rb:136:in `call'
+rack (2.0.1) lib/rack/sendfile.rb:111:in `call'
+railties (5.0.0) lib/rails/engine.rb:522:in `call'
+puma (3.4.0) lib/puma/configuration.rb:224:in `call'
+puma (3.4.0) lib/puma/server.rb:569:in `handle_request'
+puma (3.4.0) lib/puma/server.rb:406:in `process_client'
+puma (3.4.0) lib/puma/server.rb:271:in `block in run'
+puma (3.4.0) lib/puma/thread_pool.rb:114:in `call'
+puma (3.4.0) lib/puma/thread_pool.rb:114:in `block in spawn_thread'
+  Rendering /home/randson/.rvm/gems/ruby-2.2.4/gems/actionpack-5.0.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /home/randson/.rvm/gems/ruby-2.2.4/gems/actionpack-5.0.0/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /home/randson/.rvm/gems/ruby-2.2.4/gems/actionpack-5.0.0/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (6.7ms)
+  Rendering /home/randson/.rvm/gems/ruby-2.2.4/gems/actionpack-5.0.0/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /home/randson/.rvm/gems/ruby-2.2.4/gems/actionpack-5.0.0/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.5ms)
+  Rendering /home/randson/.rvm/gems/ruby-2.2.4/gems/actionpack-5.0.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /home/randson/.rvm/gems/ruby-2.2.4/gems/actionpack-5.0.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.3ms)
+  Rendered /home/randson/.rvm/gems/ruby-2.2.4/gems/actionpack-5.0.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (41.1ms)
+Started GET "/" for ::1 at 2016-07-21 14:19:20 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.9ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by StaticPagesController#home as HTML
+  [1m[36mUser Load (1.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Redirected to http://localhost:3000/login
+Filter chain halted as :require_login rendered or redirected
+Completed 302 Found in 62ms (ActiveRecord: 5.1ms)
+
+
+Started GET "/login" for ::1 at 2016-07-21 14:19:20 -0300
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (26.3ms)
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered layouts/_header.html.erb (3.7ms)
+  Rendered layouts/_footer.html.erb (1.1ms)
+Completed 200 OK in 2000ms (Views: 1997.4ms | ActiveRecord: 0.7ms)
+
+
+Started POST "/login" for ::1 at 2016-07-21 14:19:26 -0300
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"uo86v2r8GpNpGeWFw52bqt7i93MUJk+wIOsAFkVwnf/7pGoRwYFd1TvwW7o/2DBK8Gh11YudH4N+wOyXmsYLug==", "session"=>{"email"=>"harvey@email.com", "password"=>"[FILTERED]"}, "commit"=>"Log in"}
+  [1m[36mUser Load (2.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "harvey@email.com"], ["LIMIT", 1]]
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (3.6ms)
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered layouts/_header.html.erb (4.1ms)
+  Rendered layouts/_footer.html.erb (0.8ms)
+Completed 200 OK in 108ms (Views: 96.1ms | ActiveRecord: 4.1ms)
+
+
+Started POST "/login" for ::1 at 2016-07-21 14:19:28 -0300
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"5d+or82+vfu89H9kZghC6G0pT0TEhlfGJZrdgFnC8H6k9PgBZsP6ve4dwVuaTekIQ6PN4ls9B/V7sTEBhnRmOw==", "session"=>{"email"=>"harvey@email.com", "password"=>"[FILTERED]"}, "commit"=>"Log in"}
+  [1m[36mUser Load (3.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "harvey@email.com"], ["LIMIT", 1]]
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (4.3ms)
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered layouts/_header.html.erb (2.9ms)
+  Rendered layouts/_footer.html.erb (0.8ms)
+Completed 200 OK in 99ms (Views: 91.9ms | ActiveRecord: 4.2ms)
+
+
+Started GET "/signup" for ::1 at 2016-07-21 14:19:31 -0300
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered shared/_error_messages.html.erb (1.1ms)
+  Rendered users/new.html.erb within layouts/application (14.6ms)
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered layouts/_header.html.erb (3.0ms)
+  Rendered layouts/_footer.html.erb (0.8ms)
+Completed 200 OK in 159ms (Views: 109.3ms | ActiveRecord: 6.3ms)
+
+
+Started POST "/signup" for ::1 at 2016-07-21 14:19:42 -0300
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"w1L+Ne9BtK3/kyPu1/FNZJWzHiw1WHnuYoObYPOgrwiCea6bRDzz6616ndErtOaEuzmciqrjKd08qHfhLBY5TQ==", "user"=>{"name"=>"Harvey", "email"=>"harvey@email.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Start creat my personalized form now"}
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (1.9ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "password", "password_confirmation") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Harvey"], ["email", "harvey@email.com"], ["created_at", 2016-07-21 17:19:42 UTC], ["updated_at", 2016-07-21 17:19:42 UTC], ["password", "senha1"], ["password_confirmation", "senha1"]]
+  [1m[35m (41.4ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/users/1
+Completed 302 Found in 57ms (ActiveRecord: 43.6ms)
+
+
+Started GET "/users/1" for ::1 at 2016-07-21 14:19:42 -0300
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (2.8ms)
+  Rendered layouts/_header.html.erb (2.9ms)
+  Rendered layouts/_footer.html.erb (0.9ms)
+Completed 200 OK in 148ms (Views: 116.1ms | ActiveRecord: 2.7ms)
+
+
+Started GET "/contacts" for ::1 at 2016-07-21 14:19:47 -0300
+Processing by ContactsController#index as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering contacts/index.html.erb within layouts/application
+  [1m[36mContact Load (1.0ms)[0m  [1m[34mSELECT "contacts".* FROM "contacts" WHERE "contacts"."user_id" = $1[0m  [["user_id", 1]]
+  Rendered contacts/index.html.erb within layouts/application (3.8ms)
+  Rendered layouts/_header.html.erb (1.7ms)
+  Rendered layouts/_footer.html.erb (0.7ms)
+Completed 200 OK in 145ms (Views: 84.6ms | ActiveRecord: 5.3ms)
+
+
+Started GET "/" for ::1 at 2016-07-21 14:19:49 -0300
+Processing by StaticPagesController#home as HTML
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTextField Load (0.9ms)[0m  [1m[34mSELECT "text_fields".* FROM "text_fields" WHERE "text_fields"."user_id" = $1[0m  [["user_id", 1]]
+  [1m[36mTextArea Load (1.3ms)[0m  [1m[34mSELECT "text_areas".* FROM "text_areas" WHERE "text_areas"."user_id" = $1[0m  [["user_id", 1]]
+  [1m[36mDropdown Load (1.0ms)[0m  [1m[34mSELECT "dropdowns".* FROM "dropdowns" WHERE "dropdowns"."user_id" = $1[0m  [["user_id", 1]]
+  Rendering static_pages/home.html.erb within layouts/application
+  Rendered static_pages/_contact_form.html.erb (8.8ms)
+  Rendered static_pages/home.html.erb within layouts/application (11.6ms)
+  Rendered layouts/_header.html.erb (1.6ms)
+  Rendered layouts/_footer.html.erb (0.7ms)
+Completed 200 OK in 209ms (Views: 90.8ms | ActiveRecord: 24.4ms)
+
+
+Started POST "/contacts" for ::1 at 2016-07-21 14:19:57 -0300
+Processing by ContactsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"R0kS8lGq0cB0ddKSemFfcQcmLg1nFpoBftBtbGBSS3gGYkJc+teWhiacbK2GJPSRKaysq/ityjIg+4Htv+TdPQ==", "contact"=>{"name"=>"Dona Pousen", "email"=>"dona@email.com"}, "commit"=>"Submit"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (2.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (2.5ms)[0m  [1m[32mINSERT INTO "contacts" ("name", "email", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Dona Pousen"], ["email", "dona@email.com"], ["user_id", 1], ["created_at", 2016-07-21 17:19:57 UTC], ["updated_at", 2016-07-21 17:19:57 UTC]]
+Redirected to http://localhost:3000/contacts/1
+  [1m[35m (57.0ms)[0m  [1m[35mCOMMIT[0m
+Completed 302 Found in 87ms (ActiveRecord: 62.7ms)
+
+
+Started GET "/contacts/1" for ::1 at 2016-07-21 14:19:57 -0300
+Processing by ContactsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mContact Load (0.8ms)[0m  [1m[34mSELECT  "contacts".* FROM "contacts" WHERE "contacts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.1ms)[0m  [1m[34mSELECT  "contacts".* FROM "contacts" WHERE "contacts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering contacts/show.html.erb within layouts/application
+  [1m[36mTextFieldValue Load (1.0ms)[0m  [1m[34mSELECT "text_field_values".* FROM "text_field_values" WHERE "text_field_values"."contact_id" = $1[0m  [["contact_id", 1]]
+  [1m[36mTextAreaValue Load (0.8ms)[0m  [1m[34mSELECT "text_area_values".* FROM "text_area_values" WHERE "text_area_values"."contact_id" = $1[0m  [["contact_id", 1]]
+  [1m[36mDropdownValue Load (0.8ms)[0m  [1m[34mSELECT "dropdown_values".* FROM "dropdown_values" WHERE "dropdown_values"."contact_id" = $1[0m  [["contact_id", 1]]
+  Rendered contacts/show.html.erb within layouts/application (8.4ms)
+  Rendered layouts/_header.html.erb (1.9ms)
+  Rendered layouts/_footer.html.erb (0.8ms)
+Completed 200 OK in 165ms (Views: 105.3ms | ActiveRecord: 13.2ms)
+
+
+Started GET "/contacts" for ::1 at 2016-07-21 14:20:04 -0300
+Processing by ContactsController#index as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering contacts/index.html.erb within layouts/application
+  [1m[36mContact Load (1.2ms)[0m  [1m[34mSELECT "contacts".* FROM "contacts" WHERE "contacts"."user_id" = $1[0m  [["user_id", 1]]
+  Rendered contacts/index.html.erb within layouts/application (5.5ms)
+  Rendered layouts/_header.html.erb (1.8ms)
+  Rendered layouts/_footer.html.erb (0.7ms)
+Completed 200 OK in 98ms (Views: 89.7ms | ActiveRecord: 1.9ms)
+
+
+Started GET "/contact_fields" for ::1 at 2016-07-21 14:20:25 -0300
+Processing by StaticPagesController#contact_fields as HTML
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering static_pages/contact_fields.html.erb within layouts/application
+  [1m[36mTextField Load (0.9ms)[0m  [1m[34mSELECT "text_fields".* FROM "text_fields" WHERE "text_fields"."user_id" = $1[0m  [["user_id", 1]]
+  [1m[36mTextArea Load (0.8ms)[0m  [1m[34mSELECT "text_areas".* FROM "text_areas" WHERE "text_areas"."user_id" = $1[0m  [["user_id", 1]]
+  [1m[36mDropdown Load (0.7ms)[0m  [1m[34mSELECT "dropdowns".* FROM "dropdowns" WHERE "dropdowns"."user_id" = $1[0m  [["user_id", 1]]
+  Rendered static_pages/contact_fields.html.erb within layouts/application (8.2ms)
+  Rendered layouts/_header.html.erb (1.7ms)
+  Rendered layouts/_footer.html.erb (0.7ms)
+Completed 200 OK in 98ms (Views: 86.4ms | ActiveRecord: 3.4ms)
+
+
+Started GET "/text_fields/new" for ::1 at 2016-07-21 14:20:27 -0300
+Processing by TextFieldsController#new as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering text_fields/new.html.erb within layouts/application
+  Rendered text_fields/_form.html.erb (2.8ms)
+  Rendered text_fields/new.html.erb within layouts/application (4.8ms)
+  Rendered layouts/_header.html.erb (1.8ms)
+  Rendered layouts/_footer.html.erb (0.7ms)
+Completed 200 OK in 97ms (Views: 84.0ms | ActiveRecord: 3.1ms)
+
+
+Started POST "/text_fields" for ::1 at 2016-07-21 14:20:38 -0300
+Processing by TextFieldsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"IjIgtBU4LNrZemn95mtu+7Bjn/zT2C+m28yFktLv7ndjGXAavkVrnIuT18IaLsUbnukdWkxjf5WF52kTDVl4Mg==", "text_field"=>{"name"=>"Mobile"}, "commit"=>"Create"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCACHE (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (1.8ms)[0m  [1m[32mINSERT INTO "text_fields" ("name", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Mobile"], ["user_id", 1], ["created_at", 2016-07-21 17:20:38 UTC], ["updated_at", 2016-07-21 17:20:38 UTC]]
+  [1m[35m (43.2ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/text_fields/1
+Completed 302 Found in 61ms (ActiveRecord: 46.0ms)
+
+
+Started GET "/text_fields/1" for ::1 at 2016-07-21 14:20:38 -0300
+Processing by TextFieldsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTextField Load (0.6ms)[0m  [1m[34mSELECT  "text_fields".* FROM "text_fields" WHERE "text_fields"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering text_fields/show.html.erb within layouts/application
+  Rendered text_fields/show.html.erb within layouts/application (1.3ms)
+  Rendered layouts/_header.html.erb (1.7ms)
+  Rendered layouts/_footer.html.erb (0.7ms)
+Completed 200 OK in 139ms (Views: 100.7ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/text_fields" for ::1 at 2016-07-21 14:20:48 -0300
+Processing by TextFieldsController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering application/index.html.erb within layouts/application
+  Rendered application/index.html.erb within layouts/application (1.1ms)
+  Rendered layouts/_header.html.erb (1.8ms)
+  Rendered layouts/_footer.html.erb (0.7ms)
+Completed 200 OK in 105ms (Views: 100.0ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/contact_fields" for ::1 at 2016-07-21 14:20:52 -0300
+Processing by StaticPagesController#contact_fields as HTML
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering static_pages/contact_fields.html.erb within layouts/application
+  [1m[36mTextField Load (0.7ms)[0m  [1m[34mSELECT "text_fields".* FROM "text_fields" WHERE "text_fields"."user_id" = $1[0m  [["user_id", 1]]
+  [1m[36mTextArea Load (0.8ms)[0m  [1m[34mSELECT "text_areas".* FROM "text_areas" WHERE "text_areas"."user_id" = $1[0m  [["user_id", 1]]
+  [1m[36mDropdown Load (0.5ms)[0m  [1m[34mSELECT "dropdowns".* FROM "dropdowns" WHERE "dropdowns"."user_id" = $1[0m  [["user_id", 1]]
+  Rendered static_pages/contact_fields.html.erb within layouts/application (10.1ms)
+  Rendered layouts/_header.html.erb (1.8ms)
+  Rendered layouts/_footer.html.erb (0.8ms)
+Completed 200 OK in 102ms (Views: 88.8ms | ActiveRecord: 2.7ms)
+
+
+Started GET "/text_areas/new" for ::1 at 2016-07-21 14:21:02 -0300
+Processing by TextAreasController#new as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering text_areas/new.html.erb within layouts/application
+  Rendered text_areas/_form.html.erb (2.9ms)
+  Rendered text_areas/new.html.erb within layouts/application (4.9ms)
+  Rendered layouts/_header.html.erb (2.2ms)
+  Rendered layouts/_footer.html.erb (0.8ms)
+Completed 200 OK in 98ms (Views: 85.3ms | ActiveRecord: 3.2ms)
+
+
+Started POST "/text_areas" for ::1 at 2016-07-21 14:21:08 -0300
+Processing by TextAreasController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"gsxhU6IM4ip4YlrF71KxAuJrkXYR1wFa2XxHJUDNFtrD5zH9CXGlbCqL5PoTFxrizOET0I5sUWmHV6ukn3uAnw==", "text_area"=>{"name"=>"Tell me a bit about you"}, "commit"=>"Create"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (2.0ms)[0m  [1m[32mINSERT INTO "text_areas" ("name", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Tell me a bit about you"], ["user_id", 1], ["created_at", 2016-07-21 17:21:08 UTC], ["updated_at", 2016-07-21 17:21:08 UTC]]
+  [1m[35m (45.5ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/text_areas/1
+Completed 302 Found in 68ms (ActiveRecord: 48.5ms)
+
+
+Started GET "/text_areas/1" for ::1 at 2016-07-21 14:21:08 -0300
+Processing by TextAreasController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTextArea Load (0.8ms)[0m  [1m[34mSELECT  "text_areas".* FROM "text_areas" WHERE "text_areas"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering text_areas/show.html.erb within layouts/application
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered text_areas/show.html.erb within layouts/application (4.0ms)
+  Rendered layouts/_header.html.erb (1.8ms)
+  Rendered layouts/_footer.html.erb (1.0ms)
+Completed 200 OK in 138ms (Views: 105.4ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/text_areas" for ::1 at 2016-07-21 14:21:11 -0300
+Processing by TextAreasController#index as HTML
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering text_areas/index.html.erb within layouts/application
+  [1m[36mTextArea Load (1.0ms)[0m  [1m[34mSELECT "text_areas".* FROM "text_areas"[0m
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered text_areas/index.html.erb within layouts/application (5.4ms)
+  Rendered layouts/_header.html.erb (1.7ms)
+  Rendered layouts/_footer.html.erb (0.7ms)
+Completed 200 OK in 125ms (Views: 83.2ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/" for ::1 at 2016-07-21 14:21:23 -0300
+Processing by StaticPagesController#home as HTML
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTextField Load (2.8ms)[0m  [1m[34mSELECT "text_fields".* FROM "text_fields" WHERE "text_fields"."user_id" = $1[0m  [["user_id", 1]]
+  [1m[36mTextArea Load (1.4ms)[0m  [1m[34mSELECT "text_areas".* FROM "text_areas" WHERE "text_areas"."user_id" = $1[0m  [["user_id", 1]]
+  [1m[36mDropdown Load (0.7ms)[0m  [1m[34mSELECT "dropdowns".* FROM "dropdowns" WHERE "dropdowns"."user_id" = $1[0m  [["user_id", 1]]
+  Rendering static_pages/home.html.erb within layouts/application
+  Rendered static_pages/_contact_form.html.erb (51.1ms)
+  Rendered static_pages/home.html.erb within layouts/application (53.3ms)
+  Rendered layouts/_header.html.erb (1.8ms)
+  Rendered layouts/_footer.html.erb (0.7ms)
+Completed 200 OK in 196ms (Views: 142.4ms | ActiveRecord: 13.7ms)
+
+
+Started GET "/contact_fields" for ::1 at 2016-07-21 14:21:28 -0300
+Processing by StaticPagesController#contact_fields as HTML
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering static_pages/contact_fields.html.erb within layouts/application
+  [1m[36mTextField Load (2.1ms)[0m  [1m[34mSELECT "text_fields".* FROM "text_fields" WHERE "text_fields"."user_id" = $1[0m  [["user_id", 1]]
+  [1m[36mTextArea Load (0.8ms)[0m  [1m[34mSELECT "text_areas".* FROM "text_areas" WHERE "text_areas"."user_id" = $1[0m  [["user_id", 1]]
+  [1m[36mDropdown Load (0.6ms)[0m  [1m[34mSELECT "dropdowns".* FROM "dropdowns" WHERE "dropdowns"."user_id" = $1[0m  [["user_id", 1]]
+  Rendered static_pages/contact_fields.html.erb within layouts/application (15.4ms)
+  Rendered layouts/_header.html.erb (1.7ms)
+  Rendered layouts/_footer.html.erb (0.7ms)
+Completed 200 OK in 108ms (Views: 93.5ms | ActiveRecord: 4.2ms)
+
+
+Started GET "/dropdowns/new" for ::1 at 2016-07-21 14:21:37 -0300
+Processing by DropdownsController#new as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering dropdowns/new.html.erb within layouts/application
+  Rendered dropdowns/_form.html.erb (5.1ms)
+  Rendered dropdowns/new.html.erb within layouts/application (7.0ms)
+  Rendered layouts/_header.html.erb (1.8ms)
+  Rendered layouts/_footer.html.erb (0.9ms)
+Completed 200 OK in 114ms (Views: 99.5ms | ActiveRecord: 3.1ms)
+
+
+Started POST "/dropdowns" for ::1 at 2016-07-21 14:22:10 -0300
+Processing by DropdownsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"lcsa5Z3yxqd8Z2egkjzGDnM4OcPViyA3x/9H+Oio4JTU4EpLNo+B4S6O2Z9ueW3uXbK7ZUowcASZ1Kt5Nx520Q==", "dropdown"=>{"name"=>"Em qual liguagem você possui mais experiencia?", "options"=>"*python\r\n*Ruby\r\n*Java\r\n*PHP"}, "commit"=>"Create"}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (1.9ms)[0m  [1m[32mINSERT INTO "dropdowns" ("name", "options", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Em qual liguagem você possui mais experiencia?"], ["options", "python\r\n*Ruby\r\n*Java\r\n*PHP"], ["user_id", 1], ["created_at", 2016-07-21 17:22:10 UTC], ["updated_at", 2016-07-21 17:22:10 UTC]]
+  [1m[35m (26.5ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/dropdowns/1
+Completed 302 Found in 48ms (ActiveRecord: 29.5ms)
+
+
+Started GET "/dropdowns/1" for ::1 at 2016-07-21 14:22:10 -0300
+Processing by DropdownsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mDropdown Load (1.3ms)[0m  [1m[34mSELECT  "dropdowns".* FROM "dropdowns" WHERE "dropdowns"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering dropdowns/show.html.erb within layouts/application
+  [1m[36mCACHE (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered dropdowns/show.html.erb within layouts/application (6.3ms)
+  Rendered layouts/_header.html.erb (1.7ms)
+  Rendered layouts/_footer.html.erb (0.7ms)
+Completed 200 OK in 144ms (Views: 102.0ms | ActiveRecord: 2.3ms)
+
+
+Started GET "/dropdowns" for ::1 at 2016-07-21 14:22:13 -0300
+Processing by DropdownsController#index as HTML
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering dropdowns/index.html.erb within layouts/application
+  [1m[36mDropdown Load (0.8ms)[0m  [1m[34mSELECT "dropdowns".* FROM "dropdowns" WHERE "dropdowns"."user_id" = $1[0m  [["user_id", 1]]
+  Rendered dropdowns/index.html.erb within layouts/application (5.5ms)
+  Rendered layouts/_header.html.erb (1.8ms)
+  Rendered layouts/_footer.html.erb (0.7ms)
+Completed 200 OK in 139ms (Views: 92.0ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/contacts" for ::1 at 2016-07-21 14:22:19 -0300
+Processing by ContactsController#index as HTML
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering contacts/index.html.erb within layouts/application
+  [1m[36mContact Load (1.1ms)[0m  [1m[34mSELECT "contacts".* FROM "contacts" WHERE "contacts"."user_id" = $1[0m  [["user_id", 1]]
+  Rendered contacts/index.html.erb within layouts/application (5.1ms)
+  Rendered layouts/_header.html.erb (1.7ms)
+  Rendered layouts/_footer.html.erb (0.7ms)
+Completed 200 OK in 94ms (Views: 87.2ms | ActiveRecord: 1.8ms)
+
+
+Started GET "/contact_fields" for ::1 at 2016-07-21 14:22:22 -0300
+Processing by StaticPagesController#contact_fields as HTML
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering static_pages/contact_fields.html.erb within layouts/application
+  [1m[36mTextField Load (0.8ms)[0m  [1m[34mSELECT "text_fields".* FROM "text_fields" WHERE "text_fields"."user_id" = $1[0m  [["user_id", 1]]
+  [1m[36mTextArea Load (0.8ms)[0m  [1m[34mSELECT "text_areas".* FROM "text_areas" WHERE "text_areas"."user_id" = $1[0m  [["user_id", 1]]
+  [1m[36mDropdown Load (1.0ms)[0m  [1m[34mSELECT "dropdowns".* FROM "dropdowns" WHERE "dropdowns"."user_id" = $1[0m  [["user_id", 1]]
+  Rendered static_pages/contact_fields.html.erb within layouts/application (13.8ms)
+  Rendered layouts/_header.html.erb (1.8ms)
+  Rendered layouts/_footer.html.erb (0.7ms)
+Completed 200 OK in 122ms (Views: 107.4ms | ActiveRecord: 3.2ms)
+
+
+Started GET "/" for ::1 at 2016-07-21 14:22:28 -0300
+Processing by StaticPagesController#home as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTextField Load (0.8ms)[0m  [1m[34mSELECT "text_fields".* FROM "text_fields" WHERE "text_fields"."user_id" = $1[0m  [["user_id", 1]]
+  [1m[36mTextArea Load (0.7ms)[0m  [1m[34mSELECT "text_areas".* FROM "text_areas" WHERE "text_areas"."user_id" = $1[0m  [["user_id", 1]]
+  [1m[36mDropdown Load (0.9ms)[0m  [1m[34mSELECT "dropdowns".* FROM "dropdowns" WHERE "dropdowns"."user_id" = $1[0m  [["user_id", 1]]
+  Rendering static_pages/home.html.erb within layouts/application
+  Rendered static_pages/_contact_form.html.erb (46.8ms)
+  Rendered static_pages/home.html.erb within layouts/application (49.0ms)
+  Rendered layouts/_header.html.erb (1.8ms)
+  Rendered layouts/_footer.html.erb (1.0ms)
+Completed 200 OK in 170ms (Views: 132.6ms | ActiveRecord: 7.6ms)
+
+
