@@ -13758,3 +13758,606 @@ Redirected to http://www.example.com/login
 Filter chain halted as :require_login rendered or redirected
 Completed 302 Found in 2ms (ActiveRecord: 0.2ms)
   [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (304.1ms)[0m  [1m[35mDROP DATABASE IF EXISTS "desafio_rd_test"[0m
+  [1m[35m (2082.1ms)[0m  [1m[35mCREATE DATABASE "desafio_rd_test" ENCODING = 'unicode'[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (118.9ms)[0m  [1m[35mCREATE TABLE "contacts" ("id" serial primary key, "name" character varying, "email" character varying, "user_id" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (61.0ms)[0m  [1m[35mCREATE  INDEX  "index_contacts_on_user_id" ON "contacts" USING btree ("user_id")[0m
+  [1m[35m (85.9ms)[0m  [1m[35mCREATE TABLE "dropdown_values" ("id" serial primary key, "name" character varying, "content" character varying, "value" character varying, "dropdown_id" integer, "contact_id" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (61.5ms)[0m  [1m[35mCREATE  INDEX  "index_dropdown_values_on_contact_id" ON "dropdown_values" USING btree ("contact_id")[0m
+  [1m[35m (51.3ms)[0m  [1m[35mCREATE  INDEX  "index_dropdown_values_on_dropdown_id" ON "dropdown_values" USING btree ("dropdown_id")[0m
+  [1m[35m (119.1ms)[0m  [1m[35mCREATE TABLE "dropdowns" ("id" serial primary key, "name" character varying, "options" text, "user_id" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (50.6ms)[0m  [1m[35mCREATE  INDEX  "index_dropdowns_on_user_id" ON "dropdowns" USING btree ("user_id")[0m
+  [1m[35m (96.7ms)[0m  [1m[35mCREATE TABLE "text_area_values" ("id" serial primary key, "name" character varying, "value" text, "contact_id" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, "text_area_id" integer)[0m
+  [1m[35m (61.8ms)[0m  [1m[35mCREATE  INDEX  "index_text_area_values_on_contact_id" ON "text_area_values" USING btree ("contact_id")[0m
+  [1m[35m (96.5ms)[0m  [1m[35mCREATE TABLE "text_areas" ("id" serial primary key, "name" character varying, "user_id" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (50.6ms)[0m  [1m[35mCREATE  INDEX  "index_text_areas_on_user_id" ON "text_areas" USING btree ("user_id")[0m
+  [1m[35m (96.6ms)[0m  [1m[35mCREATE TABLE "text_field_values" ("id" serial primary key, "name" character varying, "value" character varying, "text_field_id" integer, "contact_id" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (39.4ms)[0m  [1m[35mCREATE  INDEX  "index_text_field_values_on_contact_id" ON "text_field_values" USING btree ("contact_id")[0m
+  [1m[35m (39.7ms)[0m  [1m[35mCREATE  INDEX  "index_text_field_values_on_text_field_id" ON "text_field_values" USING btree ("text_field_id")[0m
+  [1m[35m (85.6ms)[0m  [1m[35mCREATE TABLE "text_fields" ("id" serial primary key, "name" character varying, "user_id" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (50.9ms)[0m  [1m[35mCREATE  INDEX  "index_text_fields_on_user_id" ON "text_fields" USING btree ("user_id")[0m
+  [1m[35m (85.7ms)[0m  [1m[35mCREATE TABLE "users" ("id" serial primary key, "name" character varying, "email" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, "password" character varying, "password_confirmation" character varying)[0m
+  [1m[35m (50.8ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_users_on_email" ON "users" USING btree ("email")[0m
+  [1m[35m (25.7ms)[0m  [1m[35mALTER TABLE "contacts" ADD CONSTRAINT "fk_rails_8d2134e55e"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+[0m
+  [1m[35m (16.3ms)[0m  [1m[35mALTER TABLE "dropdown_values" ADD CONSTRAINT "fk_rails_7e2a387af6"
+FOREIGN KEY ("contact_id")
+  REFERENCES "contacts" ("id")
+[0m
+  [1m[35m (10.0ms)[0m  [1m[35mALTER TABLE "dropdown_values" ADD CONSTRAINT "fk_rails_b9751e2028"
+FOREIGN KEY ("dropdown_id")
+  REFERENCES "dropdowns" ("id")
+[0m
+  [1m[35m (10.2ms)[0m  [1m[35mALTER TABLE "dropdowns" ADD CONSTRAINT "fk_rails_7a8b37c5a1"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+[0m
+  [1m[35m (10.3ms)[0m  [1m[35mALTER TABLE "text_area_values" ADD CONSTRAINT "fk_rails_9b4d4d74e0"
+FOREIGN KEY ("contact_id")
+  REFERENCES "contacts" ("id")
+[0m
+  [1m[35m (10.3ms)[0m  [1m[35mALTER TABLE "text_areas" ADD CONSTRAINT "fk_rails_f15ccbf5b5"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+[0m
+  [1m[35m (10.3ms)[0m  [1m[35mALTER TABLE "text_field_values" ADD CONSTRAINT "fk_rails_7bbb736006"
+FOREIGN KEY ("contact_id")
+  REFERENCES "contacts" ("id")
+[0m
+  [1m[35m (10.4ms)[0m  [1m[35mALTER TABLE "text_field_values" ADD CONSTRAINT "fk_rails_e0b2e7c185"
+FOREIGN KEY ("text_field_id")
+  REFERENCES "text_fields" ("id")
+[0m
+  [1m[35m (10.5ms)[0m  [1m[35mALTER TABLE "text_fields" ADD CONSTRAINT "fk_rails_4404b93142"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+[0m
+  [1m[35m (120.3ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying PRIMARY KEY)[0m
+  [1m[35m (1.3ms)[0m  [1m[34mSELECT version FROM "schema_migrations"[0m
+  [1m[35m (8.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES ('20160720024051')[0m
+  [1m[35m (10.4ms)[0m  [1m[32mINSERT INTO schema_migrations (version) VALUES ('20160719050459'), ('20160719050650'), ('20160719192437'), ('20160719041520'), ('20160717224806'), ('20160718012352'), ('20160718121611'), ('20160719223015'), ('20160719203139'), ('20160719200036');
+
+[0m
+  [1m[35m (82.0ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying PRIMARY KEY, "value" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.0ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", :environment], ["LIMIT", 1]]
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.9ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "test"], ["created_at", 2016-07-21 18:13:04 UTC], ["updated_at", 2016-07-21 18:13:04 UTC]]
+  [1m[35m (12.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.6ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", :environment], ["LIMIT", 1]]
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.8ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (2.5ms)[0m  [1m[35mALTER TABLE "text_field_values" DISABLE TRIGGER ALL;ALTER TABLE "text_areas" DISABLE TRIGGER ALL;ALTER TABLE "text_fields" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" DISABLE TRIGGER ALL;ALTER TABLE "dropdown_values" DISABLE TRIGGER ALL;ALTER TABLE "dropdowns" DISABLE TRIGGER ALL;ALTER TABLE "text_area_values" DISABLE TRIGGER ALL;ALTER TABLE "contacts" DISABLE TRIGGER ALL;ALTER TABLE "users" DISABLE TRIGGER ALL[0m
+  [1m[35m (7.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mFixture Delete (0.5ms)[0m  [1m[31mDELETE FROM "dropdown_values"[0m
+  [1m[36mFixture Insert (0.7ms)[0m  [1m[32mINSERT INTO "dropdown_values" ("name", "content", "value", "created_at", "updated_at", "id", "dropdown_id", "contact_id") VALUES ('MyString', 'MyString', 'MyString', '2016-07-21 18:13:05.312982', '2016-07-21 18:13:05.312982', 980190962, 980190962, 980190962)[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "dropdown_values" ("name", "content", "value", "created_at", "updated_at", "id", "dropdown_id", "contact_id") VALUES ('MyString', 'MyString', 'MyString', '2016-07-21 18:13:05.312982', '2016-07-21 18:13:05.312982', 298486374, 298486374, 298486374)[0m
+  [1m[36mFixture Delete (0.5ms)[0m  [1m[31mDELETE FROM "dropdowns"[0m
+  [1m[36mFixture Insert (0.5ms)[0m  [1m[32mINSERT INTO "dropdowns" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-21 18:13:05.332386', '2016-07-21 18:13:05.332386', 980190962, 980190962)[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "dropdowns" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-21 18:13:05.332386', '2016-07-21 18:13:05.332386', 298486374, 298486374)[0m
+  [1m[36mFixture Delete (0.5ms)[0m  [1m[31mDELETE FROM "text_areas"[0m
+  [1m[36mFixture Insert (0.5ms)[0m  [1m[32mINSERT INTO "text_areas" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-21 18:13:05.344370', '2016-07-21 18:13:05.344370', 980190962, 980190962)[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "text_areas" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-21 18:13:05.344370', '2016-07-21 18:13:05.344370', 298486374, 298486374)[0m
+  [1m[36mFixture Delete (0.5ms)[0m  [1m[31mDELETE FROM "text_area_values"[0m
+  [1m[36mFixture Insert (0.5ms)[0m  [1m[32mINSERT INTO "text_area_values" ("name", "value", "created_at", "updated_at", "id", "contact_id") VALUES ('MyString', 'MyText', '2016-07-21 18:13:05.355803', '2016-07-21 18:13:05.355803', 980190962, 980190962)[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "text_area_values" ("name", "value", "created_at", "updated_at", "id", "contact_id") VALUES ('MyString', 'MyText', '2016-07-21 18:13:05.355803', '2016-07-21 18:13:05.355803', 298486374, 298486374)[0m
+  [1m[36mFixture Delete (0.5ms)[0m  [1m[31mDELETE FROM "users"[0m
+  [1m[36mFixture Delete (0.5ms)[0m  [1m[31mDELETE FROM "contacts"[0m
+  [1m[36mFixture Insert (0.5ms)[0m  [1m[32mINSERT INTO "contacts" ("name", "email", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', 'MyString', '2016-07-21 18:13:05.370984', '2016-07-21 18:13:05.370984', 980190962, 980190962)[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "contacts" ("name", "email", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', 'MyString', '2016-07-21 18:13:05.370984', '2016-07-21 18:13:05.370984', 298486374, 298486374)[0m
+  [1m[36mFixture Delete (0.5ms)[0m  [1m[31mDELETE FROM "text_field_values"[0m
+  [1m[36mFixture Insert (0.5ms)[0m  [1m[32mINSERT INTO "text_field_values" ("name", "value", "created_at", "updated_at", "id", "text_field_id", "contact_id") VALUES ('MyString', 'MyString', '2016-07-21 18:13:05.382688', '2016-07-21 18:13:05.382688', 980190962, 980190962, 980190962)[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "text_field_values" ("name", "value", "created_at", "updated_at", "id", "text_field_id", "contact_id") VALUES ('MyString', 'MyString', '2016-07-21 18:13:05.382688', '2016-07-21 18:13:05.382688', 298486374, 298486374, 298486374)[0m
+  [1m[36mFixture Delete (0.5ms)[0m  [1m[31mDELETE FROM "text_fields"[0m
+  [1m[36mFixture Insert (0.5ms)[0m  [1m[32mINSERT INTO "text_fields" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-21 18:13:05.394610', '2016-07-21 18:13:05.394610', 980190962, 980190962)[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "text_fields" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-21 18:13:05.394610', '2016-07-21 18:13:05.394610', 298486374, 298486374)[0m
+  [1m[35m (11.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (1.3ms)[0m  [1m[35mALTER TABLE "text_field_values" ENABLE TRIGGER ALL;ALTER TABLE "text_areas" ENABLE TRIGGER ALL;ALTER TABLE "text_fields" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" ENABLE TRIGGER ALL;ALTER TABLE "dropdown_values" ENABLE TRIGGER ALL;ALTER TABLE "dropdowns" ENABLE TRIGGER ALL;ALTER TABLE "text_area_values" ENABLE TRIGGER ALL;ALTER TABLE "contacts" ENABLE TRIGGER ALL;ALTER TABLE "users" ENABLE TRIGGER ALL[0m
+  [1m[35m (7.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+------------------------------------------------
+UserLoginTest: test_login_with_valid_information
+------------------------------------------------
+Started GET "/login" for 127.0.0.1 at 2016-07-21 15:13:06 -0300
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (76.7ms)
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  Rendered layouts/_header.html.erb (9.4ms)
+  Rendered layouts/_footer.html.erb (0.8ms)
+Completed 200 OK in 620ms (Views: 599.9ms | ActiveRecord: 3.9ms)
+Started POST "/login" for 127.0.0.1 at 2016-07-21 15:13:06 -0300
+Processing by SessionsController#create as HTML
+  Parameters: {"session"=>{"email"=>"", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", ""], ["LIMIT", 1]]
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (2.5ms)
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  Rendered layouts/_header.html.erb (2.9ms)
+  Rendered layouts/_footer.html.erb (0.8ms)
+Completed 200 OK in 21ms (Views: 14.3ms | ActiveRecord: 2.0ms)
+Started GET "/" for 127.0.0.1 at 2016-07-21 15:13:06 -0300
+Processing by StaticPagesController#home as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+Redirected to http://www.example.com/login
+Filter chain halted as :require_login rendered or redirected
+Completed 302 Found in 3ms (ActiveRecord: 0.6ms)
+  [1m[35m (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+-----------------------------------------------
+SessionsControllerTest: test_should_destroy_one
+-----------------------------------------------
+Started DELETE "/logout" for 127.0.0.1 at 2016-07-21 15:13:06 -0300
+Processing by SessionsController#destroy as HTML
+Redirected to http://www.example.com/login
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+-------------------------------------------
+SessionsControllerTest: test_should_get_new
+-------------------------------------------
+Started GET "/login" for 127.0.0.1 at 2016-07-21 15:13:06 -0300
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (3.1ms)
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  Rendered layouts/_header.html.erb (3.2ms)
+  Rendered layouts/_footer.html.erb (0.8ms)
+Completed 200 OK in 16ms (Views: 14.7ms | ActiveRecord: 0.6ms)
+  [1m[35m (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+----------------------------------------------
+DropdownsControllerTest: test_should_get_index
+----------------------------------------------
+  [1m[36mDropdown Load (0.5ms)[0m  [1m[34mSELECT  "dropdowns".* FROM "dropdowns" WHERE "dropdowns"."id" = $1 LIMIT $2[0m  [["id", 980190962], ["LIMIT", 1]]
+Started GET "/dropdowns" for 127.0.0.1 at 2016-07-21 15:13:06 -0300
+Processing by DropdownsController#index as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+Redirected to http://www.example.com/login
+Filter chain halted as :require_login rendered or redirected
+Completed 302 Found in 3ms (ActiveRecord: 0.6ms)
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+----------------------------------------------------
+DropdownsControllerTest: test_should_update_dropdown
+----------------------------------------------------
+  [1m[36mDropdown Load (0.5ms)[0m  [1m[34mSELECT  "dropdowns".* FROM "dropdowns" WHERE "dropdowns"."id" = $1 LIMIT $2[0m  [["id", 980190962], ["LIMIT", 1]]
+Started PATCH "/dropdowns/980190962" for 127.0.0.1 at 2016-07-21 15:13:06 -0300
+Processing by DropdownsController#update as HTML
+  Parameters: {"dropdown"=>{"name"=>"MyString", "user_id"=>"980190962"}, "id"=>"980190962"}
+  [1m[36mDropdown Load (0.6ms)[0m  [1m[34mSELECT  "dropdowns".* FROM "dropdowns" WHERE "dropdowns"."id" = $1 LIMIT $2[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+Redirected to http://www.example.com/login
+Filter chain halted as :require_login rendered or redirected
+Completed 302 Found in 4ms (ActiveRecord: 1.1ms)
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+-----------------------------------------------------
+DropdownsControllerTest: test_should_destroy_dropdown
+-----------------------------------------------------
+  [1m[36mDropdown Load (0.5ms)[0m  [1m[34mSELECT  "dropdowns".* FROM "dropdowns" WHERE "dropdowns"."id" = $1 LIMIT $2[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "dropdowns"[0m
+Started DELETE "/dropdowns/980190962" for 127.0.0.1 at 2016-07-21 15:13:07 -0300
+Processing by DropdownsController#destroy as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mDropdown Load (0.7ms)[0m  [1m[34mSELECT  "dropdowns".* FROM "dropdowns" WHERE "dropdowns"."id" = $1 LIMIT $2[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+Redirected to http://www.example.com/login
+Filter chain halted as :require_login rendered or redirected
+Completed 302 Found in 4ms (ActiveRecord: 1.2ms)
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "dropdowns"[0m
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+--------------------------------------------
+DropdownsControllerTest: test_should_get_new
+--------------------------------------------
+  [1m[36mDropdown Load (0.4ms)[0m  [1m[34mSELECT  "dropdowns".* FROM "dropdowns" WHERE "dropdowns"."id" = $1 LIMIT $2[0m  [["id", 980190962], ["LIMIT", 1]]
+Started GET "/dropdowns/new" for 127.0.0.1 at 2016-07-21 15:13:07 -0300
+Processing by DropdownsController#new as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+Redirected to http://www.example.com/login
+Filter chain halted as :require_login rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.5ms)
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+--------------------------------------------------
+DropdownsControllerTest: test_should_show_dropdown
+--------------------------------------------------
+  [1m[36mDropdown Load (0.5ms)[0m  [1m[34mSELECT  "dropdowns".* FROM "dropdowns" WHERE "dropdowns"."id" = $1 LIMIT $2[0m  [["id", 980190962], ["LIMIT", 1]]
+Started GET "/dropdowns/980190962" for 127.0.0.1 at 2016-07-21 15:13:07 -0300
+Processing by DropdownsController#show as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mDropdown Load (0.5ms)[0m  [1m[34mSELECT  "dropdowns".* FROM "dropdowns" WHERE "dropdowns"."id" = $1 LIMIT $2[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+Redirected to http://www.example.com/login
+Filter chain halted as :require_login rendered or redirected
+Completed 302 Found in 5ms (ActiveRecord: 1.2ms)
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+----------------------------------------------------
+DropdownsControllerTest: test_should_create_dropdown
+----------------------------------------------------
+  [1m[36mDropdown Load (0.3ms)[0m  [1m[34mSELECT  "dropdowns".* FROM "dropdowns" WHERE "dropdowns"."id" = $1 LIMIT $2[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "dropdowns"[0m
+Started POST "/dropdowns" for 127.0.0.1 at 2016-07-21 15:13:07 -0300
+Processing by DropdownsController#create as HTML
+  Parameters: {"dropdown"=>{"name"=>"MyString", "user_id"=>"980190962"}}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+Redirected to http://www.example.com/login
+Filter chain halted as :require_login rendered or redirected
+Completed 302 Found in 3ms (ActiveRecord: 0.5ms)
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "dropdowns"[0m
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+---------------------------------------------
+DropdownsControllerTest: test_should_get_edit
+---------------------------------------------
+  [1m[36mDropdown Load (0.3ms)[0m  [1m[34mSELECT  "dropdowns".* FROM "dropdowns" WHERE "dropdowns"."id" = $1 LIMIT $2[0m  [["id", 980190962], ["LIMIT", 1]]
+Started GET "/dropdowns/980190962/edit" for 127.0.0.1 at 2016-07-21 15:13:07 -0300
+Processing by DropdownsController#edit as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mDropdown Load (0.4ms)[0m  [1m[34mSELECT  "dropdowns".* FROM "dropdowns" WHERE "dropdowns"."id" = $1 LIMIT $2[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+Redirected to http://www.example.com/login
+Filter chain halted as :require_login rendered or redirected
+Completed 302 Found in 4ms (ActiveRecord: 1.1ms)
+  [1m[35m (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+-------------------------------------
+UserTest: test_name_should_be_present
+-------------------------------------
+  [1m[35m (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+--------------------------------------
+UserTest: test_email_should_be_present
+--------------------------------------
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+-------------------------------------------
+UserTest: test_email_should_not_be_too_long
+-------------------------------------------
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+------------------------------------------
+UserTest: test_name_should_not_be_too_long
+------------------------------------------
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+------------------------------
+UserTest: test_should_be_valid
+------------------------------
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+----------------------------------------
+UsersControllerTest: test_should_get_new
+----------------------------------------
+Started GET "/signup" for 127.0.0.1 at 2016-07-21 15:13:07 -0300
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered shared/_error_messages.html.erb (0.9ms)
+  Rendered users/new.html.erb within layouts/application (19.3ms)
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  Rendered layouts/_header.html.erb (3.1ms)
+  Rendered layouts/_footer.html.erb (0.8ms)
+Completed 200 OK in 33ms (Views: 30.8ms | ActiveRecord: 0.6ms)
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+-------------------------------------------------------
+TextFieldsControllerTest: test_should_create_text_field
+-------------------------------------------------------
+  [1m[36mTextField Load (0.5ms)[0m  [1m[34mSELECT  "text_fields".* FROM "text_fields" WHERE "text_fields"."id" = $1 LIMIT $2[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "text_fields"[0m
+Started POST "/text_fields" for 127.0.0.1 at 2016-07-21 15:13:07 -0300
+Processing by TextFieldsController#create as HTML
+  Parameters: {"text_field"=>{"name"=>"MyString", "user_id"=>"980190962"}}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+Redirected to http://www.example.com/login
+Filter chain halted as :require_login rendered or redirected
+Completed 302 Found in 3ms (ActiveRecord: 0.6ms)
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "text_fields"[0m
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+---------------------------------------------
+TextFieldsControllerTest: test_should_get_new
+---------------------------------------------
+  [1m[36mTextField Load (0.5ms)[0m  [1m[34mSELECT  "text_fields".* FROM "text_fields" WHERE "text_fields"."id" = $1 LIMIT $2[0m  [["id", 980190962], ["LIMIT", 1]]
+Started GET "/text_fields/new" for 127.0.0.1 at 2016-07-21 15:13:07 -0300
+Processing by TextFieldsController#new as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+Redirected to http://www.example.com/login
+Filter chain halted as :require_login rendered or redirected
+Completed 302 Found in 3ms (ActiveRecord: 0.6ms)
+  [1m[35m (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+-------------------------------------------------------
+TextFieldsControllerTest: test_should_update_text_field
+-------------------------------------------------------
+  [1m[36mTextField Load (0.5ms)[0m  [1m[34mSELECT  "text_fields".* FROM "text_fields" WHERE "text_fields"."id" = $1 LIMIT $2[0m  [["id", 980190962], ["LIMIT", 1]]
+Started PATCH "/text_fields/980190962" for 127.0.0.1 at 2016-07-21 15:13:07 -0300
+Processing by TextFieldsController#update as HTML
+  Parameters: {"text_field"=>{"name"=>"MyString", "user_id"=>"980190962"}, "id"=>"980190962"}
+  [1m[36mTextField Load (0.5ms)[0m  [1m[34mSELECT  "text_fields".* FROM "text_fields" WHERE "text_fields"."id" = $1 LIMIT $2[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+Redirected to http://www.example.com/login
+Filter chain halted as :require_login rendered or redirected
+Completed 302 Found in 4ms (ActiveRecord: 1.0ms)
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+--------------------------------------------------------
+TextFieldsControllerTest: test_should_destroy_text_field
+--------------------------------------------------------
+  [1m[36mTextField Load (0.7ms)[0m  [1m[34mSELECT  "text_fields".* FROM "text_fields" WHERE "text_fields"."id" = $1 LIMIT $2[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "text_fields"[0m
+Started DELETE "/text_fields/980190962" for 127.0.0.1 at 2016-07-21 15:13:07 -0300
+Processing by TextFieldsController#destroy as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mTextField Load (0.6ms)[0m  [1m[34mSELECT  "text_fields".* FROM "text_fields" WHERE "text_fields"."id" = $1 LIMIT $2[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+Redirected to http://www.example.com/login
+Filter chain halted as :require_login rendered or redirected
+Completed 302 Found in 4ms (ActiveRecord: 1.1ms)
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "text_fields"[0m
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+----------------------------------------------
+TextFieldsControllerTest: test_should_get_edit
+----------------------------------------------
+  [1m[36mTextField Load (0.5ms)[0m  [1m[34mSELECT  "text_fields".* FROM "text_fields" WHERE "text_fields"."id" = $1 LIMIT $2[0m  [["id", 980190962], ["LIMIT", 1]]
+Started GET "/text_fields/980190962/edit" for 127.0.0.1 at 2016-07-21 15:13:07 -0300
+Processing by TextFieldsController#edit as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mTextField Load (0.4ms)[0m  [1m[34mSELECT  "text_fields".* FROM "text_fields" WHERE "text_fields"."id" = $1 LIMIT $2[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+Redirected to http://www.example.com/login
+Filter chain halted as :require_login rendered or redirected
+Completed 302 Found in 4ms (ActiveRecord: 0.9ms)
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+-----------------------------------------------------
+TextFieldsControllerTest: test_should_show_text_field
+-----------------------------------------------------
+  [1m[36mTextField Load (0.5ms)[0m  [1m[34mSELECT  "text_fields".* FROM "text_fields" WHERE "text_fields"."id" = $1 LIMIT $2[0m  [["id", 980190962], ["LIMIT", 1]]
+Started GET "/text_fields/980190962" for 127.0.0.1 at 2016-07-21 15:13:07 -0300
+Processing by TextFieldsController#show as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mTextField Load (0.4ms)[0m  [1m[34mSELECT  "text_fields".* FROM "text_fields" WHERE "text_fields"."id" = $1 LIMIT $2[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+Redirected to http://www.example.com/login
+Filter chain halted as :require_login rendered or redirected
+Completed 302 Found in 4ms (ActiveRecord: 0.9ms)
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+-----------------------------------------------
+TextFieldsControllerTest: test_should_get_index
+-----------------------------------------------
+  [1m[36mTextField Load (0.3ms)[0m  [1m[34mSELECT  "text_fields".* FROM "text_fields" WHERE "text_fields"."id" = $1 LIMIT $2[0m  [["id", 980190962], ["LIMIT", 1]]
+Started GET "/text_fields" for 127.0.0.1 at 2016-07-21 15:13:07 -0300
+Processing by TextFieldsController#index as HTML
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+Redirected to http://www.example.com/login
+Filter chain halted as :require_login rendered or redirected
+Completed 302 Found in 3ms (ActiveRecord: 0.7ms)
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+--------------------------------------
+ContactTest: test_should_be_have_email
+--------------------------------------
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+------------------------------------
+ContactTest: test_is_a_valid_contact
+------------------------------------
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+-------------------------------
+ContactTest: test_um_teste_bobo
+-------------------------------
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+---------------------------------------------------------
+DropdownTest: test_when_it_has_more_the_one_*_consecutive
+---------------------------------------------------------
+  [1m[36mDropdown Load (0.3ms)[0m  [1m[34mSELECT  "dropdowns".* FROM "dropdowns" WHERE "dropdowns"."id" = $1 LIMIT $2[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+------------------------------------------------
+DropdownTest: test_eliminate_first_unsuitables_*
+------------------------------------------------
+  [1m[36mDropdown Load (0.3ms)[0m  [1m[34mSELECT  "dropdowns".* FROM "dropdowns" WHERE "dropdowns"."id" = $1 LIMIT $2[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+---------------------------------------------
+DropdownTest: test_when_param_is_empty_or_nil
+---------------------------------------------
+  [1m[36mDropdown Load (0.4ms)[0m  [1m[34mSELECT  "dropdowns".* FROM "dropdowns" WHERE "dropdowns"."id" = $1 LIMIT $2[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+------------------------------------
+TextAreaTest: test_shoul_have_a_name
+------------------------------------
+  [1m[36mTextArea Load (0.4ms)[0m  [1m[34mSELECT  "text_areas".* FROM "text_areas" WHERE "text_areas"."id" = $1 LIMIT $2[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[35m (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+-----------------------------------------------
+TextAreaTest: test_name_should_be_less_than_200
+-----------------------------------------------
+  [1m[36mTextArea Load (0.5ms)[0m  [1m[34mSELECT  "text_areas".* FROM "text_areas" WHERE "text_areas"."id" = $1 LIMIT $2[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+------------------------------------------------
+UsersSignupTest: test_invalid_signup_information
+------------------------------------------------
+Started GET "/signup" for 127.0.0.1 at 2016-07-21 15:13:07 -0300
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered shared/_error_messages.html.erb (0.8ms)
+  Rendered users/new.html.erb within layouts/application (6.0ms)
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  Rendered layouts/_header.html.erb (3.2ms)
+  Rendered layouts/_footer.html.erb (0.9ms)
+Completed 200 OK in 20ms (Views: 18.0ms | ActiveRecord: 0.6ms)
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT COUNT(*) FROM "users"[0m
+Started POST "/users" for 127.0.0.1 at 2016-07-21 15:13:07 -0300
+Processing by UsersController#create as HTML
+  Parameters: {"user"=>{"name"=>"", "email"=>"user@invalid", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}}
+  [1m[35m (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  Rendering users/new.html.erb within layouts/application
+  Rendered shared/_error_messages.html.erb (2.8ms)
+  Rendered users/new.html.erb within layouts/application (7.7ms)
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  Rendered layouts/_header.html.erb (2.9ms)
+  Rendered layouts/_footer.html.erb (0.8ms)
+Completed 200 OK in 25ms (Views: 19.2ms | ActiveRecord: 1.2ms)
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "users"[0m
+  [1m[35m (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+------------------------------------------------------
+TextAreasControllerTest: test_should_destroy_text_area
+------------------------------------------------------
+  [1m[36mTextArea Load (0.5ms)[0m  [1m[34mSELECT  "text_areas".* FROM "text_areas" WHERE "text_areas"."id" = $1 LIMIT $2[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "text_areas"[0m
+Started DELETE "/text_areas/980190962" for 127.0.0.1 at 2016-07-21 15:13:07 -0300
+Processing by TextAreasController#destroy as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mTextArea Load (0.6ms)[0m  [1m[34mSELECT  "text_areas".* FROM "text_areas" WHERE "text_areas"."id" = $1 LIMIT $2[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+Redirected to http://www.example.com/login
+Filter chain halted as :require_login rendered or redirected
+Completed 302 Found in 5ms (ActiveRecord: 1.1ms)
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "text_areas"[0m
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+---------------------------------------------------
+TextAreasControllerTest: test_should_show_text_area
+---------------------------------------------------
+  [1m[36mTextArea Load (0.5ms)[0m  [1m[34mSELECT  "text_areas".* FROM "text_areas" WHERE "text_areas"."id" = $1 LIMIT $2[0m  [["id", 980190962], ["LIMIT", 1]]
+Started GET "/text_areas/980190962" for 127.0.0.1 at 2016-07-21 15:13:07 -0300
+Processing by TextAreasController#show as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mTextArea Load (0.6ms)[0m  [1m[34mSELECT  "text_areas".* FROM "text_areas" WHERE "text_areas"."id" = $1 LIMIT $2[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+Redirected to http://www.example.com/login
+Filter chain halted as :require_login rendered or redirected
+Completed 302 Found in 4ms (ActiveRecord: 1.2ms)
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+--------------------------------------------
+TextAreasControllerTest: test_should_get_new
+--------------------------------------------
+  [1m[36mTextArea Load (0.4ms)[0m  [1m[34mSELECT  "text_areas".* FROM "text_areas" WHERE "text_areas"."id" = $1 LIMIT $2[0m  [["id", 980190962], ["LIMIT", 1]]
+Started GET "/text_areas/new" for 127.0.0.1 at 2016-07-21 15:13:07 -0300
+Processing by TextAreasController#new as HTML
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+Redirected to http://www.example.com/login
+Filter chain halted as :require_login rendered or redirected
+Completed 302 Found in 4ms (ActiveRecord: 1.0ms)
+  [1m[35m (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+-----------------------------------------------------
+TextAreasControllerTest: test_should_create_text_area
+-----------------------------------------------------
+  [1m[36mTextArea Load (0.4ms)[0m  [1m[34mSELECT  "text_areas".* FROM "text_areas" WHERE "text_areas"."id" = $1 LIMIT $2[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "text_areas"[0m
+Started POST "/text_areas" for 127.0.0.1 at 2016-07-21 15:13:07 -0300
+Processing by TextAreasController#create as HTML
+  Parameters: {"text_area"=>{"name"=>"MyString", "user_id"=>"980190962"}}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+Redirected to http://www.example.com/login
+Filter chain halted as :require_login rendered or redirected
+Completed 302 Found in 3ms (ActiveRecord: 0.6ms)
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "text_areas"[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+---------------------------------------------
+TextAreasControllerTest: test_should_get_edit
+---------------------------------------------
+  [1m[36mTextArea Load (0.3ms)[0m  [1m[34mSELECT  "text_areas".* FROM "text_areas" WHERE "text_areas"."id" = $1 LIMIT $2[0m  [["id", 980190962], ["LIMIT", 1]]
+Started GET "/text_areas/980190962/edit" for 127.0.0.1 at 2016-07-21 15:13:07 -0300
+Processing by TextAreasController#edit as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mTextArea Load (0.4ms)[0m  [1m[34mSELECT  "text_areas".* FROM "text_areas" WHERE "text_areas"."id" = $1 LIMIT $2[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+Redirected to http://www.example.com/login
+Filter chain halted as :require_login rendered or redirected
+Completed 302 Found in 5ms (ActiveRecord: 1.2ms)
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+-----------------------------------------------------
+TextAreasControllerTest: test_should_update_text_area
+-----------------------------------------------------
+  [1m[36mTextArea Load (0.4ms)[0m  [1m[34mSELECT  "text_areas".* FROM "text_areas" WHERE "text_areas"."id" = $1 LIMIT $2[0m  [["id", 980190962], ["LIMIT", 1]]
+Started PATCH "/text_areas/980190962" for 127.0.0.1 at 2016-07-21 15:13:07 -0300
+Processing by TextAreasController#update as HTML
+  Parameters: {"text_area"=>{"name"=>"MyString", "user_id"=>"980190962"}, "id"=>"980190962"}
+  [1m[36mTextArea Load (0.6ms)[0m  [1m[34mSELECT  "text_areas".* FROM "text_areas" WHERE "text_areas"."id" = $1 LIMIT $2[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+Redirected to http://www.example.com/login
+Filter chain halted as :require_login rendered or redirected
+Completed 302 Found in 4ms (ActiveRecord: 1.1ms)
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+----------------------------------------------
+TextAreasControllerTest: test_should_get_index
+----------------------------------------------
+  [1m[36mTextArea Load (0.3ms)[0m  [1m[34mSELECT  "text_areas".* FROM "text_areas" WHERE "text_areas"."id" = $1 LIMIT $2[0m  [["id", 980190962], ["LIMIT", 1]]
+Started GET "/text_areas" for 127.0.0.1 at 2016-07-21 15:13:07 -0300
+Processing by TextAreasController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+Redirected to http://www.example.com/login
+Filter chain halted as :require_login rendered or redirected
+Completed 302 Found in 3ms (ActiveRecord: 0.5ms)
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+----------------------------------------------
+StaticPagesControllerTest: test_should_go_home
+----------------------------------------------
+Started GET "/" for 127.0.0.1 at 2016-07-21 15:13:07 -0300
+Processing by StaticPagesController#home as HTML
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+Redirected to http://www.example.com/login
+Filter chain halted as :require_login rendered or redirected
+Completed 302 Found in 3ms (ActiveRecord: 0.7ms)
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+----------------------------------------------------------
+StaticPagesControllerTest: test_should_go_to_contact_field
+----------------------------------------------------------
+Started GET "/contact_fields" for 127.0.0.1 at 2016-07-21 15:13:07 -0300
+Processing by StaticPagesController#contact_fields as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+Redirected to http://www.example.com/login
+Filter chain halted as :require_login rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.6ms)
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+---------------------------------------------
+ContactsControllerTest: test_should_get_index
+---------------------------------------------
+  [1m[36mContact Load (0.4ms)[0m  [1m[34mSELECT  "contacts".* FROM "contacts" WHERE "contacts"."id" = $1 LIMIT $2[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+------------------------------------------------
+ContactsControllerTest: test_should_show_contact
+------------------------------------------------
+  [1m[36mContact Load (0.5ms)[0m  [1m[34mSELECT  "contacts".* FROM "contacts" WHERE "contacts"."id" = $1 LIMIT $2[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+---------------------------------------------------
+ContactsControllerTest: test_should_destroy_contact
+---------------------------------------------------
+  [1m[36mContact Load (0.5ms)[0m  [1m[34mSELECT  "contacts".* FROM "contacts" WHERE "contacts"."id" = $1 LIMIT $2[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m

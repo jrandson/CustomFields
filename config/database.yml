@@ -83,6 +83,6 @@ test:
 #
 production:
   <<: *default
-  database: dbcee3gpd7c7fl
-  username: qkqzllrdolabpl
-  password: EEp6BYJRXTuYifk2sYrUPAuKty
+  database: desafio_rd_test
+  username: pguser
+  password: password1
