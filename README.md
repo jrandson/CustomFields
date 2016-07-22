@@ -1,7 +1,7 @@
 #CustomFields#
 CustomFields is a Ruby on Rails application that allows you to create a contact list with your own cutom filds. 
 
-To use CustomFields you need have istall Ruby 2.2.4 and Rails 5.0 in your machine. If you didn't this yeat. Follow the estpes bellow:
+To use CustomFields you need have istall Ruby 2.2.4 and Rails 5.0 in your machine. If you didn't this yeat. Follow the estpes bellow
 
 ## Getting Started
 
