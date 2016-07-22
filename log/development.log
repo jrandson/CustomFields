@@ -25408,3 +25408,232 @@ WHERE c.contype = 'f'
   AND t3.nspname = ANY (current_schemas(false))
 ORDER BY c.conname
 [0m
+Started GET "/users/1" for ::1 at 2016-07-21 16:58:46 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (12.6ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (20.6ms)
+  Rendered layouts/_header.html.erb (3.0ms)
+  Rendered layouts/_footer.html.erb (0.9ms)
+Completed 200 OK in 3455ms (Views: 3226.1ms | ActiveRecord: 34.3ms)
+
+
+Started GET "/" for ::1 at 2016-07-21 19:23:14 -0300
+Processing by StaticPagesController#home as HTML
+  [1m[36mUser Load (112.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTextField Load (0.9ms)[0m  [1m[34mSELECT "text_fields".* FROM "text_fields" WHERE "text_fields"."user_id" = $1[0m  [["user_id", 1]]
+  [1m[36mTextArea Load (1.4ms)[0m  [1m[34mSELECT "text_areas".* FROM "text_areas" WHERE "text_areas"."user_id" = $1[0m  [["user_id", 1]]
+  [1m[36mDropdown Load (1.1ms)[0m  [1m[34mSELECT "dropdowns".* FROM "dropdowns" WHERE "dropdowns"."user_id" = $1[0m  [["user_id", 1]]
+  Rendering static_pages/home.html.erb within layouts/application
+  Rendered static_pages/_contact_form.html.erb (1262.0ms)
+  Rendered static_pages/home.html.erb within layouts/application (1326.4ms)
+  Rendered layouts/_header.html.erb (2.3ms)
+  Rendered layouts/_footer.html.erb (1.0ms)
+Completed 200 OK in 5723ms (Views: 2796.8ms | ActiveRecord: 297.6ms)
+
+
+Started DELETE "/logout" for ::1 at 2016-07-21 19:34:30 -0300
+Processing by SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"tKMdzQUCB2m7xa1uoEWw1gCsIeSmLluXzF2PsNOGVY71iE1jrn9AL+ksE1FcABs2LiajQjmVC6SSdmMxDDDDyw=="}
+Redirected to http://localhost:3000/login
+Completed 302 Found in 31ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/login" for ::1 at 2016-07-21 19:34:30 -0300
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (55.1ms)
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  Rendered layouts/_header.html.erb (4.9ms)
+  Rendered layouts/_footer.html.erb (0.9ms)
+Completed 200 OK in 525ms (Views: 482.7ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/" for ::1 at 2016-07-21 20:36:09 -0300
+Processing by StaticPagesController#home as HTML
+  [1m[36mUser Load (162.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+Redirected to http://localhost:3000/login
+Filter chain halted as :require_login rendered or redirected
+Completed 302 Found in 188ms (ActiveRecord: 162.3ms)
+
+
+Started GET "/login" for ::1 at 2016-07-21 20:36:09 -0300
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (3.9ms)
+  [1m[36mUser Load (16.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  Rendered layouts/_header.html.erb (21.9ms)
+  Rendered layouts/_footer.html.erb (1.6ms)
+Completed 200 OK in 1260ms (Views: 1188.8ms | ActiveRecord: 16.2ms)
+
+
+Started GET "/" for ::1 at 2016-07-21 21:09:48 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.9ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by StaticPagesController#home as HTML
+  [1m[36mUser Load (1.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+Redirected to http://localhost:3000/login
+Filter chain halted as :require_login rendered or redirected
+Completed 302 Found in 130ms (ActiveRecord: 4.6ms)
+
+
+Started GET "/login" for ::1 at 2016-07-21 21:09:49 -0300
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (113.0ms)
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  Rendered layouts/_header.html.erb (3.6ms)
+  Rendered layouts/_footer.html.erb (0.9ms)
+Completed 200 OK in 3314ms (Views: 3306.6ms | ActiveRecord: 0.8ms)
+
+
+Started POST "/login" for ::1 at 2016-07-21 21:10:19 -0300
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"tnD68r+444y7NCdaTR5VOG1HIUk1uxzBbfb1D1BZq+j3W6pcFMWkyundmWWxW/7YQ82j76oATPIz3RmOj+89rQ==", "session"=>{"email"=>"harvey@email.com", "password"=>"[FILTERED]"}, "commit"=>"Log in"}
+  [1m[36mUser Load (28.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "harvey@email.com"], ["LIMIT", 1]]
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (2.7ms)
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  Rendered layouts/_header.html.erb (3.6ms)
+  Rendered layouts/_footer.html.erb (0.8ms)
+Completed 200 OK in 933ms (Views: 202.2ms | ActiveRecord: 453.3ms)
+
+
+Started POST "/login" for ::1 at 2016-07-21 21:10:27 -0300
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"RPfuTcAUgYPWwSK+ta8MteGXnPjCpbOvP3OGhHWBeusF3L7ja2nGxYQonIFJ6qdVzx0eXl0e45xhWGoFqjfsrg==", "session"=>{"email"=>"harvey@email.com", "password"=>"[FILTERED]"}, "commit"=>"Log in"}
+  [1m[36mUser Load (2.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "harvey@email.com"], ["LIMIT", 1]]
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (3.9ms)
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  Rendered layouts/_header.html.erb (3.8ms)
+  Rendered layouts/_footer.html.erb (0.9ms)
+Completed 200 OK in 111ms (Views: 104.4ms | ActiveRecord: 3.6ms)
+
+
+Started POST "/login" for ::1 at 2016-07-21 21:10:32 -0300
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"ncSSmD1ygRnlXgxdM0jIrgDKfcgOwQqfCga9d5zolG/c78I2lg/GX7e3smLPDWNOLkD/bpF6WqxULVH2Q14CKg==", "session"=>{"email"=>"harvey@email.com", "password"=>"[FILTERED]"}, "commit"=>"Log in"}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "harvey@email.com"], ["LIMIT", 1]]
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (3.5ms)
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  Rendered layouts/_header.html.erb (4.0ms)
+  Rendered layouts/_footer.html.erb (0.8ms)
+Completed 200 OK in 123ms (Views: 117.6ms | ActiveRecord: 1.4ms)
+
+
+Started POST "/login" for ::1 at 2016-07-21 21:10:38 -0300
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"s+XWOyW7oTTDOPD0txBb23Jer1FL0u6ErWJR4s0UKfjyzoaVjsbmcpHRTstLVfA7XNQt99RpvrfzSb1jEqK/vQ==", "session"=>{"email"=>"harvey@email.com", "password"=>"[FILTERED]"}, "commit"=>"Log in"}
+  [1m[36mUser Load (2.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "harvey@email.com"], ["LIMIT", 1]]
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (4.3ms)
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  Rendered layouts/_header.html.erb (4.4ms)
+  Rendered layouts/_footer.html.erb (0.9ms)
+Completed 200 OK in 136ms (Views: 127.7ms | ActiveRecord: 3.6ms)
+
+
+Started POST "/login" for ::1 at 2016-07-21 21:10:49 -0300
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"1u6buJ4wjtGtT1wx7Tmt1bEZZ2/MlRC4ry5b/xyBn4+XxcsWNU3Jl/+m4g4RfAY1n5PlyVMuQIvxBbd+wzcJyg==", "session"=>{"email"=>"jaco_d@email.com", "password"=>"[FILTERED]"}, "commit"=>"Log in"}
+  [1m[36mUser Load (5.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "jaco_d@email.com"], ["LIMIT", 1]]
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (3.2ms)
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  Rendered layouts/_header.html.erb (3.8ms)
+  Rendered layouts/_footer.html.erb (1.0ms)
+Completed 200 OK in 133ms (Views: 124.0ms | ActiveRecord: 6.2ms)
+
+
+Started POST "/login" for ::1 at 2016-07-21 21:10:53 -0300
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"/hKxFoX2SwsM9xkaEOKEOCBQw1KrKvsxoY7j1UDun/e/OeG4LosMTV4epyXspy/YDtpB9DSRqwL/pQ9Un1gJsg==", "session"=>{"email"=>"harvey@email.com", "password"=>"[FILTERED]"}, "commit"=>"Log in"}
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "harvey@email.com"], ["LIMIT", 1]]
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (3.9ms)
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  Rendered layouts/_header.html.erb (3.0ms)
+  Rendered layouts/_footer.html.erb (0.8ms)
+Completed 200 OK in 131ms (Views: 126.6ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/signup" for ::1 at 2016-07-21 21:10:55 -0300
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered shared/_error_messages.html.erb (0.9ms)
+  Rendered users/new.html.erb within layouts/application (14.1ms)
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  Rendered layouts/_header.html.erb (3.3ms)
+  Rendered layouts/_footer.html.erb (0.9ms)
+Completed 200 OK in 115ms (Views: 92.8ms | ActiveRecord: 0.6ms)
+
+
+Started POST "/signup" for ::1 at 2016-07-21 21:11:11 -0300
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"89Yrw9SGe937NlREsU+MvZwcJjxONhxfLvGz+kWwnkey/Xttf/s8m6nf6ntNCiddspakmtGNTGxw2l97mgYIAg==", "user"=>{"name"=>"Harvey", "email"=>"harvey@email.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Start creat my personalized form now"}
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (266.3ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "password", "password_confirmation") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Harvey"], ["email", "harvey@email.com"], ["created_at", 2016-07-22 00:11:11 UTC], ["updated_at", 2016-07-22 00:11:11 UTC], ["password", "password1"], ["password_confirmation", "password1"]]
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+Completed 500 Internal Server Error in 275ms (ActiveRecord: 267.0ms)
+
+
+  
+ActiveRecord::RecordNotUnique (PG::UniqueViolation: ERRO:  duplicar valor da chave viola a restrição de unicidade "index_users_on_email"
+DETAIL:  Chave (email)=(harvey@email.com) já existe.
+: INSERT INTO "users" ("name", "email", "created_at", "updated_at", "password", "password_confirmation") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"):
+  
+app/controllers/users_controller.rb:17:in `create'
+  Rendering /home/randson/.rvm/gems/ruby-2.2.4/gems/actionpack-5.0.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /home/randson/.rvm/gems/ruby-2.2.4/gems/actionpack-5.0.0/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /home/randson/.rvm/gems/ruby-2.2.4/gems/actionpack-5.0.0/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (16.7ms)
+  Rendering /home/randson/.rvm/gems/ruby-2.2.4/gems/actionpack-5.0.0/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /home/randson/.rvm/gems/ruby-2.2.4/gems/actionpack-5.0.0/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (7.3ms)
+  Rendering /home/randson/.rvm/gems/ruby-2.2.4/gems/actionpack-5.0.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /home/randson/.rvm/gems/ruby-2.2.4/gems/actionpack-5.0.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (2.7ms)
+  Rendered /home/randson/.rvm/gems/ruby-2.2.4/gems/actionpack-5.0.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (62.5ms)
+Started GET "/login" for ::1 at 2016-07-21 21:11:29 -0300
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (7.2ms)
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  Rendered layouts/_header.html.erb (3.1ms)
+  Rendered layouts/_footer.html.erb (0.7ms)
+Completed 200 OK in 117ms (Views: 113.8ms | ActiveRecord: 0.7ms)
+
+
+Started POST "/login" for ::1 at 2016-07-21 21:11:35 -0300
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"KVzptgsC+cn76Hioy32PuJ6DT0DO6f3MR472Db/EFVBod7kYoH++j6kBxpc3OCRYsAnN5lFSrf8ZpRqMYHKDFQ==", "session"=>{"email"=>"harvey@email.com", "password"=>"[FILTERED]"}, "commit"=>"Log in"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "harvey@email.com"], ["LIMIT", 1]]
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (4.3ms)
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  Rendered layouts/_header.html.erb (3.2ms)
+  Rendered layouts/_footer.html.erb (0.9ms)
+Completed 200 OK in 108ms (Views: 101.4ms | ActiveRecord: 1.9ms)
+
+
+Started POST "/login" for ::1 at 2016-07-21 21:11:39 -0300
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"PZgp6wVjYKq/3CH9Li34lMoEyJQyf8UMyD4NSUrcWrZ8s3lFrh4n7O01n8LSaFN05I5KMq3ElT+WFeHIlWrM8w==", "session"=>{"email"=>"harvey@email.com", "password"=>"[FILTERED]"}, "commit"=>"Log in"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "harvey@email.com"], ["LIMIT", 1]]
+Redirected to http://localhost:3000/users/1
+Completed 302 Found in 4ms (ActiveRecord: 0.7ms)
+
+
+Started GET "/users/1" for ::1 at 2016-07-21 21:11:39 -0300
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (2.7ms)
+  Rendered layouts/_header.html.erb (1.8ms)
+  Rendered layouts/_footer.html.erb (0.7ms)
+Completed 200 OK in 131ms (Views: 97.0ms | ActiveRecord: 1.7ms)
+
+

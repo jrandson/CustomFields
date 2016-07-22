@@ -26,7 +26,7 @@
     <% end %> 
 
     <!-- Text fields -->
-    <%= @text_fields.each do |text_field| %>    
+    <% @text_fields.each do |text_field| %>    
           <%= fields_for 'text_field_values[][]', text_field[:value] do |value| %>
             <div class="field">
               <label><%= text_field[:text_field].name %></label>
@@ -39,7 +39,7 @@
     <!-- end text fields-->
 
     <!-- Text areas -->
-    <%= @text_areas.each do |text_area| %>    
+    <% @text_areas.each do |text_area| %>    
           <%= fields_for 'text_area_values[][]', text_area[:value] do |value| %>
             <div class="field">
               <label><%= text_area[:text_area].name %></label>
