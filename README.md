@@ -5,9 +5,11 @@ To use CustomFields you need have istall Ruby 2.2.4 and Rails 5.0 in your machin
 
 ## Getting Started
 
-1. Install Ruby 2.2.4 follwing running this commands on terminal prompt install curl:
+1. Install Ruby 2.2.4 by running this commands on terminal prompt:
 
-	$ apt-get install curl
+	Install curl:
+
+		$ apt-get install curl
 	
 	Install RVM:
 	
@@ -41,7 +43,7 @@ To use CustomFields you need have istall Ruby 2.2.4 and Rails 5.0 in your machin
 		$ gem install rails
 		$ rails -v
 	
-	Choose the version you want. I recoent the 5.0 one
+	Choose the version you want. I recomend the 5.0 one
 	    $ gem install rails --version=5.0
 
 
