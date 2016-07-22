@@ -25,7 +25,7 @@ class DropdownsController < ApplicationController
     
     respond_to do |format|      
       if @dropdown.save
-        format.html { redirect_to @dropdown, notice: 'Dropdown was successfully created.' }
+        format.html { redirect_to contact_fields_path, notice: 'Dropdown was successfully created.' }
         format.json { render :show, status: :created, location: @dropdown }
       else
         format.html { render :new }

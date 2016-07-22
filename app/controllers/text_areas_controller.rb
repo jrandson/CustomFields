@@ -31,7 +31,7 @@ class TextAreasController < ApplicationController
 
     respond_to do |format|
       if @text_area.save
-        format.html { redirect_to @text_area, notice: 'Text area was successfully created.' }
+        format.html { redirect_to contact_fields_path, notice: 'Text area was successfully created.' }
         format.json { render :show, status: :created, location: @text_area }
       else
         format.html { render :new }

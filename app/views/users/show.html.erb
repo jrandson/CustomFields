@@ -1,18 +1,20 @@
 <% provide(:title, @user.name) %>
 
-<p>
-	<%= @user.name %>
-</p>
-<p>
-	<%= @user.email %>
-</p>
 
-<p>
-	<%= @user.created_at %>
-</p>
 
-<p>
-	<%= @user.updated_at %>
-</p>
+<div class="panel panel-primary">
+  <div class="panel-body">
+    <h3>
+		Name: <%= @user.name %>
+	</3>
 
-<%= Time.now %>
+	<h3>
+		Email: <%= @user.email %>
+	</3>
+
+	<h3>
+		Created at: <%= @user.created_at %>
+	</3>
+		
+  </div>
+</div>

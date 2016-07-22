@@ -1,6 +1,6 @@
 
 
-	<p id="notice"><%= notice %></p>
+
 	 <h1>Contact datails</h1>
 
 	<table class="table">
@@ -20,21 +20,21 @@
 	    	<td><%= @contact.name %></td>
 		    <td><%= @contact.email %></td>
 	    </tr>
-	    <%= @text_field_values.each do |field| %>
+	    <% @text_field_values.each do |field| %>
 	    	<tr>
 	    		<td><%= field.name %></td>
 	    		<td><%= field.value %></td>
 	    	</tr>				
 		<% end %>
 
-		<%= @text_area_values.each do |field| %>
+		<% @text_area_values.each do |field| %>
 	    	<tr>
 	    		<td><%= field.name %></td>
 	    		<td><%= field.value %></td>
 	    	</tr>				
 		<% end %>
 
-		<%= @dropdown_values.each do |field| %>
+		<% @dropdown_values.each do |field| %>
 	    	<tr>
 	    		<td><%= field.content %></td>
 	    		<td><%= field.value %></td>

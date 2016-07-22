@@ -27,9 +27,9 @@ class TextFieldsController < ApplicationController
   def create
     @text_field = TextField.new(text_field_params)
     @text_field.user_id = current_user.id
-    respond_to do |format|
+    respond_to do |format| 
       if @text_field.save
-        format.html { redirect_to @text_field, notice: 'Text field was successfully created.' }
+        format.html { redirect_to contact_fields_path, notice: 'Text field was successfully created.' }
         format.json { render :show, status: :created, location: @text_field }
       else
         format.html { render :new }
