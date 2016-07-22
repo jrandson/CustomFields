@@ -6,4 +6,5 @@ class Contact < ApplicationRecord
 
   validates :user_id, presence: true
   validates :email, presence: true
+  validates  :email, uniqueness: { case_sensitive: true }
 end

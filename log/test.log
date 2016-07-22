@@ -14361,3 +14361,1478 @@ ContactsControllerTest: test_should_destroy_contact
   [1m[36mContact Load (0.5ms)[0m  [1m[34mSELECT  "contacts".* FROM "contacts" WHERE "contacts"."id" = $1 LIMIT $2[0m  [["id", 980190962], ["LIMIT", 1]]
   [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
   [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (595.8ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (275.6ms)[0m  [1m[35mALTER TABLE "text_field_values" DISABLE TRIGGER ALL;ALTER TABLE "text_areas" DISABLE TRIGGER ALL;ALTER TABLE "text_fields" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" DISABLE TRIGGER ALL;ALTER TABLE "dropdown_values" DISABLE TRIGGER ALL;ALTER TABLE "dropdowns" DISABLE TRIGGER ALL;ALTER TABLE "text_area_values" DISABLE TRIGGER ALL;ALTER TABLE "contacts" DISABLE TRIGGER ALL;ALTER TABLE "users" DISABLE TRIGGER ALL[0m
+  [1m[35m (69.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mFixture Delete (127.9ms)[0m  [1m[31mDELETE FROM "dropdown_values"[0m
+  [1m[36mFixture Insert (214.8ms)[0m  [1m[32mINSERT INTO "dropdown_values" ("name", "content", "value", "created_at", "updated_at", "id", "dropdown_id", "contact_id") VALUES ('MyString', 'MyString', 'MyString', '2016-07-22 01:52:23.919296', '2016-07-22 01:52:23.919296', 980190962, 980190962, 980190962)[0m
+  [1m[36mFixture Insert (0.5ms)[0m  [1m[32mINSERT INTO "dropdown_values" ("name", "content", "value", "created_at", "updated_at", "id", "dropdown_id", "contact_id") VALUES ('MyString', 'MyString', 'MyString', '2016-07-22 01:52:23.919296', '2016-07-22 01:52:23.919296', 298486374, 298486374, 298486374)[0m
+  [1m[36mFixture Delete (87.4ms)[0m  [1m[31mDELETE FROM "dropdowns"[0m
+  [1m[36mFixture Insert (0.7ms)[0m  [1m[32mINSERT INTO "dropdowns" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-22 01:52:25.289396', '2016-07-22 01:52:25.289396', 980190962, 980190962)[0m
+  [1m[36mFixture Insert (0.4ms)[0m  [1m[32mINSERT INTO "dropdowns" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-22 01:52:25.289396', '2016-07-22 01:52:25.289396', 298486374, 298486374)[0m
+  [1m[36mFixture Delete (128.7ms)[0m  [1m[31mDELETE FROM "text_areas"[0m
+  [1m[36mFixture Insert (30.5ms)[0m  [1m[32mINSERT INTO "text_areas" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-22 01:52:25.393814', '2016-07-22 01:52:25.393814', 980190962, 980190962)[0m
+  [1m[36mFixture Insert (64.3ms)[0m  [1m[32mINSERT INTO "text_areas" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-22 01:52:25.393814', '2016-07-22 01:52:25.393814', 298486374, 298486374)[0m
+  [1m[36mFixture Delete (10.3ms)[0m  [1m[31mDELETE FROM "text_area_values"[0m
+  [1m[36mFixture Insert (47.6ms)[0m  [1m[32mINSERT INTO "text_area_values" ("name", "value", "created_at", "updated_at", "id", "contact_id") VALUES ('MyString', 'MyText', '2016-07-22 01:52:25.633098', '2016-07-22 01:52:25.633098', 980190962, 980190962)[0m
+  [1m[36mFixture Insert (0.5ms)[0m  [1m[32mINSERT INTO "text_area_values" ("name", "value", "created_at", "updated_at", "id", "contact_id") VALUES ('MyString', 'MyText', '2016-07-22 01:52:25.633098', '2016-07-22 01:52:25.633098', 298486374, 298486374)[0m
+  [1m[36mFixture Delete (57.2ms)[0m  [1m[31mDELETE FROM "users"[0m
+  [1m[36mFixture Delete (81.1ms)[0m  [1m[31mDELETE FROM "contacts"[0m
+  [1m[36mFixture Insert (22.4ms)[0m  [1m[32mINSERT INTO "contacts" ("name", "email", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', 'MyString', '2016-07-22 01:52:25.849284', '2016-07-22 01:52:25.849284', 980190962, 980190962)[0m
+  [1m[36mFixture Insert (0.7ms)[0m  [1m[32mINSERT INTO "contacts" ("name", "email", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', 'MyString', '2016-07-22 01:52:25.849284', '2016-07-22 01:52:25.849284', 298486374, 298486374)[0m
+  [1m[36mFixture Delete (105.9ms)[0m  [1m[31mDELETE FROM "text_field_values"[0m
+  [1m[36mFixture Insert (43.5ms)[0m  [1m[32mINSERT INTO "text_field_values" ("name", "value", "created_at", "updated_at", "id", "text_field_id", "contact_id") VALUES ('MyString', 'MyString', '2016-07-22 01:52:25.970483', '2016-07-22 01:52:25.970483', 980190962, 980190962, 980190962)[0m
+  [1m[36mFixture Insert (23.7ms)[0m  [1m[32mINSERT INTO "text_field_values" ("name", "value", "created_at", "updated_at", "id", "text_field_id", "contact_id") VALUES ('MyString', 'MyString', '2016-07-22 01:52:25.970483', '2016-07-22 01:52:25.970483', 298486374, 298486374, 298486374)[0m
+  [1m[36mFixture Delete (73.5ms)[0m  [1m[31mDELETE FROM "text_fields"[0m
+  [1m[36mFixture Insert (87.7ms)[0m  [1m[32mINSERT INTO "text_fields" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-22 01:52:26.160368', '2016-07-22 01:52:26.160368', 980190962, 980190962)[0m
+  [1m[36mFixture Insert (0.6ms)[0m  [1m[32mINSERT INTO "text_fields" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-22 01:52:26.160368', '2016-07-22 01:52:26.160368', 298486374, 298486374)[0m
+  [1m[35m (49.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (142.6ms)[0m  [1m[35mALTER TABLE "text_field_values" ENABLE TRIGGER ALL;ALTER TABLE "text_areas" ENABLE TRIGGER ALL;ALTER TABLE "text_fields" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" ENABLE TRIGGER ALL;ALTER TABLE "dropdown_values" ENABLE TRIGGER ALL;ALTER TABLE "dropdowns" ENABLE TRIGGER ALL;ALTER TABLE "text_area_values" ENABLE TRIGGER ALL;ALTER TABLE "contacts" ENABLE TRIGGER ALL;ALTER TABLE "users" ENABLE TRIGGER ALL[0m
+  [1m[35m (42.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+------------------------------
+UserTest: test_should_be_valid
+------------------------------
+  [1m[36mUser Exists (118.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "exampleuser@example.com"], ["LIMIT", 1]]
+  [1m[35m (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+-------------------------------------------
+UserTest: test_email_should_not_be_too_long
+-------------------------------------------
+  [1m[36mUser Exists (0.8ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa@example.com"], ["LIMIT", 1]]
+  [1m[35m (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+-------------------------------------
+UserTest: test_name_should_be_present
+-------------------------------------
+  [1m[36mUser Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "exampleuser@example.com"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+--------------------------------------
+UserTest: test_email_should_be_present
+--------------------------------------
+  [1m[36mUser Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", ""], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+------------------------------------------
+UserTest: test_name_should_not_be_too_long
+------------------------------------------
+  [1m[36mUser Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "exampleuser@example.com"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+------------------------------------
+ContactTest: test_is_a_valid_contact
+------------------------------------
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.5ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+--------------------------------------
+ContactTest: test_should_be_have_email
+--------------------------------------
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.5ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+---------------------------------
+ContactTest: test_email_is_unique
+---------------------------------
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+-------------------------------
+ContactTest: test_um_teste_bobo
+-------------------------------
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+------------------------------------
+TextAreaTest: test_shoul_have_a_name
+------------------------------------
+  [1m[36mTextArea Load (0.6ms)[0m  [1m[34mSELECT  "text_areas".* FROM "text_areas" WHERE "text_areas"."id" = $1 LIMIT $2[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[35m (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+-----------------------------------------------
+TextAreaTest: test_name_should_be_less_than_200
+-----------------------------------------------
+  [1m[36mTextArea Load (0.6ms)[0m  [1m[34mSELECT  "text_areas".* FROM "text_areas" WHERE "text_areas"."id" = $1 LIMIT $2[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[35m (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+------------------------------------------------
+DropdownTest: test_eliminate_first_unsuitables_*
+------------------------------------------------
+  [1m[36mDropdown Load (0.4ms)[0m  [1m[34mSELECT  "dropdowns".* FROM "dropdowns" WHERE "dropdowns"."id" = $1 LIMIT $2[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[35m (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+---------------------------------------------------------
+DropdownTest: test_when_it_has_more_the_one_*_consecutive
+---------------------------------------------------------
+  [1m[36mDropdown Load (0.4ms)[0m  [1m[34mSELECT  "dropdowns".* FROM "dropdowns" WHERE "dropdowns"."id" = $1 LIMIT $2[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+---------------------------------------------
+DropdownTest: test_when_param_is_empty_or_nil
+---------------------------------------------
+  [1m[36mDropdown Load (0.4ms)[0m  [1m[34mSELECT  "dropdowns".* FROM "dropdowns" WHERE "dropdowns"."id" = $1 LIMIT $2[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.9ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.7ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (2.3ms)[0m  [1m[35mALTER TABLE "text_field_values" DISABLE TRIGGER ALL;ALTER TABLE "text_areas" DISABLE TRIGGER ALL;ALTER TABLE "text_fields" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" DISABLE TRIGGER ALL;ALTER TABLE "dropdown_values" DISABLE TRIGGER ALL;ALTER TABLE "dropdowns" DISABLE TRIGGER ALL;ALTER TABLE "text_area_values" DISABLE TRIGGER ALL;ALTER TABLE "contacts" DISABLE TRIGGER ALL;ALTER TABLE "users" DISABLE TRIGGER ALL[0m
+  [1m[35m (233.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mFixture Delete (0.6ms)[0m  [1m[31mDELETE FROM "dropdown_values"[0m
+  [1m[36mFixture Insert (0.5ms)[0m  [1m[32mINSERT INTO "dropdown_values" ("name", "content", "value", "created_at", "updated_at", "id", "dropdown_id", "contact_id") VALUES ('MyString', 'MyString', 'MyString', '2016-07-22 01:54:54.346682', '2016-07-22 01:54:54.346682', 980190962, 980190962, 980190962)[0m
+  [1m[36mFixture Insert (0.4ms)[0m  [1m[32mINSERT INTO "dropdown_values" ("name", "content", "value", "created_at", "updated_at", "id", "dropdown_id", "contact_id") VALUES ('MyString', 'MyString', 'MyString', '2016-07-22 01:54:54.346682', '2016-07-22 01:54:54.346682', 298486374, 298486374, 298486374)[0m
+  [1m[36mFixture Delete (0.6ms)[0m  [1m[31mDELETE FROM "dropdowns"[0m
+  [1m[36mFixture Insert (0.4ms)[0m  [1m[32mINSERT INTO "dropdowns" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-22 01:54:54.366459', '2016-07-22 01:54:54.366459', 980190962, 980190962)[0m
+  [1m[36mFixture Insert (0.4ms)[0m  [1m[32mINSERT INTO "dropdowns" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-22 01:54:54.366459', '2016-07-22 01:54:54.366459', 298486374, 298486374)[0m
+  [1m[36mFixture Delete (0.6ms)[0m  [1m[31mDELETE FROM "text_areas"[0m
+  [1m[36mFixture Insert (0.4ms)[0m  [1m[32mINSERT INTO "text_areas" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-22 01:54:54.379279', '2016-07-22 01:54:54.379279', 980190962, 980190962)[0m
+  [1m[36mFixture Insert (0.4ms)[0m  [1m[32mINSERT INTO "text_areas" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-22 01:54:54.379279', '2016-07-22 01:54:54.379279', 298486374, 298486374)[0m
+  [1m[36mFixture Delete (0.6ms)[0m  [1m[31mDELETE FROM "text_area_values"[0m
+  [1m[36mFixture Insert (0.4ms)[0m  [1m[32mINSERT INTO "text_area_values" ("name", "value", "created_at", "updated_at", "id", "contact_id") VALUES ('MyString', 'MyText', '2016-07-22 01:54:54.391554', '2016-07-22 01:54:54.391554', 980190962, 980190962)[0m
+  [1m[36mFixture Insert (0.4ms)[0m  [1m[32mINSERT INTO "text_area_values" ("name", "value", "created_at", "updated_at", "id", "contact_id") VALUES ('MyString', 'MyText', '2016-07-22 01:54:54.391554', '2016-07-22 01:54:54.391554', 298486374, 298486374)[0m
+  [1m[36mFixture Delete (0.6ms)[0m  [1m[31mDELETE FROM "users"[0m
+  [1m[36mFixture Delete (0.6ms)[0m  [1m[31mDELETE FROM "contacts"[0m
+  [1m[36mFixture Insert (0.4ms)[0m  [1m[32mINSERT INTO "contacts" ("name", "email", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', 'MyString', '2016-07-22 01:54:54.407605', '2016-07-22 01:54:54.407605', 980190962, 980190962)[0m
+  [1m[36mFixture Insert (0.4ms)[0m  [1m[32mINSERT INTO "contacts" ("name", "email", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', 'MyString', '2016-07-22 01:54:54.407605', '2016-07-22 01:54:54.407605', 298486374, 298486374)[0m
+  [1m[36mFixture Delete (0.6ms)[0m  [1m[31mDELETE FROM "text_field_values"[0m
+  [1m[36mFixture Insert (0.5ms)[0m  [1m[32mINSERT INTO "text_field_values" ("name", "value", "created_at", "updated_at", "id", "text_field_id", "contact_id") VALUES ('MyString', 'MyString', '2016-07-22 01:54:54.420290', '2016-07-22 01:54:54.420290', 980190962, 980190962, 980190962)[0m
+  [1m[36mFixture Insert (0.4ms)[0m  [1m[32mINSERT INTO "text_field_values" ("name", "value", "created_at", "updated_at", "id", "text_field_id", "contact_id") VALUES ('MyString', 'MyString', '2016-07-22 01:54:54.420290', '2016-07-22 01:54:54.420290', 298486374, 298486374, 298486374)[0m
+  [1m[36mFixture Delete (0.5ms)[0m  [1m[31mDELETE FROM "text_fields"[0m
+  [1m[36mFixture Insert (0.4ms)[0m  [1m[32mINSERT INTO "text_fields" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-22 01:54:54.432916', '2016-07-22 01:54:54.432916', 980190962, 980190962)[0m
+  [1m[36mFixture Insert (0.4ms)[0m  [1m[32mINSERT INTO "text_fields" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-22 01:54:54.432916', '2016-07-22 01:54:54.432916', 298486374, 298486374)[0m
+  [1m[35m (127.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (2.4ms)[0m  [1m[35mALTER TABLE "text_field_values" ENABLE TRIGGER ALL;ALTER TABLE "text_areas" ENABLE TRIGGER ALL;ALTER TABLE "text_fields" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" ENABLE TRIGGER ALL;ALTER TABLE "dropdown_values" ENABLE TRIGGER ALL;ALTER TABLE "dropdowns" ENABLE TRIGGER ALL;ALTER TABLE "text_area_values" ENABLE TRIGGER ALL;ALTER TABLE "contacts" ENABLE TRIGGER ALL;ALTER TABLE "users" ENABLE TRIGGER ALL[0m
+  [1m[35m (22.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+------------------------------------
+ContactTest: test_is_a_valid_contact
+------------------------------------
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mContact Exists (1.3ms)[0m  [1m[34mSELECT  1 AS one FROM "contacts" WHERE "contacts"."email" = $1 LIMIT $2[0m  [["email", "contact_example@email.com"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+---------------------------------
+ContactTest: test_email_is_unique
+---------------------------------
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mContact Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "contacts" WHERE "contacts"."email" = $1 LIMIT $2[0m  [["email", "CONTACT_EXAMPLE@EMAIL.COM"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+--------------------------------------
+ContactTest: test_should_be_have_email
+--------------------------------------
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mContact Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "contacts" WHERE "contacts"."email" = $1 LIMIT $2[0m  [["email", ""], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+-------------------------------
+ContactTest: test_um_teste_bobo
+-------------------------------
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+------------------------------------------------
+DropdownTest: test_eliminate_first_unsuitables_*
+------------------------------------------------
+  [1m[36mDropdown Load (0.4ms)[0m  [1m[34mSELECT  "dropdowns".* FROM "dropdowns" WHERE "dropdowns"."id" = $1 LIMIT $2[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+---------------------------------------------
+DropdownTest: test_when_param_is_empty_or_nil
+---------------------------------------------
+  [1m[36mDropdown Load (0.4ms)[0m  [1m[34mSELECT  "dropdowns".* FROM "dropdowns" WHERE "dropdowns"."id" = $1 LIMIT $2[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+---------------------------------------------------------
+DropdownTest: test_when_it_has_more_the_one_*_consecutive
+---------------------------------------------------------
+  [1m[36mDropdown Load (0.4ms)[0m  [1m[34mSELECT  "dropdowns".* FROM "dropdowns" WHERE "dropdowns"."id" = $1 LIMIT $2[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+------------------------------------------
+UserTest: test_name_should_not_be_too_long
+------------------------------------------
+  [1m[36mUser Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "exampleuser@example.com"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+------------------------------
+UserTest: test_should_be_valid
+------------------------------
+  [1m[36mUser Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "exampleuser@example.com"], ["LIMIT", 1]]
+  [1m[35m (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+--------------------------------------
+UserTest: test_email_should_be_present
+--------------------------------------
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", ""], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+-------------------------------------
+UserTest: test_name_should_be_present
+-------------------------------------
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "exampleuser@example.com"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+-------------------------------------------
+UserTest: test_email_should_not_be_too_long
+-------------------------------------------
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa@example.com"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+-----------------------------------------------
+TextAreaTest: test_name_should_be_less_than_200
+-----------------------------------------------
+  [1m[36mTextArea Load (0.5ms)[0m  [1m[34mSELECT  "text_areas".* FROM "text_areas" WHERE "text_areas"."id" = $1 LIMIT $2[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+------------------------------------
+TextAreaTest: test_shoul_have_a_name
+------------------------------------
+  [1m[36mTextArea Load (0.6ms)[0m  [1m[34mSELECT  "text_areas".* FROM "text_areas" WHERE "text_areas"."id" = $1 LIMIT $2[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.8ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (2.0ms)[0m  [1m[35mALTER TABLE "text_field_values" DISABLE TRIGGER ALL;ALTER TABLE "text_areas" DISABLE TRIGGER ALL;ALTER TABLE "text_fields" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" DISABLE TRIGGER ALL;ALTER TABLE "dropdown_values" DISABLE TRIGGER ALL;ALTER TABLE "dropdowns" DISABLE TRIGGER ALL;ALTER TABLE "text_area_values" DISABLE TRIGGER ALL;ALTER TABLE "contacts" DISABLE TRIGGER ALL;ALTER TABLE "users" DISABLE TRIGGER ALL[0m
+  [1m[35m (8.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mFixture Delete (0.7ms)[0m  [1m[31mDELETE FROM "dropdown_values"[0m
+  [1m[36mFixture Insert (0.6ms)[0m  [1m[32mINSERT INTO "dropdown_values" ("name", "content", "value", "created_at", "updated_at", "id", "dropdown_id", "contact_id") VALUES ('MyString', 'MyString', 'MyString', '2016-07-22 01:55:23.267765', '2016-07-22 01:55:23.267765', 980190962, 980190962, 980190962)[0m
+  [1m[36mFixture Insert (0.4ms)[0m  [1m[32mINSERT INTO "dropdown_values" ("name", "content", "value", "created_at", "updated_at", "id", "dropdown_id", "contact_id") VALUES ('MyString', 'MyString', 'MyString', '2016-07-22 01:55:23.267765', '2016-07-22 01:55:23.267765', 298486374, 298486374, 298486374)[0m
+  [1m[36mFixture Delete (0.6ms)[0m  [1m[31mDELETE FROM "dropdowns"[0m
+  [1m[36mFixture Insert (0.4ms)[0m  [1m[32mINSERT INTO "dropdowns" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-22 01:55:23.287413', '2016-07-22 01:55:23.287413', 980190962, 980190962)[0m
+  [1m[36mFixture Insert (0.4ms)[0m  [1m[32mINSERT INTO "dropdowns" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-22 01:55:23.287413', '2016-07-22 01:55:23.287413', 298486374, 298486374)[0m
+  [1m[36mFixture Delete (0.6ms)[0m  [1m[31mDELETE FROM "text_areas"[0m
+  [1m[36mFixture Insert (0.4ms)[0m  [1m[32mINSERT INTO "text_areas" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-22 01:55:23.299846', '2016-07-22 01:55:23.299846', 980190962, 980190962)[0m
+  [1m[36mFixture Insert (0.4ms)[0m  [1m[32mINSERT INTO "text_areas" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-22 01:55:23.299846', '2016-07-22 01:55:23.299846', 298486374, 298486374)[0m
+  [1m[36mFixture Delete (0.8ms)[0m  [1m[31mDELETE FROM "text_area_values"[0m
+  [1m[36mFixture Insert (0.6ms)[0m  [1m[32mINSERT INTO "text_area_values" ("name", "value", "created_at", "updated_at", "id", "contact_id") VALUES ('MyString', 'MyText', '2016-07-22 01:55:23.311810', '2016-07-22 01:55:23.311810', 980190962, 980190962)[0m
+  [1m[36mFixture Insert (0.5ms)[0m  [1m[32mINSERT INTO "text_area_values" ("name", "value", "created_at", "updated_at", "id", "contact_id") VALUES ('MyString', 'MyText', '2016-07-22 01:55:23.311810', '2016-07-22 01:55:23.311810', 298486374, 298486374)[0m
+  [1m[36mFixture Delete (0.8ms)[0m  [1m[31mDELETE FROM "users"[0m
+  [1m[36mFixture Delete (0.7ms)[0m  [1m[31mDELETE FROM "contacts"[0m
+  [1m[36mFixture Insert (0.5ms)[0m  [1m[32mINSERT INTO "contacts" ("name", "email", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', 'MyString', '2016-07-22 01:55:23.332017', '2016-07-22 01:55:23.332017', 980190962, 980190962)[0m
+  [1m[36mFixture Insert (0.5ms)[0m  [1m[32mINSERT INTO "contacts" ("name", "email", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', 'MyString', '2016-07-22 01:55:23.332017', '2016-07-22 01:55:23.332017', 298486374, 298486374)[0m
+  [1m[36mFixture Delete (0.7ms)[0m  [1m[31mDELETE FROM "text_field_values"[0m
+  [1m[36mFixture Insert (0.5ms)[0m  [1m[32mINSERT INTO "text_field_values" ("name", "value", "created_at", "updated_at", "id", "text_field_id", "contact_id") VALUES ('MyString', 'MyString', '2016-07-22 01:55:23.346215', '2016-07-22 01:55:23.346215', 980190962, 980190962, 980190962)[0m
+  [1m[36mFixture Insert (0.4ms)[0m  [1m[32mINSERT INTO "text_field_values" ("name", "value", "created_at", "updated_at", "id", "text_field_id", "contact_id") VALUES ('MyString', 'MyString', '2016-07-22 01:55:23.346215', '2016-07-22 01:55:23.346215', 298486374, 298486374, 298486374)[0m
+  [1m[36mFixture Delete (0.7ms)[0m  [1m[31mDELETE FROM "text_fields"[0m
+  [1m[36mFixture Insert (0.5ms)[0m  [1m[32mINSERT INTO "text_fields" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-22 01:55:23.360195', '2016-07-22 01:55:23.360195', 980190962, 980190962)[0m
+  [1m[36mFixture Insert (0.4ms)[0m  [1m[32mINSERT INTO "text_fields" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-22 01:55:23.360195', '2016-07-22 01:55:23.360195', 298486374, 298486374)[0m
+  [1m[35m (13.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (1.4ms)[0m  [1m[35mALTER TABLE "text_field_values" ENABLE TRIGGER ALL;ALTER TABLE "text_areas" ENABLE TRIGGER ALL;ALTER TABLE "text_fields" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" ENABLE TRIGGER ALL;ALTER TABLE "dropdown_values" ENABLE TRIGGER ALL;ALTER TABLE "dropdowns" ENABLE TRIGGER ALL;ALTER TABLE "text_area_values" ENABLE TRIGGER ALL;ALTER TABLE "contacts" ENABLE TRIGGER ALL;ALTER TABLE "users" ENABLE TRIGGER ALL[0m
+  [1m[35m (7.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+--------------------------------------
+UserTest: test_email_should_be_present
+--------------------------------------
+  [1m[36mUser Exists (1.9ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", ""], ["LIMIT", 1]]
+  [1m[35m (0.5ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+-------------------------------------------
+UserTest: test_email_should_not_be_too_long
+-------------------------------------------
+  [1m[36mUser Exists (0.9ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa@example.com"], ["LIMIT", 1]]
+  [1m[35m (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+------------------------------
+UserTest: test_should_be_valid
+------------------------------
+  [1m[36mUser Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "exampleuser@example.com"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+-------------------------------------
+UserTest: test_name_should_be_present
+-------------------------------------
+  [1m[36mUser Exists (0.7ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "exampleuser@example.com"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+------------------------------------------
+UserTest: test_name_should_not_be_too_long
+------------------------------------------
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "exampleuser@example.com"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+---------------------------------------------
+DropdownTest: test_when_param_is_empty_or_nil
+---------------------------------------------
+  [1m[36mDropdown Load (0.5ms)[0m  [1m[34mSELECT  "dropdowns".* FROM "dropdowns" WHERE "dropdowns"."id" = $1 LIMIT $2[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[35m (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+------------------------------------------------
+DropdownTest: test_eliminate_first_unsuitables_*
+------------------------------------------------
+  [1m[36mDropdown Load (0.5ms)[0m  [1m[34mSELECT  "dropdowns".* FROM "dropdowns" WHERE "dropdowns"."id" = $1 LIMIT $2[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+---------------------------------------------------------
+DropdownTest: test_when_it_has_more_the_one_*_consecutive
+---------------------------------------------------------
+  [1m[36mDropdown Load (0.4ms)[0m  [1m[34mSELECT  "dropdowns".* FROM "dropdowns" WHERE "dropdowns"."id" = $1 LIMIT $2[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+------------------------------------
+ContactTest: test_is_a_valid_contact
+------------------------------------
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mContact Exists (0.8ms)[0m  [1m[34mSELECT  1 AS one FROM "contacts" WHERE "contacts"."email" = $1 LIMIT $2[0m  [["email", "contact_example@email.com"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+---------------------------------
+ContactTest: test_email_is_unique
+---------------------------------
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mContact Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "contacts" WHERE "contacts"."email" = $1 LIMIT $2[0m  [["email", "CONTACT_EXAMPLE@EMAIL.COM"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+--------------------------------------
+ContactTest: test_should_be_have_email
+--------------------------------------
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mContact Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "contacts" WHERE "contacts"."email" = $1 LIMIT $2[0m  [["email", ""], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+-------------------------------
+ContactTest: test_um_teste_bobo
+-------------------------------
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+-----------------------------------------------
+TextAreaTest: test_name_should_be_less_than_200
+-----------------------------------------------
+  [1m[36mTextArea Load (0.4ms)[0m  [1m[34mSELECT  "text_areas".* FROM "text_areas" WHERE "text_areas"."id" = $1 LIMIT $2[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[35m (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+------------------------------------
+TextAreaTest: test_shoul_have_a_name
+------------------------------------
+  [1m[36mTextArea Load (0.5ms)[0m  [1m[34mSELECT  "text_areas".* FROM "text_areas" WHERE "text_areas"."id" = $1 LIMIT $2[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.9ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (2.0ms)[0m  [1m[35mALTER TABLE "text_field_values" DISABLE TRIGGER ALL;ALTER TABLE "text_areas" DISABLE TRIGGER ALL;ALTER TABLE "text_fields" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" DISABLE TRIGGER ALL;ALTER TABLE "dropdown_values" DISABLE TRIGGER ALL;ALTER TABLE "dropdowns" DISABLE TRIGGER ALL;ALTER TABLE "text_area_values" DISABLE TRIGGER ALL;ALTER TABLE "contacts" DISABLE TRIGGER ALL;ALTER TABLE "users" DISABLE TRIGGER ALL[0m
+  [1m[35m (8.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mFixture Delete (1.0ms)[0m  [1m[31mDELETE FROM "dropdown_values"[0m
+  [1m[36mFixture Insert (0.7ms)[0m  [1m[32mINSERT INTO "dropdown_values" ("name", "content", "value", "created_at", "updated_at", "id", "dropdown_id", "contact_id") VALUES ('MyString', 'MyString', 'MyString', '2016-07-22 01:57:03.816861', '2016-07-22 01:57:03.816861', 980190962, 980190962, 980190962)[0m
+  [1m[36mFixture Insert (0.5ms)[0m  [1m[32mINSERT INTO "dropdown_values" ("name", "content", "value", "created_at", "updated_at", "id", "dropdown_id", "contact_id") VALUES ('MyString', 'MyString', 'MyString', '2016-07-22 01:57:03.816861', '2016-07-22 01:57:03.816861', 298486374, 298486374, 298486374)[0m
+  [1m[36mFixture Delete (0.7ms)[0m  [1m[31mDELETE FROM "dropdowns"[0m
+  [1m[36mFixture Insert (0.5ms)[0m  [1m[32mINSERT INTO "dropdowns" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-22 01:57:03.842790', '2016-07-22 01:57:03.842790', 980190962, 980190962)[0m
+  [1m[36mFixture Insert (0.5ms)[0m  [1m[32mINSERT INTO "dropdowns" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-22 01:57:03.842790', '2016-07-22 01:57:03.842790', 298486374, 298486374)[0m
+  [1m[36mFixture Delete (0.7ms)[0m  [1m[31mDELETE FROM "text_areas"[0m
+  [1m[36mFixture Insert (0.5ms)[0m  [1m[32mINSERT INTO "text_areas" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-22 01:57:03.857897', '2016-07-22 01:57:03.857897', 980190962, 980190962)[0m
+  [1m[36mFixture Insert (0.4ms)[0m  [1m[32mINSERT INTO "text_areas" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-22 01:57:03.857897', '2016-07-22 01:57:03.857897', 298486374, 298486374)[0m
+  [1m[36mFixture Delete (0.8ms)[0m  [1m[31mDELETE FROM "text_area_values"[0m
+  [1m[36mFixture Insert (0.5ms)[0m  [1m[32mINSERT INTO "text_area_values" ("name", "value", "created_at", "updated_at", "id", "contact_id") VALUES ('MyString', 'MyText', '2016-07-22 01:57:03.871209', '2016-07-22 01:57:03.871209', 980190962, 980190962)[0m
+  [1m[36mFixture Insert (0.4ms)[0m  [1m[32mINSERT INTO "text_area_values" ("name", "value", "created_at", "updated_at", "id", "contact_id") VALUES ('MyString', 'MyText', '2016-07-22 01:57:03.871209', '2016-07-22 01:57:03.871209', 298486374, 298486374)[0m
+  [1m[36mFixture Delete (0.6ms)[0m  [1m[31mDELETE FROM "users"[0m
+  [1m[36mFixture Delete (0.6ms)[0m  [1m[31mDELETE FROM "contacts"[0m
+  [1m[36mFixture Insert (0.4ms)[0m  [1m[32mINSERT INTO "contacts" ("name", "email", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', 'MyString', '2016-07-22 01:57:03.887660', '2016-07-22 01:57:03.887660', 980190962, 980190962)[0m
+  [1m[36mFixture Insert (0.4ms)[0m  [1m[32mINSERT INTO "contacts" ("name", "email", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', 'MyString', '2016-07-22 01:57:03.887660', '2016-07-22 01:57:03.887660', 298486374, 298486374)[0m
+  [1m[36mFixture Delete (0.6ms)[0m  [1m[31mDELETE FROM "text_field_values"[0m
+  [1m[36mFixture Insert (0.5ms)[0m  [1m[32mINSERT INTO "text_field_values" ("name", "value", "created_at", "updated_at", "id", "text_field_id", "contact_id") VALUES ('MyString', 'MyString', '2016-07-22 01:57:03.900668', '2016-07-22 01:57:03.900668', 980190962, 980190962, 980190962)[0m
+  [1m[36mFixture Insert (0.4ms)[0m  [1m[32mINSERT INTO "text_field_values" ("name", "value", "created_at", "updated_at", "id", "text_field_id", "contact_id") VALUES ('MyString', 'MyString', '2016-07-22 01:57:03.900668', '2016-07-22 01:57:03.900668', 298486374, 298486374, 298486374)[0m
+  [1m[36mFixture Delete (0.6ms)[0m  [1m[31mDELETE FROM "text_fields"[0m
+  [1m[36mFixture Insert (0.5ms)[0m  [1m[32mINSERT INTO "text_fields" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-22 01:57:03.913644', '2016-07-22 01:57:03.913644', 980190962, 980190962)[0m
+  [1m[36mFixture Insert (0.4ms)[0m  [1m[32mINSERT INTO "text_fields" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-22 01:57:03.913644', '2016-07-22 01:57:03.913644', 298486374, 298486374)[0m
+  [1m[35m (10.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (1.4ms)[0m  [1m[35mALTER TABLE "text_field_values" ENABLE TRIGGER ALL;ALTER TABLE "text_areas" ENABLE TRIGGER ALL;ALTER TABLE "text_fields" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" ENABLE TRIGGER ALL;ALTER TABLE "dropdown_values" ENABLE TRIGGER ALL;ALTER TABLE "dropdowns" ENABLE TRIGGER ALL;ALTER TABLE "text_area_values" ENABLE TRIGGER ALL;ALTER TABLE "contacts" ENABLE TRIGGER ALL;ALTER TABLE "users" ENABLE TRIGGER ALL[0m
+  [1m[35m (7.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+------------------------------------
+ContactTest: test_is_a_valid_contact
+------------------------------------
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mContact Exists (1.9ms)[0m  [1m[34mSELECT  1 AS one FROM "contacts" WHERE "contacts"."email" = $1 LIMIT $2[0m  [["email", "contact_example@email.com"], ["LIMIT", 1]]
+  [1m[35m (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+---------------------------------
+ContactTest: test_email_is_unique
+---------------------------------
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mContact Exists (0.7ms)[0m  [1m[34mSELECT  1 AS one FROM "contacts" WHERE "contacts"."email" = $1 LIMIT $2[0m  [["email", "CONTACT_EXAMPLE@EMAIL.COM"], ["LIMIT", 1]]
+  [1m[35m (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+--------------------------------------
+ContactTest: test_should_be_have_email
+--------------------------------------
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mContact Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "contacts" WHERE "contacts"."email" = $1 LIMIT $2[0m  [["email", ""], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+-------------------------------
+ContactTest: test_um_teste_bobo
+-------------------------------
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+---------------------------------------------------------
+DropdownTest: test_when_it_has_more_the_one_*_consecutive
+---------------------------------------------------------
+  [1m[36mDropdown Load (0.4ms)[0m  [1m[34mSELECT  "dropdowns".* FROM "dropdowns" WHERE "dropdowns"."id" = $1 LIMIT $2[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+------------------------------------------------
+DropdownTest: test_eliminate_first_unsuitables_*
+------------------------------------------------
+  [1m[36mDropdown Load (0.5ms)[0m  [1m[34mSELECT  "dropdowns".* FROM "dropdowns" WHERE "dropdowns"."id" = $1 LIMIT $2[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+---------------------------------------------
+DropdownTest: test_when_param_is_empty_or_nil
+---------------------------------------------
+  [1m[36mDropdown Load (0.4ms)[0m  [1m[34mSELECT  "dropdowns".* FROM "dropdowns" WHERE "dropdowns"."id" = $1 LIMIT $2[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+------------------------------
+UserTest: test_should_be_valid
+------------------------------
+  [1m[36mUser Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "exampleuser@example.com"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+-------------------------------------------
+UserTest: test_email_should_not_be_too_long
+-------------------------------------------
+  [1m[36mUser Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa@example.com"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+--------------------------------------
+UserTest: test_email_should_be_present
+--------------------------------------
+  [1m[36mUser Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", ""], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+-------------------------------------
+UserTest: test_name_should_be_present
+-------------------------------------
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "exampleuser@example.com"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+------------------------------------------
+UserTest: test_name_should_not_be_too_long
+------------------------------------------
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "exampleuser@example.com"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+-------------------------------------
+UserTest: test_email_should_be_unique
+-------------------------------------
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+-----------------------------------------------
+TextAreaTest: test_name_should_be_less_than_200
+-----------------------------------------------
+  [1m[36mTextArea Load (0.4ms)[0m  [1m[34mSELECT  "text_areas".* FROM "text_areas" WHERE "text_areas"."id" = $1 LIMIT $2[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[35m (0.7ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+------------------------------------
+TextAreaTest: test_shoul_have_a_name
+------------------------------------
+  [1m[36mTextArea Load (0.5ms)[0m  [1m[34mSELECT  "text_areas".* FROM "text_areas" WHERE "text_areas"."id" = $1 LIMIT $2[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (1.1ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (1.9ms)[0m  [1m[35mALTER TABLE "text_field_values" DISABLE TRIGGER ALL;ALTER TABLE "text_areas" DISABLE TRIGGER ALL;ALTER TABLE "text_fields" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" DISABLE TRIGGER ALL;ALTER TABLE "dropdown_values" DISABLE TRIGGER ALL;ALTER TABLE "dropdowns" DISABLE TRIGGER ALL;ALTER TABLE "text_area_values" DISABLE TRIGGER ALL;ALTER TABLE "contacts" DISABLE TRIGGER ALL;ALTER TABLE "users" DISABLE TRIGGER ALL[0m
+  [1m[35m (31.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mFixture Delete (0.7ms)[0m  [1m[31mDELETE FROM "dropdown_values"[0m
+  [1m[36mFixture Insert (0.5ms)[0m  [1m[32mINSERT INTO "dropdown_values" ("name", "content", "value", "created_at", "updated_at", "id", "dropdown_id", "contact_id") VALUES ('MyString', 'MyString', 'MyString', '2016-07-22 01:57:39.086173', '2016-07-22 01:57:39.086173', 980190962, 980190962, 980190962)[0m
+  [1m[36mFixture Insert (0.4ms)[0m  [1m[32mINSERT INTO "dropdown_values" ("name", "content", "value", "created_at", "updated_at", "id", "dropdown_id", "contact_id") VALUES ('MyString', 'MyString', 'MyString', '2016-07-22 01:57:39.086173', '2016-07-22 01:57:39.086173', 298486374, 298486374, 298486374)[0m
+  [1m[36mFixture Delete (0.6ms)[0m  [1m[31mDELETE FROM "dropdowns"[0m
+  [1m[36mFixture Insert (0.4ms)[0m  [1m[32mINSERT INTO "dropdowns" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-22 01:57:39.106258', '2016-07-22 01:57:39.106258', 980190962, 980190962)[0m
+  [1m[36mFixture Insert (0.4ms)[0m  [1m[32mINSERT INTO "dropdowns" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-22 01:57:39.106258', '2016-07-22 01:57:39.106258', 298486374, 298486374)[0m
+  [1m[36mFixture Delete (0.6ms)[0m  [1m[31mDELETE FROM "text_areas"[0m
+  [1m[36mFixture Insert (0.5ms)[0m  [1m[32mINSERT INTO "text_areas" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-22 01:57:39.119141', '2016-07-22 01:57:39.119141', 980190962, 980190962)[0m
+  [1m[36mFixture Insert (0.4ms)[0m  [1m[32mINSERT INTO "text_areas" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-22 01:57:39.119141', '2016-07-22 01:57:39.119141', 298486374, 298486374)[0m
+  [1m[36mFixture Delete (0.6ms)[0m  [1m[31mDELETE FROM "text_area_values"[0m
+  [1m[36mFixture Insert (0.5ms)[0m  [1m[32mINSERT INTO "text_area_values" ("name", "value", "created_at", "updated_at", "id", "contact_id") VALUES ('MyString', 'MyText', '2016-07-22 01:57:39.131433', '2016-07-22 01:57:39.131433', 980190962, 980190962)[0m
+  [1m[36mFixture Insert (0.4ms)[0m  [1m[32mINSERT INTO "text_area_values" ("name", "value", "created_at", "updated_at", "id", "contact_id") VALUES ('MyString', 'MyText', '2016-07-22 01:57:39.131433', '2016-07-22 01:57:39.131433', 298486374, 298486374)[0m
+  [1m[36mFixture Delete (0.7ms)[0m  [1m[31mDELETE FROM "users"[0m
+  [1m[36mFixture Delete (0.6ms)[0m  [1m[31mDELETE FROM "contacts"[0m
+  [1m[36mFixture Insert (0.4ms)[0m  [1m[32mINSERT INTO "contacts" ("name", "email", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', 'MyString', '2016-07-22 01:57:39.148542', '2016-07-22 01:57:39.148542', 980190962, 980190962)[0m
+  [1m[36mFixture Insert (0.4ms)[0m  [1m[32mINSERT INTO "contacts" ("name", "email", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', 'MyString', '2016-07-22 01:57:39.148542', '2016-07-22 01:57:39.148542', 298486374, 298486374)[0m
+  [1m[36mFixture Delete (0.6ms)[0m  [1m[31mDELETE FROM "text_field_values"[0m
+  [1m[36mFixture Insert (0.5ms)[0m  [1m[32mINSERT INTO "text_field_values" ("name", "value", "created_at", "updated_at", "id", "text_field_id", "contact_id") VALUES ('MyString', 'MyString', '2016-07-22 01:57:39.161331', '2016-07-22 01:57:39.161331', 980190962, 980190962, 980190962)[0m
+  [1m[36mFixture Insert (0.4ms)[0m  [1m[32mINSERT INTO "text_field_values" ("name", "value", "created_at", "updated_at", "id", "text_field_id", "contact_id") VALUES ('MyString', 'MyString', '2016-07-22 01:57:39.161331', '2016-07-22 01:57:39.161331', 298486374, 298486374, 298486374)[0m
+  [1m[36mFixture Delete (0.6ms)[0m  [1m[31mDELETE FROM "text_fields"[0m
+  [1m[36mFixture Insert (0.4ms)[0m  [1m[32mINSERT INTO "text_fields" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-22 01:57:39.174573', '2016-07-22 01:57:39.174573', 980190962, 980190962)[0m
+  [1m[36mFixture Insert (0.4ms)[0m  [1m[32mINSERT INTO "text_fields" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-22 01:57:39.174573', '2016-07-22 01:57:39.174573', 298486374, 298486374)[0m
+  [1m[35m (7.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (1.3ms)[0m  [1m[35mALTER TABLE "text_field_values" ENABLE TRIGGER ALL;ALTER TABLE "text_areas" ENABLE TRIGGER ALL;ALTER TABLE "text_fields" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" ENABLE TRIGGER ALL;ALTER TABLE "dropdown_values" ENABLE TRIGGER ALL;ALTER TABLE "dropdowns" ENABLE TRIGGER ALL;ALTER TABLE "text_area_values" ENABLE TRIGGER ALL;ALTER TABLE "contacts" ENABLE TRIGGER ALL;ALTER TABLE "users" ENABLE TRIGGER ALL[0m
+  [1m[35m (7.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+------------------------------
+UserTest: test_should_be_valid
+------------------------------
+  [1m[36mUser Exists (1.7ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "exampleuser@example.com"], ["LIMIT", 1]]
+  [1m[35m (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+--------------------------------------
+UserTest: test_email_should_be_present
+--------------------------------------
+  [1m[36mUser Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", ""], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+-------------------------------------
+UserTest: test_email_should_be_unique
+-------------------------------------
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "exampleuser@example.com"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+-------------------------------------------
+UserTest: test_email_should_not_be_too_long
+-------------------------------------------
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa@example.com"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.0ms)[0m  [1m[35mBEGIN[0m
+-------------------------------------
+UserTest: test_name_should_be_present
+-------------------------------------
+  [1m[36mUser Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "exampleuser@example.com"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+------------------------------------------
+UserTest: test_name_should_not_be_too_long
+------------------------------------------
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "exampleuser@example.com"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+---------------------------------
+ContactTest: test_email_is_unique
+---------------------------------
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mContact Exists (0.8ms)[0m  [1m[34mSELECT  1 AS one FROM "contacts" WHERE "contacts"."email" = $1 LIMIT $2[0m  [["email", "CONTACT_EXAMPLE@EMAIL.COM"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+--------------------------------------
+ContactTest: test_should_be_have_email
+--------------------------------------
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mContact Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "contacts" WHERE "contacts"."email" = $1 LIMIT $2[0m  [["email", ""], ["LIMIT", 1]]
+  [1m[35m (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+-------------------------------
+ContactTest: test_um_teste_bobo
+-------------------------------
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+------------------------------------
+ContactTest: test_is_a_valid_contact
+------------------------------------
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mContact Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "contacts" WHERE "contacts"."email" = $1 LIMIT $2[0m  [["email", "contact_example@email.com"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+-----------------------------------------------
+TextAreaTest: test_name_should_be_less_than_200
+-----------------------------------------------
+  [1m[36mTextArea Load (0.5ms)[0m  [1m[34mSELECT  "text_areas".* FROM "text_areas" WHERE "text_areas"."id" = $1 LIMIT $2[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+------------------------------------
+TextAreaTest: test_shoul_have_a_name
+------------------------------------
+  [1m[36mTextArea Load (0.5ms)[0m  [1m[34mSELECT  "text_areas".* FROM "text_areas" WHERE "text_areas"."id" = $1 LIMIT $2[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+------------------------------------------------
+DropdownTest: test_eliminate_first_unsuitables_*
+------------------------------------------------
+  [1m[36mDropdown Load (0.5ms)[0m  [1m[34mSELECT  "dropdowns".* FROM "dropdowns" WHERE "dropdowns"."id" = $1 LIMIT $2[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[35m (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+---------------------------------------------
+DropdownTest: test_when_param_is_empty_or_nil
+---------------------------------------------
+  [1m[36mDropdown Load (0.5ms)[0m  [1m[34mSELECT  "dropdowns".* FROM "dropdowns" WHERE "dropdowns"."id" = $1 LIMIT $2[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+---------------------------------------------------------
+DropdownTest: test_when_it_has_more_the_one_*_consecutive
+---------------------------------------------------------
+  [1m[36mDropdown Load (0.4ms)[0m  [1m[34mSELECT  "dropdowns".* FROM "dropdowns" WHERE "dropdowns"."id" = $1 LIMIT $2[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.9ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (2.0ms)[0m  [1m[35mALTER TABLE "text_field_values" DISABLE TRIGGER ALL;ALTER TABLE "text_areas" DISABLE TRIGGER ALL;ALTER TABLE "text_fields" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" DISABLE TRIGGER ALL;ALTER TABLE "dropdown_values" DISABLE TRIGGER ALL;ALTER TABLE "dropdowns" DISABLE TRIGGER ALL;ALTER TABLE "text_area_values" DISABLE TRIGGER ALL;ALTER TABLE "contacts" DISABLE TRIGGER ALL;ALTER TABLE "users" DISABLE TRIGGER ALL[0m
+  [1m[35m (6.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mFixture Delete (0.7ms)[0m  [1m[31mDELETE FROM "dropdown_values"[0m
+  [1m[36mFixture Insert (0.5ms)[0m  [1m[32mINSERT INTO "dropdown_values" ("name", "content", "value", "created_at", "updated_at", "id", "dropdown_id", "contact_id") VALUES ('MyString', 'MyString', 'MyString', '2016-07-22 01:58:51.067209', '2016-07-22 01:58:51.067209', 980190962, 980190962, 980190962)[0m
+  [1m[36mFixture Insert (0.4ms)[0m  [1m[32mINSERT INTO "dropdown_values" ("name", "content", "value", "created_at", "updated_at", "id", "dropdown_id", "contact_id") VALUES ('MyString', 'MyString', 'MyString', '2016-07-22 01:58:51.067209', '2016-07-22 01:58:51.067209', 298486374, 298486374, 298486374)[0m
+  [1m[36mFixture Delete (0.6ms)[0m  [1m[31mDELETE FROM "dropdowns"[0m
+  [1m[36mFixture Insert (0.4ms)[0m  [1m[32mINSERT INTO "dropdowns" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-22 01:58:51.087073', '2016-07-22 01:58:51.087073', 980190962, 980190962)[0m
+  [1m[36mFixture Insert (0.4ms)[0m  [1m[32mINSERT INTO "dropdowns" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-22 01:58:51.087073', '2016-07-22 01:58:51.087073', 298486374, 298486374)[0m
+  [1m[36mFixture Delete (0.6ms)[0m  [1m[31mDELETE FROM "text_areas"[0m
+  [1m[36mFixture Insert (0.5ms)[0m  [1m[32mINSERT INTO "text_areas" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-22 01:58:51.099579', '2016-07-22 01:58:51.099579', 980190962, 980190962)[0m
+  [1m[36mFixture Insert (0.4ms)[0m  [1m[32mINSERT INTO "text_areas" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-22 01:58:51.099579', '2016-07-22 01:58:51.099579', 298486374, 298486374)[0m
+  [1m[36mFixture Delete (0.6ms)[0m  [1m[31mDELETE FROM "text_area_values"[0m
+  [1m[36mFixture Insert (0.4ms)[0m  [1m[32mINSERT INTO "text_area_values" ("name", "value", "created_at", "updated_at", "id", "contact_id") VALUES ('MyString', 'MyText', '2016-07-22 01:58:51.112049', '2016-07-22 01:58:51.112049', 980190962, 980190962)[0m
+  [1m[36mFixture Insert (0.4ms)[0m  [1m[32mINSERT INTO "text_area_values" ("name", "value", "created_at", "updated_at", "id", "contact_id") VALUES ('MyString', 'MyText', '2016-07-22 01:58:51.112049', '2016-07-22 01:58:51.112049', 298486374, 298486374)[0m
+  [1m[36mFixture Delete (0.6ms)[0m  [1m[31mDELETE FROM "users"[0m
+  [1m[36mFixture Delete (0.6ms)[0m  [1m[31mDELETE FROM "contacts"[0m
+  [1m[36mFixture Insert (0.4ms)[0m  [1m[32mINSERT INTO "contacts" ("name", "email", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', 'MyString', '2016-07-22 01:58:51.128474', '2016-07-22 01:58:51.128474', 980190962, 980190962)[0m
+  [1m[36mFixture Insert (0.4ms)[0m  [1m[32mINSERT INTO "contacts" ("name", "email", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', 'MyString', '2016-07-22 01:58:51.128474', '2016-07-22 01:58:51.128474', 298486374, 298486374)[0m
+  [1m[36mFixture Delete (1.0ms)[0m  [1m[31mDELETE FROM "text_field_values"[0m
+  [1m[36mFixture Insert (0.7ms)[0m  [1m[32mINSERT INTO "text_field_values" ("name", "value", "created_at", "updated_at", "id", "text_field_id", "contact_id") VALUES ('MyString', 'MyString', '2016-07-22 01:58:51.140895', '2016-07-22 01:58:51.140895', 980190962, 980190962, 980190962)[0m
+  [1m[36mFixture Insert (0.5ms)[0m  [1m[32mINSERT INTO "text_field_values" ("name", "value", "created_at", "updated_at", "id", "text_field_id", "contact_id") VALUES ('MyString', 'MyString', '2016-07-22 01:58:51.140895', '2016-07-22 01:58:51.140895', 298486374, 298486374, 298486374)[0m
+  [1m[36mFixture Delete (0.7ms)[0m  [1m[31mDELETE FROM "text_fields"[0m
+  [1m[36mFixture Insert (0.5ms)[0m  [1m[32mINSERT INTO "text_fields" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-22 01:58:51.159398', '2016-07-22 01:58:51.159398', 980190962, 980190962)[0m
+  [1m[36mFixture Insert (0.4ms)[0m  [1m[32mINSERT INTO "text_fields" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-22 01:58:51.159398', '2016-07-22 01:58:51.159398', 298486374, 298486374)[0m
+  [1m[35m (10.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (1.6ms)[0m  [1m[35mALTER TABLE "text_field_values" ENABLE TRIGGER ALL;ALTER TABLE "text_areas" ENABLE TRIGGER ALL;ALTER TABLE "text_fields" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" ENABLE TRIGGER ALL;ALTER TABLE "dropdown_values" ENABLE TRIGGER ALL;ALTER TABLE "dropdowns" ENABLE TRIGGER ALL;ALTER TABLE "text_area_values" ENABLE TRIGGER ALL;ALTER TABLE "contacts" ENABLE TRIGGER ALL;ALTER TABLE "users" ENABLE TRIGGER ALL[0m
+  [1m[35m (7.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+---------------------------------------------
+DropdownTest: test_when_param_is_empty_or_nil
+---------------------------------------------
+  [1m[36mDropdown Load (0.7ms)[0m  [1m[34mSELECT  "dropdowns".* FROM "dropdowns" WHERE "dropdowns"."id" = $1 LIMIT $2[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[35m (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+------------------------------------------------
+DropdownTest: test_eliminate_first_unsuitables_*
+------------------------------------------------
+  [1m[36mDropdown Load (0.5ms)[0m  [1m[34mSELECT  "dropdowns".* FROM "dropdowns" WHERE "dropdowns"."id" = $1 LIMIT $2[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+---------------------------------------------------------
+DropdownTest: test_when_it_has_more_the_one_*_consecutive
+---------------------------------------------------------
+  [1m[36mDropdown Load (0.5ms)[0m  [1m[34mSELECT  "dropdowns".* FROM "dropdowns" WHERE "dropdowns"."id" = $1 LIMIT $2[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+--------------------------------------
+UserTest: test_email_should_be_present
+--------------------------------------
+  [1m[36mUser Exists (1.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", ""], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+-------------------------------------
+UserTest: test_email_should_be_unique
+-------------------------------------
+  [1m[36mUser Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "exampleuser@example.com"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+------------------------------------------
+UserTest: test_name_should_not_be_too_long
+------------------------------------------
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "exampleuser@example.com"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+------------------------------
+UserTest: test_should_be_valid
+------------------------------
+  [1m[36mUser Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "exampleuser@example.com"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+-------------------------------------------
+UserTest: test_email_should_not_be_too_long
+-------------------------------------------
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa@example.com"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+-------------------------------------
+UserTest: test_name_should_be_present
+-------------------------------------
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "exampleuser@example.com"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+-----------------------------------------------
+TextAreaTest: test_name_should_be_less_than_200
+-----------------------------------------------
+  [1m[36mTextArea Load (0.5ms)[0m  [1m[34mSELECT  "text_areas".* FROM "text_areas" WHERE "text_areas"."id" = $1 LIMIT $2[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[35m (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+------------------------------------
+TextAreaTest: test_shoul_have_a_name
+------------------------------------
+  [1m[36mTextArea Load (0.4ms)[0m  [1m[34mSELECT  "text_areas".* FROM "text_areas" WHERE "text_areas"."id" = $1 LIMIT $2[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[35m (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+------------------------------------
+ContactTest: test_is_a_valid_contact
+------------------------------------
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mContact Exists (0.9ms)[0m  [1m[34mSELECT  1 AS one FROM "contacts" WHERE "contacts"."email" = $1 LIMIT $2[0m  [["email", "contact_example@email.com"], ["LIMIT", 1]]
+  [1m[35m (0.5ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+---------------------------------
+ContactTest: test_email_is_unique
+---------------------------------
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mContact Exists (0.7ms)[0m  [1m[34mSELECT  1 AS one FROM "contacts" WHERE "contacts"."email" = $1 LIMIT $2[0m  [["email", "CONTACT_EXAMPLE@EMAIL.COM"], ["LIMIT", 1]]
+  [1m[35m (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+--------------------------------------
+ContactTest: test_should_be_have_email
+--------------------------------------
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mContact Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "contacts" WHERE "contacts"."email" = $1 LIMIT $2[0m  [["email", ""], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+-------------------------------
+ContactTest: test_um_teste_bobo
+-------------------------------
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (1.1ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (2.1ms)[0m  [1m[35mALTER TABLE "text_field_values" DISABLE TRIGGER ALL;ALTER TABLE "text_areas" DISABLE TRIGGER ALL;ALTER TABLE "text_fields" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" DISABLE TRIGGER ALL;ALTER TABLE "dropdown_values" DISABLE TRIGGER ALL;ALTER TABLE "dropdowns" DISABLE TRIGGER ALL;ALTER TABLE "text_area_values" DISABLE TRIGGER ALL;ALTER TABLE "contacts" DISABLE TRIGGER ALL;ALTER TABLE "users" DISABLE TRIGGER ALL[0m
+  [1m[35m (20.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mFixture Delete (0.8ms)[0m  [1m[31mDELETE FROM "dropdown_values"[0m
+  [1m[36mFixture Insert (9.9ms)[0m  [1m[32mINSERT INTO "dropdown_values" ("name", "content", "value", "created_at", "updated_at", "id", "dropdown_id", "contact_id") VALUES ('MyString', 'MyString', 'MyString', '2016-07-22 02:02:01.682812', '2016-07-22 02:02:01.682812', 980190962, 980190962, 980190962)[0m
+  [1m[36mFixture Insert (0.6ms)[0m  [1m[32mINSERT INTO "dropdown_values" ("name", "content", "value", "created_at", "updated_at", "id", "dropdown_id", "contact_id") VALUES ('MyString', 'MyString', 'MyString', '2016-07-22 02:02:01.682812', '2016-07-22 02:02:01.682812', 298486374, 298486374, 298486374)[0m
+  [1m[36mFixture Delete (0.7ms)[0m  [1m[31mDELETE FROM "dropdowns"[0m
+  [1m[36mFixture Insert (0.5ms)[0m  [1m[32mINSERT INTO "dropdowns" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-22 02:02:01.718579', '2016-07-22 02:02:01.718579', 980190962, 980190962)[0m
+  [1m[36mFixture Insert (0.4ms)[0m  [1m[32mINSERT INTO "dropdowns" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-22 02:02:01.718579', '2016-07-22 02:02:01.718579', 298486374, 298486374)[0m
+  [1m[36mFixture Delete (0.6ms)[0m  [1m[31mDELETE FROM "text_areas"[0m
+  [1m[36mFixture Insert (0.5ms)[0m  [1m[32mINSERT INTO "text_areas" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-22 02:02:01.733977', '2016-07-22 02:02:01.733977', 980190962, 980190962)[0m
+  [1m[36mFixture Insert (0.5ms)[0m  [1m[32mINSERT INTO "text_areas" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-22 02:02:01.733977', '2016-07-22 02:02:01.733977', 298486374, 298486374)[0m
+  [1m[36mFixture Delete (0.6ms)[0m  [1m[31mDELETE FROM "text_area_values"[0m
+  [1m[36mFixture Insert (0.5ms)[0m  [1m[32mINSERT INTO "text_area_values" ("name", "value", "created_at", "updated_at", "id", "contact_id") VALUES ('MyString', 'MyText', '2016-07-22 02:02:01.747348', '2016-07-22 02:02:01.747348', 980190962, 980190962)[0m
+  [1m[36mFixture Insert (0.4ms)[0m  [1m[32mINSERT INTO "text_area_values" ("name", "value", "created_at", "updated_at", "id", "contact_id") VALUES ('MyString', 'MyText', '2016-07-22 02:02:01.747348', '2016-07-22 02:02:01.747348', 298486374, 298486374)[0m
+  [1m[36mFixture Delete (0.6ms)[0m  [1m[31mDELETE FROM "users"[0m
+  [1m[36mFixture Delete (0.6ms)[0m  [1m[31mDELETE FROM "contacts"[0m
+  [1m[36mFixture Insert (0.5ms)[0m  [1m[32mINSERT INTO "contacts" ("name", "email", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', 'MyString', '2016-07-22 02:02:01.764387', '2016-07-22 02:02:01.764387', 980190962, 980190962)[0m
+  [1m[36mFixture Insert (0.4ms)[0m  [1m[32mINSERT INTO "contacts" ("name", "email", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', 'MyString', '2016-07-22 02:02:01.764387', '2016-07-22 02:02:01.764387', 298486374, 298486374)[0m
+  [1m[36mFixture Delete (0.7ms)[0m  [1m[31mDELETE FROM "text_field_values"[0m
+  [1m[36mFixture Insert (0.5ms)[0m  [1m[32mINSERT INTO "text_field_values" ("name", "value", "created_at", "updated_at", "id", "text_field_id", "contact_id") VALUES ('MyString', 'MyString', '2016-07-22 02:02:01.777252', '2016-07-22 02:02:01.777252', 980190962, 980190962, 980190962)[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "text_field_values" ("name", "value", "created_at", "updated_at", "id", "text_field_id", "contact_id") VALUES ('MyString', 'MyString', '2016-07-22 02:02:01.777252', '2016-07-22 02:02:01.777252', 298486374, 298486374, 298486374)[0m
+  [1m[36mFixture Delete (0.6ms)[0m  [1m[31mDELETE FROM "text_fields"[0m
+  [1m[36mFixture Insert (0.4ms)[0m  [1m[32mINSERT INTO "text_fields" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-22 02:02:01.790387', '2016-07-22 02:02:01.790387', 980190962, 980190962)[0m
+  [1m[36mFixture Insert (0.4ms)[0m  [1m[32mINSERT INTO "text_fields" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-22 02:02:01.790387', '2016-07-22 02:02:01.790387', 298486374, 298486374)[0m
+  [1m[35m (8.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (1.3ms)[0m  [1m[35mALTER TABLE "text_field_values" ENABLE TRIGGER ALL;ALTER TABLE "text_areas" ENABLE TRIGGER ALL;ALTER TABLE "text_fields" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" ENABLE TRIGGER ALL;ALTER TABLE "dropdown_values" ENABLE TRIGGER ALL;ALTER TABLE "dropdowns" ENABLE TRIGGER ALL;ALTER TABLE "text_area_values" ENABLE TRIGGER ALL;ALTER TABLE "contacts" ENABLE TRIGGER ALL;ALTER TABLE "users" ENABLE TRIGGER ALL[0m
+  [1m[35m (7.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+-------------------------------------------
+UserTest: test_email_should_not_be_too_long
+-------------------------------------------
+  [1m[36mUser Exists (1.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa@example.com"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+-------------------------------------
+UserTest: test_name_should_be_present
+-------------------------------------
+  [1m[36mUser Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "exampleuser@example.com"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+--------------------------------------
+UserTest: test_email_should_be_present
+--------------------------------------
+  [1m[36mUser Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", ""], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+-------------------------------------
+UserTest: test_email_should_be_unique
+-------------------------------------
+  [1m[36mUser Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "exampleuser@example.com"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+------------------------------------------
+UserTest: test_name_should_not_be_too_long
+------------------------------------------
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "exampleuser@example.com"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+------------------------------
+UserTest: test_should_be_valid
+------------------------------
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "exampleuser@example.com"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+------------------------------------------------
+DropdownTest: test_eliminate_first_unsuitables_*
+------------------------------------------------
+  [1m[36mDropdown Load (0.5ms)[0m  [1m[34mSELECT  "dropdowns".* FROM "dropdowns" WHERE "dropdowns"."id" = $1 LIMIT $2[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[35m (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+---------------------------------------------------------
+DropdownTest: test_when_it_has_more_the_one_*_consecutive
+---------------------------------------------------------
+  [1m[36mDropdown Load (0.5ms)[0m  [1m[34mSELECT  "dropdowns".* FROM "dropdowns" WHERE "dropdowns"."id" = $1 LIMIT $2[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+---------------------------------------------
+DropdownTest: test_when_param_is_empty_or_nil
+---------------------------------------------
+  [1m[36mDropdown Load (0.4ms)[0m  [1m[34mSELECT  "dropdowns".* FROM "dropdowns" WHERE "dropdowns"."id" = $1 LIMIT $2[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[35m (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+------------------------------------
+ContactTest: test_is_a_valid_contact
+------------------------------------
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mContact Exists (0.7ms)[0m  [1m[34mSELECT  1 AS one FROM "contacts" WHERE "contacts"."email" = $1 LIMIT $2[0m  [["email", "contact_example@email.com"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+-------------------------------
+ContactTest: test_um_teste_bobo
+-------------------------------
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+---------------------------------
+ContactTest: test_email_is_unique
+---------------------------------
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mContact Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "contacts" WHERE "contacts"."email" = $1 LIMIT $2[0m  [["email", "CONTACT_EXAMPLE@EMAIL.COM"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+--------------------------------------
+ContactTest: test_should_be_have_email
+--------------------------------------
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mContact Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "contacts" WHERE "contacts"."email" = $1 LIMIT $2[0m  [["email", ""], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+-----------------------------------------------
+TextAreaTest: test_name_should_be_less_than_200
+-----------------------------------------------
+  [1m[36mTextArea Load (0.5ms)[0m  [1m[34mSELECT  "text_areas".* FROM "text_areas" WHERE "text_areas"."id" = $1 LIMIT $2[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+------------------------------------
+TextAreaTest: test_shoul_have_a_name
+------------------------------------
+  [1m[36mTextArea Load (0.5ms)[0m  [1m[34mSELECT  "text_areas".* FROM "text_areas" WHERE "text_areas"."id" = $1 LIMIT $2[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.8ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (1.9ms)[0m  [1m[35mALTER TABLE "text_field_values" DISABLE TRIGGER ALL;ALTER TABLE "text_areas" DISABLE TRIGGER ALL;ALTER TABLE "text_fields" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" DISABLE TRIGGER ALL;ALTER TABLE "dropdown_values" DISABLE TRIGGER ALL;ALTER TABLE "dropdowns" DISABLE TRIGGER ALL;ALTER TABLE "text_area_values" DISABLE TRIGGER ALL;ALTER TABLE "contacts" DISABLE TRIGGER ALL;ALTER TABLE "users" DISABLE TRIGGER ALL[0m
+  [1m[35m (8.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mFixture Delete (0.7ms)[0m  [1m[31mDELETE FROM "dropdown_values"[0m
+  [1m[36mFixture Insert (0.5ms)[0m  [1m[32mINSERT INTO "dropdown_values" ("name", "content", "value", "created_at", "updated_at", "id", "dropdown_id", "contact_id") VALUES ('MyString', 'MyString', 'MyString', '2016-07-22 02:02:49.938459', '2016-07-22 02:02:49.938459', 980190962, 980190962, 980190962)[0m
+  [1m[36mFixture Insert (0.4ms)[0m  [1m[32mINSERT INTO "dropdown_values" ("name", "content", "value", "created_at", "updated_at", "id", "dropdown_id", "contact_id") VALUES ('MyString', 'MyString', 'MyString', '2016-07-22 02:02:49.938459', '2016-07-22 02:02:49.938459', 298486374, 298486374, 298486374)[0m
+  [1m[36mFixture Delete (0.6ms)[0m  [1m[31mDELETE FROM "dropdowns"[0m
+  [1m[36mFixture Insert (0.4ms)[0m  [1m[32mINSERT INTO "dropdowns" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-22 02:02:49.958433', '2016-07-22 02:02:49.958433', 980190962, 980190962)[0m
+  [1m[36mFixture Insert (0.4ms)[0m  [1m[32mINSERT INTO "dropdowns" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-22 02:02:49.958433', '2016-07-22 02:02:49.958433', 298486374, 298486374)[0m
+  [1m[36mFixture Delete (0.6ms)[0m  [1m[31mDELETE FROM "text_areas"[0m
+  [1m[36mFixture Insert (0.4ms)[0m  [1m[32mINSERT INTO "text_areas" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-22 02:02:49.971169', '2016-07-22 02:02:49.971169', 980190962, 980190962)[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "text_areas" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-22 02:02:49.971169', '2016-07-22 02:02:49.971169', 298486374, 298486374)[0m
+  [1m[36mFixture Delete (0.6ms)[0m  [1m[31mDELETE FROM "text_area_values"[0m
+  [1m[36mFixture Insert (0.5ms)[0m  [1m[32mINSERT INTO "text_area_values" ("name", "value", "created_at", "updated_at", "id", "contact_id") VALUES ('MyString', 'MyText', '2016-07-22 02:02:49.983305', '2016-07-22 02:02:49.983305', 980190962, 980190962)[0m
+  [1m[36mFixture Insert (0.4ms)[0m  [1m[32mINSERT INTO "text_area_values" ("name", "value", "created_at", "updated_at", "id", "contact_id") VALUES ('MyString', 'MyText', '2016-07-22 02:02:49.983305', '2016-07-22 02:02:49.983305', 298486374, 298486374)[0m
+  [1m[36mFixture Delete (0.6ms)[0m  [1m[31mDELETE FROM "users"[0m
+  [1m[36mFixture Delete (0.6ms)[0m  [1m[31mDELETE FROM "contacts"[0m
+  [1m[36mFixture Insert (0.5ms)[0m  [1m[32mINSERT INTO "contacts" ("name", "email", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', 'MyString', '2016-07-22 02:02:49.999826', '2016-07-22 02:02:49.999826', 980190962, 980190962)[0m
+  [1m[36mFixture Insert (0.4ms)[0m  [1m[32mINSERT INTO "contacts" ("name", "email", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', 'MyString', '2016-07-22 02:02:49.999826', '2016-07-22 02:02:49.999826', 298486374, 298486374)[0m
+  [1m[36mFixture Delete (0.7ms)[0m  [1m[31mDELETE FROM "text_field_values"[0m
+  [1m[36mFixture Insert (0.5ms)[0m  [1m[32mINSERT INTO "text_field_values" ("name", "value", "created_at", "updated_at", "id", "text_field_id", "contact_id") VALUES ('MyString', 'MyString', '2016-07-22 02:02:50.012428', '2016-07-22 02:02:50.012428', 980190962, 980190962, 980190962)[0m
+  [1m[36mFixture Insert (0.4ms)[0m  [1m[32mINSERT INTO "text_field_values" ("name", "value", "created_at", "updated_at", "id", "text_field_id", "contact_id") VALUES ('MyString', 'MyString', '2016-07-22 02:02:50.012428', '2016-07-22 02:02:50.012428', 298486374, 298486374, 298486374)[0m
+  [1m[36mFixture Delete (0.6ms)[0m  [1m[31mDELETE FROM "text_fields"[0m
+  [1m[36mFixture Insert (0.4ms)[0m  [1m[32mINSERT INTO "text_fields" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-22 02:02:50.025454', '2016-07-22 02:02:50.025454', 980190962, 980190962)[0m
+  [1m[36mFixture Insert (0.4ms)[0m  [1m[32mINSERT INTO "text_fields" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-22 02:02:50.025454', '2016-07-22 02:02:50.025454', 298486374, 298486374)[0m
+  [1m[35m (6.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (1.3ms)[0m  [1m[35mALTER TABLE "text_field_values" ENABLE TRIGGER ALL;ALTER TABLE "text_areas" ENABLE TRIGGER ALL;ALTER TABLE "text_fields" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" ENABLE TRIGGER ALL;ALTER TABLE "dropdown_values" ENABLE TRIGGER ALL;ALTER TABLE "dropdowns" ENABLE TRIGGER ALL;ALTER TABLE "text_area_values" ENABLE TRIGGER ALL;ALTER TABLE "contacts" ENABLE TRIGGER ALL;ALTER TABLE "users" ENABLE TRIGGER ALL[0m
+  [1m[35m (7.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+-----------------------------------------------
+TextAreaTest: test_name_should_be_less_than_200
+-----------------------------------------------
+  [1m[36mTextArea Load (0.6ms)[0m  [1m[34mSELECT  "text_areas".* FROM "text_areas" WHERE "text_areas"."id" = $1 LIMIT $2[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[35m (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+------------------------------------
+TextAreaTest: test_shoul_have_a_name
+------------------------------------
+  [1m[36mTextArea Load (0.5ms)[0m  [1m[34mSELECT  "text_areas".* FROM "text_areas" WHERE "text_areas"."id" = $1 LIMIT $2[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+------------------------------------------------
+DropdownTest: test_eliminate_first_unsuitables_*
+------------------------------------------------
+  [1m[36mDropdown Load (0.5ms)[0m  [1m[34mSELECT  "dropdowns".* FROM "dropdowns" WHERE "dropdowns"."id" = $1 LIMIT $2[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[35m (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+---------------------------------------------------------
+DropdownTest: test_when_it_has_more_the_one_*_consecutive
+---------------------------------------------------------
+  [1m[36mDropdown Load (0.5ms)[0m  [1m[34mSELECT  "dropdowns".* FROM "dropdowns" WHERE "dropdowns"."id" = $1 LIMIT $2[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+---------------------------------------------
+DropdownTest: test_when_param_is_empty_or_nil
+---------------------------------------------
+  [1m[36mDropdown Load (0.6ms)[0m  [1m[34mSELECT  "dropdowns".* FROM "dropdowns" WHERE "dropdowns"."id" = $1 LIMIT $2[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+--------------------------------------
+ContactTest: test_should_be_have_email
+--------------------------------------
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mContact Exists (1.1ms)[0m  [1m[34mSELECT  1 AS one FROM "contacts" WHERE "contacts"."email" = $1 LIMIT $2[0m  [["email", ""], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+-------------------------------
+ContactTest: test_um_teste_bobo
+-------------------------------
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+------------------------------------
+ContactTest: test_is_a_valid_contact
+------------------------------------
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mContact Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "contacts" WHERE "contacts"."email" = $1 LIMIT $2[0m  [["email", "contact_example@email.com"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+---------------------------------
+ContactTest: test_email_is_unique
+---------------------------------
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mContact Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "contacts" WHERE "contacts"."email" = $1 LIMIT $2[0m  [["email", "CONTACT_EXAMPLE@EMAIL.COM"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+------------------------------------------
+UserTest: test_name_should_not_be_too_long
+------------------------------------------
+  [1m[36mUser Exists (0.7ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "exampleuser@example.com"], ["LIMIT", 1]]
+  [1m[35m (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+-------------------------------------------
+UserTest: test_email_should_not_be_too_long
+-------------------------------------------
+  [1m[36mUser Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa@example.com"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+-------------------------------------
+UserTest: test_name_should_be_present
+-------------------------------------
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "exampleuser@example.com"], ["LIMIT", 1]]
+  [1m[35m (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+------------------------------
+UserTest: test_should_be_valid
+------------------------------
+  [1m[36mUser Exists (0.9ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "exampleuser@example.com"], ["LIMIT", 1]]
+  [1m[35m (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+-------------------------------------
+UserTest: test_email_should_be_unique
+-------------------------------------
+  [1m[35m (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+--------------------------------------
+UserTest: test_email_should_be_present
+--------------------------------------
+  [1m[36mUser Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", ""], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (1.1ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (2.6ms)[0m  [1m[35mALTER TABLE "text_field_values" DISABLE TRIGGER ALL;ALTER TABLE "text_areas" DISABLE TRIGGER ALL;ALTER TABLE "text_fields" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" DISABLE TRIGGER ALL;ALTER TABLE "dropdown_values" DISABLE TRIGGER ALL;ALTER TABLE "dropdowns" DISABLE TRIGGER ALL;ALTER TABLE "text_area_values" DISABLE TRIGGER ALL;ALTER TABLE "contacts" DISABLE TRIGGER ALL;ALTER TABLE "users" DISABLE TRIGGER ALL[0m
+  [1m[35m (35.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mFixture Delete (0.7ms)[0m  [1m[31mDELETE FROM "dropdown_values"[0m
+  [1m[36mFixture Insert (0.5ms)[0m  [1m[32mINSERT INTO "dropdown_values" ("name", "content", "value", "created_at", "updated_at", "id", "dropdown_id", "contact_id") VALUES ('MyString', 'MyString', 'MyString', '2016-07-22 02:03:09.412211', '2016-07-22 02:03:09.412211', 980190962, 980190962, 980190962)[0m
+  [1m[36mFixture Insert (0.4ms)[0m  [1m[32mINSERT INTO "dropdown_values" ("name", "content", "value", "created_at", "updated_at", "id", "dropdown_id", "contact_id") VALUES ('MyString', 'MyString', 'MyString', '2016-07-22 02:03:09.412211', '2016-07-22 02:03:09.412211', 298486374, 298486374, 298486374)[0m
+  [1m[36mFixture Delete (0.6ms)[0m  [1m[31mDELETE FROM "dropdowns"[0m
+  [1m[36mFixture Insert (0.4ms)[0m  [1m[32mINSERT INTO "dropdowns" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-22 02:03:09.436091', '2016-07-22 02:03:09.436091', 980190962, 980190962)[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "dropdowns" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-22 02:03:09.436091', '2016-07-22 02:03:09.436091', 298486374, 298486374)[0m
+  [1m[36mFixture Delete (0.5ms)[0m  [1m[31mDELETE FROM "text_areas"[0m
+  [1m[36mFixture Insert (0.4ms)[0m  [1m[32mINSERT INTO "text_areas" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-22 02:03:09.449296', '2016-07-22 02:03:09.449296', 980190962, 980190962)[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "text_areas" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-22 02:03:09.449296', '2016-07-22 02:03:09.449296', 298486374, 298486374)[0m
+  [1m[36mFixture Delete (0.5ms)[0m  [1m[31mDELETE FROM "text_area_values"[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "text_area_values" ("name", "value", "created_at", "updated_at", "id", "contact_id") VALUES ('MyString', 'MyText', '2016-07-22 02:03:09.461642', '2016-07-22 02:03:09.461642', 980190962, 980190962)[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "text_area_values" ("name", "value", "created_at", "updated_at", "id", "contact_id") VALUES ('MyString', 'MyText', '2016-07-22 02:03:09.461642', '2016-07-22 02:03:09.461642', 298486374, 298486374)[0m
+  [1m[36mFixture Delete (0.5ms)[0m  [1m[31mDELETE FROM "users"[0m
+  [1m[36mFixture Delete (0.5ms)[0m  [1m[31mDELETE FROM "contacts"[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "contacts" ("name", "email", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', 'MyString', '2016-07-22 02:03:09.477027', '2016-07-22 02:03:09.477027', 980190962, 980190962)[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "contacts" ("name", "email", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', 'MyString', '2016-07-22 02:03:09.477027', '2016-07-22 02:03:09.477027', 298486374, 298486374)[0m
+  [1m[36mFixture Delete (0.6ms)[0m  [1m[31mDELETE FROM "text_field_values"[0m
+  [1m[36mFixture Insert (0.4ms)[0m  [1m[32mINSERT INTO "text_field_values" ("name", "value", "created_at", "updated_at", "id", "text_field_id", "contact_id") VALUES ('MyString', 'MyString', '2016-07-22 02:03:09.488561', '2016-07-22 02:03:09.488561', 980190962, 980190962, 980190962)[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "text_field_values" ("name", "value", "created_at", "updated_at", "id", "text_field_id", "contact_id") VALUES ('MyString', 'MyString', '2016-07-22 02:03:09.488561', '2016-07-22 02:03:09.488561', 298486374, 298486374, 298486374)[0m
+  [1m[36mFixture Delete (0.5ms)[0m  [1m[31mDELETE FROM "text_fields"[0m
+  [1m[36mFixture Insert (0.4ms)[0m  [1m[32mINSERT INTO "text_fields" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-22 02:03:09.500504', '2016-07-22 02:03:09.500504', 980190962, 980190962)[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "text_fields" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-22 02:03:09.500504', '2016-07-22 02:03:09.500504', 298486374, 298486374)[0m
+  [1m[35m (37.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (1.8ms)[0m  [1m[35mALTER TABLE "text_field_values" ENABLE TRIGGER ALL;ALTER TABLE "text_areas" ENABLE TRIGGER ALL;ALTER TABLE "text_fields" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" ENABLE TRIGGER ALL;ALTER TABLE "dropdown_values" ENABLE TRIGGER ALL;ALTER TABLE "dropdowns" ENABLE TRIGGER ALL;ALTER TABLE "text_area_values" ENABLE TRIGGER ALL;ALTER TABLE "contacts" ENABLE TRIGGER ALL;ALTER TABLE "users" ENABLE TRIGGER ALL[0m
+  [1m[35m (6.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.8ms)[0m  [1m[35mBEGIN[0m
+------------------------------------
+TextAreaTest: test_shoul_have_a_name
+------------------------------------
+  [1m[36mTextArea Load (0.6ms)[0m  [1m[34mSELECT  "text_areas".* FROM "text_areas" WHERE "text_areas"."id" = $1 LIMIT $2[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[35m (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+-----------------------------------------------
+TextAreaTest: test_name_should_be_less_than_200
+-----------------------------------------------
+  [1m[36mTextArea Load (0.5ms)[0m  [1m[34mSELECT  "text_areas".* FROM "text_areas" WHERE "text_areas"."id" = $1 LIMIT $2[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+------------------------------
+UserTest: test_should_be_valid
+------------------------------
+  [1m[36mUser Exists (1.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "exampleuser@example.com"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+--------------------------------------
+UserTest: test_email_should_be_present
+--------------------------------------
+  [1m[36mUser Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", ""], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+-------------------------------------
+UserTest: test_name_should_be_present
+-------------------------------------
+  [1m[36mUser Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "exampleuser@example.com"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+-------------------------------------
+UserTest: test_email_should_be_unique
+-------------------------------------
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+------------------------------------------
+UserTest: test_name_should_not_be_too_long
+------------------------------------------
+  [1m[36mUser Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "exampleuser@example.com"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+-------------------------------------------
+UserTest: test_email_should_not_be_too_long
+-------------------------------------------
+  [1m[36mUser Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa@example.com"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+--------------------------------------
+ContactTest: test_should_be_have_email
+--------------------------------------
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mContact Exists (0.7ms)[0m  [1m[34mSELECT  1 AS one FROM "contacts" WHERE "contacts"."email" = $1 LIMIT $2[0m  [["email", ""], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+-------------------------------
+ContactTest: test_um_teste_bobo
+-------------------------------
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+---------------------------------
+ContactTest: test_email_is_unique
+---------------------------------
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mContact Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "contacts" WHERE "contacts"."email" = $1 LIMIT $2[0m  [["email", "CONTACT_EXAMPLE@EMAIL.COM"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+------------------------------------
+ContactTest: test_is_a_valid_contact
+------------------------------------
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mContact Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "contacts" WHERE "contacts"."email" = $1 LIMIT $2[0m  [["email", "contact_example@email.com"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+------------------------------------------------
+DropdownTest: test_eliminate_first_unsuitables_*
+------------------------------------------------
+  [1m[36mDropdown Load (0.4ms)[0m  [1m[34mSELECT  "dropdowns".* FROM "dropdowns" WHERE "dropdowns"."id" = $1 LIMIT $2[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+---------------------------------------------------------
+DropdownTest: test_when_it_has_more_the_one_*_consecutive
+---------------------------------------------------------
+  [1m[36mDropdown Load (0.4ms)[0m  [1m[34mSELECT  "dropdowns".* FROM "dropdowns" WHERE "dropdowns"."id" = $1 LIMIT $2[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+---------------------------------------------
+DropdownTest: test_when_param_is_empty_or_nil
+---------------------------------------------
+  [1m[36mDropdown Load (0.4ms)[0m  [1m[34mSELECT  "dropdowns".* FROM "dropdowns" WHERE "dropdowns"."id" = $1 LIMIT $2[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (1.0ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (2.0ms)[0m  [1m[35mALTER TABLE "text_field_values" DISABLE TRIGGER ALL;ALTER TABLE "text_areas" DISABLE TRIGGER ALL;ALTER TABLE "text_fields" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" DISABLE TRIGGER ALL;ALTER TABLE "dropdown_values" DISABLE TRIGGER ALL;ALTER TABLE "dropdowns" DISABLE TRIGGER ALL;ALTER TABLE "text_area_values" DISABLE TRIGGER ALL;ALTER TABLE "contacts" DISABLE TRIGGER ALL;ALTER TABLE "users" DISABLE TRIGGER ALL[0m
+  [1m[35m (25.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mFixture Delete (0.7ms)[0m  [1m[31mDELETE FROM "dropdown_values"[0m
+  [1m[36mFixture Insert (0.5ms)[0m  [1m[32mINSERT INTO "dropdown_values" ("name", "content", "value", "created_at", "updated_at", "id", "dropdown_id", "contact_id") VALUES ('MyString', 'MyString', 'MyString', '2016-07-22 02:03:40.154728', '2016-07-22 02:03:40.154728', 980190962, 980190962, 980190962)[0m
+  [1m[36mFixture Insert (0.4ms)[0m  [1m[32mINSERT INTO "dropdown_values" ("name", "content", "value", "created_at", "updated_at", "id", "dropdown_id", "contact_id") VALUES ('MyString', 'MyString', 'MyString', '2016-07-22 02:03:40.154728', '2016-07-22 02:03:40.154728', 298486374, 298486374, 298486374)[0m
+  [1m[36mFixture Delete (0.6ms)[0m  [1m[31mDELETE FROM "dropdowns"[0m
+  [1m[36mFixture Insert (0.5ms)[0m  [1m[32mINSERT INTO "dropdowns" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-22 02:03:40.174885', '2016-07-22 02:03:40.174885', 980190962, 980190962)[0m
+  [1m[36mFixture Insert (0.4ms)[0m  [1m[32mINSERT INTO "dropdowns" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-22 02:03:40.174885', '2016-07-22 02:03:40.174885', 298486374, 298486374)[0m
+  [1m[36mFixture Delete (0.6ms)[0m  [1m[31mDELETE FROM "text_areas"[0m
+  [1m[36mFixture Insert (0.5ms)[0m  [1m[32mINSERT INTO "text_areas" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-22 02:03:40.187753', '2016-07-22 02:03:40.187753', 980190962, 980190962)[0m
+  [1m[36mFixture Insert (0.4ms)[0m  [1m[32mINSERT INTO "text_areas" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-22 02:03:40.187753', '2016-07-22 02:03:40.187753', 298486374, 298486374)[0m
+  [1m[36mFixture Delete (0.6ms)[0m  [1m[31mDELETE FROM "text_area_values"[0m
+  [1m[36mFixture Insert (0.5ms)[0m  [1m[32mINSERT INTO "text_area_values" ("name", "value", "created_at", "updated_at", "id", "contact_id") VALUES ('MyString', 'MyText', '2016-07-22 02:03:40.200094', '2016-07-22 02:03:40.200094', 980190962, 980190962)[0m
+  [1m[36mFixture Insert (0.4ms)[0m  [1m[32mINSERT INTO "text_area_values" ("name", "value", "created_at", "updated_at", "id", "contact_id") VALUES ('MyString', 'MyText', '2016-07-22 02:03:40.200094', '2016-07-22 02:03:40.200094', 298486374, 298486374)[0m
+  [1m[36mFixture Delete (0.6ms)[0m  [1m[31mDELETE FROM "users"[0m
+  [1m[36mFixture Delete (0.6ms)[0m  [1m[31mDELETE FROM "contacts"[0m
+  [1m[36mFixture Insert (0.4ms)[0m  [1m[32mINSERT INTO "contacts" ("name", "email", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', 'MyString', '2016-07-22 02:03:40.216560', '2016-07-22 02:03:40.216560', 980190962, 980190962)[0m
+  [1m[36mFixture Insert (0.4ms)[0m  [1m[32mINSERT INTO "contacts" ("name", "email", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', 'MyString', '2016-07-22 02:03:40.216560', '2016-07-22 02:03:40.216560', 298486374, 298486374)[0m
+  [1m[36mFixture Delete (0.7ms)[0m  [1m[31mDELETE FROM "text_field_values"[0m
+  [1m[36mFixture Insert (0.5ms)[0m  [1m[32mINSERT INTO "text_field_values" ("name", "value", "created_at", "updated_at", "id", "text_field_id", "contact_id") VALUES ('MyString', 'MyString', '2016-07-22 02:03:40.228915', '2016-07-22 02:03:40.228915', 980190962, 980190962, 980190962)[0m
+  [1m[36mFixture Insert (0.4ms)[0m  [1m[32mINSERT INTO "text_field_values" ("name", "value", "created_at", "updated_at", "id", "text_field_id", "contact_id") VALUES ('MyString', 'MyString', '2016-07-22 02:03:40.228915', '2016-07-22 02:03:40.228915', 298486374, 298486374, 298486374)[0m
+  [1m[36mFixture Delete (0.6ms)[0m  [1m[31mDELETE FROM "text_fields"[0m
+  [1m[36mFixture Insert (0.4ms)[0m  [1m[32mINSERT INTO "text_fields" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-22 02:03:40.241930', '2016-07-22 02:03:40.241930', 980190962, 980190962)[0m
+  [1m[36mFixture Insert (0.4ms)[0m  [1m[32mINSERT INTO "text_fields" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-22 02:03:40.241930', '2016-07-22 02:03:40.241930', 298486374, 298486374)[0m
+  [1m[35m (4.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (1.4ms)[0m  [1m[35mALTER TABLE "text_field_values" ENABLE TRIGGER ALL;ALTER TABLE "text_areas" ENABLE TRIGGER ALL;ALTER TABLE "text_fields" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" ENABLE TRIGGER ALL;ALTER TABLE "dropdown_values" ENABLE TRIGGER ALL;ALTER TABLE "dropdowns" ENABLE TRIGGER ALL;ALTER TABLE "text_area_values" ENABLE TRIGGER ALL;ALTER TABLE "contacts" ENABLE TRIGGER ALL;ALTER TABLE "users" ENABLE TRIGGER ALL[0m
+  [1m[35m (7.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+---------------------------------
+ContactTest: test_email_is_unique
+---------------------------------
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mContact Exists (1.7ms)[0m  [1m[34mSELECT  1 AS one FROM "contacts" WHERE "contacts"."email" = $1 LIMIT $2[0m  [["email", "CONTACT_EXAMPLE@EMAIL.COM"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+------------------------------------
+ContactTest: test_is_a_valid_contact
+------------------------------------
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mContact Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "contacts" WHERE "contacts"."email" = $1 LIMIT $2[0m  [["email", "contact_example@email.com"], ["LIMIT", 1]]
+  [1m[35m (0.5ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+-------------------------------
+ContactTest: test_um_teste_bobo
+-------------------------------
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+--------------------------------------
+ContactTest: test_should_be_have_email
+--------------------------------------
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mContact Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "contacts" WHERE "contacts"."email" = $1 LIMIT $2[0m  [["email", ""], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+-------------------------------------
+UserTest: test_email_should_be_unique
+-------------------------------------
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+------------------------------
+UserTest: test_should_be_valid
+------------------------------
+  [1m[36mUser Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "exampleuser@example.com"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+-------------------------------------------
+UserTest: test_email_should_not_be_too_long
+-------------------------------------------
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa@example.com"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+-------------------------------------
+UserTest: test_name_should_be_present
+-------------------------------------
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "exampleuser@example.com"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+--------------------------------------
+UserTest: test_email_should_be_present
+--------------------------------------
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", ""], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+------------------------------------------
+UserTest: test_name_should_not_be_too_long
+------------------------------------------
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "exampleuser@example.com"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+------------------------------------
+TextAreaTest: test_shoul_have_a_name
+------------------------------------
+  [1m[36mTextArea Load (0.5ms)[0m  [1m[34mSELECT  "text_areas".* FROM "text_areas" WHERE "text_areas"."id" = $1 LIMIT $2[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+-----------------------------------------------
+TextAreaTest: test_name_should_be_less_than_200
+-----------------------------------------------
+  [1m[36mTextArea Load (0.5ms)[0m  [1m[34mSELECT  "text_areas".* FROM "text_areas" WHERE "text_areas"."id" = $1 LIMIT $2[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+---------------------------------------------------------
+DropdownTest: test_when_it_has_more_the_one_*_consecutive
+---------------------------------------------------------
+  [1m[36mDropdown Load (0.5ms)[0m  [1m[34mSELECT  "dropdowns".* FROM "dropdowns" WHERE "dropdowns"."id" = $1 LIMIT $2[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[35m (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+------------------------------------------------
+DropdownTest: test_eliminate_first_unsuitables_*
+------------------------------------------------
+  [1m[36mDropdown Load (0.5ms)[0m  [1m[34mSELECT  "dropdowns".* FROM "dropdowns" WHERE "dropdowns"."id" = $1 LIMIT $2[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+---------------------------------------------
+DropdownTest: test_when_param_is_empty_or_nil
+---------------------------------------------
+  [1m[36mDropdown Load (0.4ms)[0m  [1m[34mSELECT  "dropdowns".* FROM "dropdowns" WHERE "dropdowns"."id" = $1 LIMIT $2[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.8ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (1.9ms)[0m  [1m[35mALTER TABLE "text_field_values" DISABLE TRIGGER ALL;ALTER TABLE "text_areas" DISABLE TRIGGER ALL;ALTER TABLE "text_fields" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" DISABLE TRIGGER ALL;ALTER TABLE "dropdown_values" DISABLE TRIGGER ALL;ALTER TABLE "dropdowns" DISABLE TRIGGER ALL;ALTER TABLE "text_area_values" DISABLE TRIGGER ALL;ALTER TABLE "contacts" DISABLE TRIGGER ALL;ALTER TABLE "users" DISABLE TRIGGER ALL[0m
+  [1m[35m (23.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mFixture Delete (0.9ms)[0m  [1m[31mDELETE FROM "dropdown_values"[0m
+  [1m[36mFixture Insert (0.7ms)[0m  [1m[32mINSERT INTO "dropdown_values" ("name", "content", "value", "created_at", "updated_at", "id", "dropdown_id", "contact_id") VALUES ('MyString', 'MyString', 'MyString', '2016-07-22 02:04:04.029709', '2016-07-22 02:04:04.029709', 980190962, 980190962, 980190962)[0m
+  [1m[36mFixture Insert (0.5ms)[0m  [1m[32mINSERT INTO "dropdown_values" ("name", "content", "value", "created_at", "updated_at", "id", "dropdown_id", "contact_id") VALUES ('MyString', 'MyString', 'MyString', '2016-07-22 02:04:04.029709', '2016-07-22 02:04:04.029709', 298486374, 298486374, 298486374)[0m
+  [1m[36mFixture Delete (0.7ms)[0m  [1m[31mDELETE FROM "dropdowns"[0m
+  [1m[36mFixture Insert (0.5ms)[0m  [1m[32mINSERT INTO "dropdowns" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-22 02:04:04.055829', '2016-07-22 02:04:04.055829', 980190962, 980190962)[0m
+  [1m[36mFixture Insert (0.5ms)[0m  [1m[32mINSERT INTO "dropdowns" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-22 02:04:04.055829', '2016-07-22 02:04:04.055829', 298486374, 298486374)[0m
+  [1m[36mFixture Delete (0.7ms)[0m  [1m[31mDELETE FROM "text_areas"[0m
+  [1m[36mFixture Insert (0.5ms)[0m  [1m[32mINSERT INTO "text_areas" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-22 02:04:04.071105', '2016-07-22 02:04:04.071105', 980190962, 980190962)[0m
+  [1m[36mFixture Insert (0.4ms)[0m  [1m[32mINSERT INTO "text_areas" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-22 02:04:04.071105', '2016-07-22 02:04:04.071105', 298486374, 298486374)[0m
+  [1m[36mFixture Delete (0.7ms)[0m  [1m[31mDELETE FROM "text_area_values"[0m
+  [1m[36mFixture Insert (0.5ms)[0m  [1m[32mINSERT INTO "text_area_values" ("name", "value", "created_at", "updated_at", "id", "contact_id") VALUES ('MyString', 'MyText', '2016-07-22 02:04:04.084932', '2016-07-22 02:04:04.084932', 980190962, 980190962)[0m
+  [1m[36mFixture Insert (0.4ms)[0m  [1m[32mINSERT INTO "text_area_values" ("name", "value", "created_at", "updated_at", "id", "contact_id") VALUES ('MyString', 'MyText', '2016-07-22 02:04:04.084932', '2016-07-22 02:04:04.084932', 298486374, 298486374)[0m
+  [1m[36mFixture Delete (0.6ms)[0m  [1m[31mDELETE FROM "users"[0m
+  [1m[36mFixture Delete (0.6ms)[0m  [1m[31mDELETE FROM "contacts"[0m
+  [1m[36mFixture Insert (0.4ms)[0m  [1m[32mINSERT INTO "contacts" ("name", "email", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', 'MyString', '2016-07-22 02:04:04.102174', '2016-07-22 02:04:04.102174', 980190962, 980190962)[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "contacts" ("name", "email", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', 'MyString', '2016-07-22 02:04:04.102174', '2016-07-22 02:04:04.102174', 298486374, 298486374)[0m
+  [1m[36mFixture Delete (0.6ms)[0m  [1m[31mDELETE FROM "text_field_values"[0m
+  [1m[36mFixture Insert (0.5ms)[0m  [1m[32mINSERT INTO "text_field_values" ("name", "value", "created_at", "updated_at", "id", "text_field_id", "contact_id") VALUES ('MyString', 'MyString', '2016-07-22 02:04:04.114666', '2016-07-22 02:04:04.114666', 980190962, 980190962, 980190962)[0m
+  [1m[36mFixture Insert (0.4ms)[0m  [1m[32mINSERT INTO "text_field_values" ("name", "value", "created_at", "updated_at", "id", "text_field_id", "contact_id") VALUES ('MyString', 'MyString', '2016-07-22 02:04:04.114666', '2016-07-22 02:04:04.114666', 298486374, 298486374, 298486374)[0m
+  [1m[36mFixture Delete (0.6ms)[0m  [1m[31mDELETE FROM "text_fields"[0m
+  [1m[36mFixture Insert (0.5ms)[0m  [1m[32mINSERT INTO "text_fields" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-22 02:04:04.127959', '2016-07-22 02:04:04.127959', 980190962, 980190962)[0m
+  [1m[36mFixture Insert (0.4ms)[0m  [1m[32mINSERT INTO "text_fields" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-22 02:04:04.127959', '2016-07-22 02:04:04.127959', 298486374, 298486374)[0m
+  [1m[35m (7.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (2.5ms)[0m  [1m[35mALTER TABLE "text_field_values" ENABLE TRIGGER ALL;ALTER TABLE "text_areas" ENABLE TRIGGER ALL;ALTER TABLE "text_fields" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" ENABLE TRIGGER ALL;ALTER TABLE "dropdown_values" ENABLE TRIGGER ALL;ALTER TABLE "dropdowns" ENABLE TRIGGER ALL;ALTER TABLE "text_area_values" ENABLE TRIGGER ALL;ALTER TABLE "contacts" ENABLE TRIGGER ALL;ALTER TABLE "users" ENABLE TRIGGER ALL[0m
+  [1m[35m (5.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+-------------------------------------------
+UserTest: test_email_should_not_be_too_long
+-------------------------------------------
+  [1m[36mUser Exists (1.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa@example.com"], ["LIMIT", 1]]
+  [1m[35m (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+--------------------------------------
+UserTest: test_email_should_be_present
+--------------------------------------
+  [1m[36mUser Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", ""], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+------------------------------------------
+UserTest: test_name_should_not_be_too_long
+------------------------------------------
+  [1m[36mUser Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "exampleuser@example.com"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+-------------------------------------
+UserTest: test_name_should_be_present
+-------------------------------------
+  [1m[36mUser Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "exampleuser@example.com"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+-------------------------------------
+UserTest: test_email_should_be_unique
+-------------------------------------
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+------------------------------
+UserTest: test_should_be_valid
+------------------------------
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "exampleuser@example.com"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+---------------------------------------------
+DropdownTest: test_when_param_is_empty_or_nil
+---------------------------------------------
+  [1m[36mDropdown Load (0.5ms)[0m  [1m[34mSELECT  "dropdowns".* FROM "dropdowns" WHERE "dropdowns"."id" = $1 LIMIT $2[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+------------------------------------------------
+DropdownTest: test_eliminate_first_unsuitables_*
+------------------------------------------------
+  [1m[36mDropdown Load (0.5ms)[0m  [1m[34mSELECT  "dropdowns".* FROM "dropdowns" WHERE "dropdowns"."id" = $1 LIMIT $2[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+---------------------------------------------------------
+DropdownTest: test_when_it_has_more_the_one_*_consecutive
+---------------------------------------------------------
+  [1m[36mDropdown Load (0.3ms)[0m  [1m[34mSELECT  "dropdowns".* FROM "dropdowns" WHERE "dropdowns"."id" = $1 LIMIT $2[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+------------------------------------
+TextAreaTest: test_shoul_have_a_name
+------------------------------------
+  [1m[36mTextArea Load (0.4ms)[0m  [1m[34mSELECT  "text_areas".* FROM "text_areas" WHERE "text_areas"."id" = $1 LIMIT $2[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[35m (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+-----------------------------------------------
+TextAreaTest: test_name_should_be_less_than_200
+-----------------------------------------------
+  [1m[36mTextArea Load (0.5ms)[0m  [1m[34mSELECT  "text_areas".* FROM "text_areas" WHERE "text_areas"."id" = $1 LIMIT $2[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+-------------------------------
+ContactTest: test_um_teste_bobo
+-------------------------------
+  [1m[35m (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+---------------------------------
+ContactTest: test_email_is_unique
+---------------------------------
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mContact Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "contacts" WHERE "contacts"."email" = $1 LIMIT $2[0m  [["email", "CONTACT_EXAMPLE@EMAIL.COM"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+------------------------------------
+ContactTest: test_is_a_valid_contact
+------------------------------------
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mContact Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "contacts" WHERE "contacts"."email" = $1 LIMIT $2[0m  [["email", "contact_example@email.com"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+--------------------------------------
+ContactTest: test_should_be_have_email
+--------------------------------------
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mContact Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "contacts" WHERE "contacts"."email" = $1 LIMIT $2[0m  [["email", ""], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (1.2ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (3.0ms)[0m  [1m[35mALTER TABLE "text_field_values" DISABLE TRIGGER ALL;ALTER TABLE "text_areas" DISABLE TRIGGER ALL;ALTER TABLE "text_fields" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" DISABLE TRIGGER ALL;ALTER TABLE "dropdown_values" DISABLE TRIGGER ALL;ALTER TABLE "dropdowns" DISABLE TRIGGER ALL;ALTER TABLE "text_area_values" DISABLE TRIGGER ALL;ALTER TABLE "contacts" DISABLE TRIGGER ALL;ALTER TABLE "users" DISABLE TRIGGER ALL[0m
+  [1m[35m (9.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mFixture Delete (0.8ms)[0m  [1m[31mDELETE FROM "dropdown_values"[0m
+  [1m[36mFixture Insert (0.6ms)[0m  [1m[32mINSERT INTO "dropdown_values" ("name", "content", "value", "created_at", "updated_at", "id", "dropdown_id", "contact_id") VALUES ('MyString', 'MyString', 'MyString', '2016-07-22 02:04:38.812202', '2016-07-22 02:04:38.812202', 980190962, 980190962, 980190962)[0m
+  [1m[36mFixture Insert (0.5ms)[0m  [1m[32mINSERT INTO "dropdown_values" ("name", "content", "value", "created_at", "updated_at", "id", "dropdown_id", "contact_id") VALUES ('MyString', 'MyString', 'MyString', '2016-07-22 02:04:38.812202', '2016-07-22 02:04:38.812202', 298486374, 298486374, 298486374)[0m
+  [1m[36mFixture Delete (0.6ms)[0m  [1m[31mDELETE FROM "dropdowns"[0m
+  [1m[36mFixture Insert (0.4ms)[0m  [1m[32mINSERT INTO "dropdowns" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-22 02:04:38.837342', '2016-07-22 02:04:38.837342', 980190962, 980190962)[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "dropdowns" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-22 02:04:38.837342', '2016-07-22 02:04:38.837342', 298486374, 298486374)[0m
+  [1m[36mFixture Delete (0.6ms)[0m  [1m[31mDELETE FROM "text_areas"[0m
+  [1m[36mFixture Insert (0.4ms)[0m  [1m[32mINSERT INTO "text_areas" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-22 02:04:38.851201', '2016-07-22 02:04:38.851201', 980190962, 980190962)[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "text_areas" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-22 02:04:38.851201', '2016-07-22 02:04:38.851201', 298486374, 298486374)[0m
+  [1m[36mFixture Delete (0.6ms)[0m  [1m[31mDELETE FROM "text_area_values"[0m
+  [1m[36mFixture Insert (0.4ms)[0m  [1m[32mINSERT INTO "text_area_values" ("name", "value", "created_at", "updated_at", "id", "contact_id") VALUES ('MyString', 'MyText', '2016-07-22 02:04:38.863763', '2016-07-22 02:04:38.863763', 980190962, 980190962)[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "text_area_values" ("name", "value", "created_at", "updated_at", "id", "contact_id") VALUES ('MyString', 'MyText', '2016-07-22 02:04:38.863763', '2016-07-22 02:04:38.863763', 298486374, 298486374)[0m
+  [1m[36mFixture Delete (0.6ms)[0m  [1m[31mDELETE FROM "users"[0m
+  [1m[36mFixture Delete (0.5ms)[0m  [1m[31mDELETE FROM "contacts"[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "contacts" ("name", "email", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', 'MyString', '2016-07-22 02:04:38.879334', '2016-07-22 02:04:38.879334', 980190962, 980190962)[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "contacts" ("name", "email", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', 'MyString', '2016-07-22 02:04:38.879334', '2016-07-22 02:04:38.879334', 298486374, 298486374)[0m
+  [1m[36mFixture Delete (0.6ms)[0m  [1m[31mDELETE FROM "text_field_values"[0m
+  [1m[36mFixture Insert (0.5ms)[0m  [1m[32mINSERT INTO "text_field_values" ("name", "value", "created_at", "updated_at", "id", "text_field_id", "contact_id") VALUES ('MyString', 'MyString', '2016-07-22 02:04:38.890429', '2016-07-22 02:04:38.890429', 980190962, 980190962, 980190962)[0m
+  [1m[36mFixture Insert (0.4ms)[0m  [1m[32mINSERT INTO "text_field_values" ("name", "value", "created_at", "updated_at", "id", "text_field_id", "contact_id") VALUES ('MyString', 'MyString', '2016-07-22 02:04:38.890429', '2016-07-22 02:04:38.890429', 298486374, 298486374, 298486374)[0m
+  [1m[36mFixture Delete (0.7ms)[0m  [1m[31mDELETE FROM "text_fields"[0m
+  [1m[36mFixture Insert (0.4ms)[0m  [1m[32mINSERT INTO "text_fields" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-22 02:04:38.904209', '2016-07-22 02:04:38.904209', 980190962, 980190962)[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "text_fields" ("name", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', '2016-07-22 02:04:38.904209', '2016-07-22 02:04:38.904209', 298486374, 298486374)[0m
+  [1m[35m (81.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (1.5ms)[0m  [1m[35mALTER TABLE "text_field_values" ENABLE TRIGGER ALL;ALTER TABLE "text_areas" ENABLE TRIGGER ALL;ALTER TABLE "text_fields" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" ENABLE TRIGGER ALL;ALTER TABLE "dropdown_values" ENABLE TRIGGER ALL;ALTER TABLE "dropdowns" ENABLE TRIGGER ALL;ALTER TABLE "text_area_values" ENABLE TRIGGER ALL;ALTER TABLE "contacts" ENABLE TRIGGER ALL;ALTER TABLE "users" ENABLE TRIGGER ALL[0m
+  [1m[35m (45.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+------------------------------------------------
+DropdownTest: test_eliminate_first_unsuitables_*
+------------------------------------------------
+  [1m[36mDropdown Load (0.6ms)[0m  [1m[34mSELECT  "dropdowns".* FROM "dropdowns" WHERE "dropdowns"."id" = $1 LIMIT $2[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+---------------------------------------------------------
+DropdownTest: test_when_it_has_more_the_one_*_consecutive
+---------------------------------------------------------
+  [1m[36mDropdown Load (0.6ms)[0m  [1m[34mSELECT  "dropdowns".* FROM "dropdowns" WHERE "dropdowns"."id" = $1 LIMIT $2[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+---------------------------------------------
+DropdownTest: test_when_param_is_empty_or_nil
+---------------------------------------------
+  [1m[36mDropdown Load (0.4ms)[0m  [1m[34mSELECT  "dropdowns".* FROM "dropdowns" WHERE "dropdowns"."id" = $1 LIMIT $2[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+---------------------------------
+ContactTest: test_email_is_unique
+---------------------------------
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mContact Exists (1.2ms)[0m  [1m[34mSELECT  1 AS one FROM "contacts" WHERE "contacts"."email" = $1 LIMIT $2[0m  [["email", "CONTACT_EXAMPLE@EMAIL.COM"], ["LIMIT", 1]]
+  [1m[35m (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+------------------------------------
+ContactTest: test_is_a_valid_contact
+------------------------------------
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mContact Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "contacts" WHERE "contacts"."email" = $1 LIMIT $2[0m  [["email", "contact_example@email.com"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+--------------------------------------
+ContactTest: test_should_be_have_email
+--------------------------------------
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mContact Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "contacts" WHERE "contacts"."email" = $1 LIMIT $2[0m  [["email", ""], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+-------------------------------
+ContactTest: test_um_teste_bobo
+-------------------------------
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+-----------------------------------------------
+TextAreaTest: test_name_should_be_less_than_200
+-----------------------------------------------
+  [1m[36mTextArea Load (0.4ms)[0m  [1m[34mSELECT  "text_areas".* FROM "text_areas" WHERE "text_areas"."id" = $1 LIMIT $2[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[35m (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+------------------------------------
+TextAreaTest: test_shoul_have_a_name
+------------------------------------
+  [1m[36mTextArea Load (0.5ms)[0m  [1m[34mSELECT  "text_areas".* FROM "text_areas" WHERE "text_areas"."id" = $1 LIMIT $2[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+------------------------------------------
+UserTest: test_name_should_not_be_too_long
+------------------------------------------
+  [1m[36mUser Exists (0.7ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "exampleuser@example.com"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+-------------------------------------
+UserTest: test_email_should_be_unique
+-------------------------------------
+  [1m[36mUser Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "exampleuser@example.com"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+-------------------------------------------
+UserTest: test_email_should_not_be_too_long
+-------------------------------------------
+  [1m[36mUser Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa@example.com"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+-------------------------------------
+UserTest: test_name_should_be_present
+-------------------------------------
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "exampleuser@example.com"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+------------------------------
+UserTest: test_should_be_valid
+------------------------------
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "exampleuser@example.com"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+--------------------------------------
+UserTest: test_email_should_be_present
+--------------------------------------
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", ""], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m

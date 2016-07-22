@@ -25,5 +25,10 @@ class ContactTest < ActiveSupport::TestCase
   	assert_not @contact.valid?
   end
 
+  test 'email is unique' do
+    duplicate_contact = @contact.dup
+    assert_not duplicate_contact.valid?
+  end
+
 
 end

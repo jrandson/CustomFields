@@ -12,8 +12,6 @@ class UserTest < ActiveSupport::TestCase
             password:"password",
             password_confirmation:"password") 
 
-  	#user.errors.full_messages
-  	#msg.empty?
   end
 
   test "should be valid" do
@@ -39,5 +37,10 @@ class UserTest < ActiveSupport::TestCase
   	@user.email = "a" * 244 + "@example.com"
     assert_not @user.valid?
   end  
+
+  test "email should be unique" do
+    duplicate_user = @user
+    assert_not duplicate_user.valid?
+  end
 
 end
